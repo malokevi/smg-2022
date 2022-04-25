@@ -1,0 +1,53 @@
+[
+    [
+        {
+            "type": "h2",
+            "text": "Our Story"
+        },
+        {
+            "type": "p",
+            "text": "Sleep Management Group (SMG) was formed to meet the rapidly growing need for support and education in the field of Obstructive Sleep Apnea."
+        },
+        {
+            "type": "p",
+            "text": "For over 15 years we have been working closely with our clients and their physicians, partnering to provide the support needed to achieve positive outcomes. SMG is focused on creating success stories."
+        },
+        {
+            "type": "p",
+            "text": "Our staff are highly qualified Respiratory Therapists, CPAP Therapy Specialists and Nurses with many years of experience in sleep disorder treatment. Education, training, and on-going support services are a vital part of SMG's client-centered focus. As healthcare professionals we understand the unique needs of our clients and are dedicated to providing workable solutions. SMG works closely with clients to help you choose products and accessories that will optimize your comfort and compliance levels, and suit your individual needs."
+        }
+    ],
+    [
+        {
+            "type": "h2",
+            "text": "Our Products"
+        },
+        {
+            "type": "h3",
+            "text": "Your source for high quality, cost-effective medical supplies and services"
+        },
+        {
+            "type": "p",
+            "text": "OMS works with healthcare professionals, institutions and individual clients, offering a complete spectrum of quality clinical products at competitive prices. We help clients properly identify the right therapeutic supplies to meet their healthcare needs, and promptly deliver to communities across Ontario."
+        },
+        {
+            "type": "p",
+            "weight": 700,
+            "text": "OMS is a leading distributor of retail and wholesale medical equipment and supplies, and specialty pharmacy solutions including:"
+        },
+        {
+            "type": "ul",
+            "text": [
+                "Home healthcare supplies and services",
+                "Patient safety products and services",
+                "Seating and mobility equipment",
+                "Wound care supplies",
+                "Ostomy products",
+                "Infusion therapy",
+                "Incontinence and skin care solutions",
+                "Home oxygen supplies",
+                "Personal protection and infection control products"
+            ]
+        }
+    ]
+]
