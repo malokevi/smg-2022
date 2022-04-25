@@ -27,12 +27,10 @@ const Carousel = ({ slides }: { slides: (() => JSX.Element)[] }) => {
         img.src = ""
         e.dataTransfer.setDragImage(img, 0, 0)
 
-        console.log("start", e.clientX)
         dragVal.current = e.clientX
     }
 
     const handleDragEnd = (e: DragEvent) => {
-        console.log("end", e.clientX, dragVal.current)
         if (typeof dragVal.current === "number") {
             if (e.clientX < dragVal.current) {
                 setActive(changeSlide(active + 1))

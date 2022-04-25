@@ -7,9 +7,6 @@ const SocialLinks = () => {
             <a href="https://facebook.com">
                 <img src={MetaIcon} alt="Link to meta" />
             </a>
-            {/* <a href="https://twitter.com">
-                <img src="" alt="" />
-            </a> */}
         </StyledSocialLinks>
     )
 }

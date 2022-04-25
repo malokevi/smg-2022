@@ -1,60 +1,68 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Carousel from "../../Carousel"
+import Animate from "../../Utilities/Animate"
 import SleepCartoon from "../../../assets/images/sleep-cartoon.png"
 import PinkGirl from "../../../assets/images/pink-girl-banner.jpg"
 import { Col, Container, Row } from "../Grid"
 
 const SlideOne = () => {
     return (
-        <StyledSlideOne draggable={false}>
-            <Container>
-                <Row>
-                    <Col>
-                        <div className="hero-text">
-                            <h1>
-                                Providing Sleep Apnea Therapy Equipment For Over
-                                15 Years
-                            </h1>
-                            <p>
-                                At Sleep Management Group we have been working
-                                closely with our clients and their physicians,
-                                partnering to provide the support needed to
-                                achieve positive outcomes. SMG is focused on
-                                creating success stories.
-                            </p>
-                            <Link to="store">Visit The Store</Link>
-                        </div>
-                        <img
-                            alt=""
-                            className="cartoon-right"
-                            src={SleepCartoon}
-                        />
-                    </Col>
-                </Row>
-            </Container>
-        </StyledSlideOne>
+        <Animate>
+            <StyledSlideOne draggable={false}>
+                <Container>
+                    <Row>
+                        <Col>
+                            <div className="hero-text">
+                                <h1>
+                                    Providing Sleep Apnea Therapy Equipment For
+                                    Over 15 Years
+                                </h1>
+                                <p>
+                                    At Sleep Management Group we have been
+                                    working closely with our clients and their
+                                    physicians, partnering to provide the
+                                    support needed to achieve positive outcomes.
+                                    SMG is focused on creating success stories.
+                                </p>
+                                <Link to="store">Visit The Store</Link>
+                            </div>
+                            <img
+                                alt=""
+                                className="cartoon-right"
+                                src={SleepCartoon}
+                            />
+                        </Col>
+                    </Row>
+                </Container>
+            </StyledSlideOne>
+        </Animate>
     )
 }
 
 const SlideTwo = () => {
     return (
-        <StyledSlideTwo draggable={false}>
-            <Container>
-                <Row>
-                    <Col>
-                        <div className="hero-text">
-                            <h1>Get The Sleep You've Been Dreaming Of</h1>
-                            <p>
-                                Stay informed on the latest information in the
-                                field of sleep medicine. We've got the facts!
-                            </p>
-                            <Link to="/store">Visit Our Knowledge Center</Link>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </StyledSlideTwo>
+        <Animate>
+            <StyledSlideTwo draggable={false}>
+                <Container>
+                    <Row>
+                        <Col>
+                            <div className="hero-text">
+                                <h1>Get The Sleep You've Been Dreaming Of</h1>
+                                <p>
+                                    Stay informed on the latest information in
+                                    the field of sleep medicine. We've got the
+                                    facts!
+                                </p>
+                                <Link to="/store">
+                                    Visit Our Knowledge Center
+                                </Link>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </StyledSlideTwo>
+        </Animate>
     )
 }
 
