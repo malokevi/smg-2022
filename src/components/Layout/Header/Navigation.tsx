@@ -24,8 +24,13 @@ const Navigation = () => {
                     <Col>
                         <ul className="navigation">
                             {navData.map(({ dropdown, label, to }, index) => {
+                                const key = `${label.replaceAll(
+                                    " ",
+                                    ""
+                                )}-${to}-${index}`
+
                                 return (
-                                    <li key={`${label}-${to}-${index}`}>
+                                    <li key={key}>
                                         <Link to={to}>{label}</Link>
 
                                         {dropdown && (
@@ -33,11 +38,10 @@ const Navigation = () => {
                                                 {dropdown.map(
                                                     ({ label, to }, i) => {
                                                         return (
-                                                            <li>
-                                                                <Link
-                                                                    key={`dropdown-${label}-${to}-${i}`}
-                                                                    to={to}
-                                                                >
+                                                            <li
+                                                                key={`${key}-${i}`}
+                                                            >
+                                                                <Link to={to}>
                                                                     {label}
                                                                 </Link>
                                                             </li>

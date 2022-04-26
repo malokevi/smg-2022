@@ -17,6 +17,7 @@ declare module "styled-components" {
         padding: {
             page: string
             gap: string
+            pageBc: string
         }
 
         colors: {

@@ -18,13 +18,13 @@ const GridItem = ({
     brand
 }: GridItemPropsType) => {
     const handleAddToCart = (e: any) => {
-        console.log("click event", e)
+        console.log("add to cart event", e)
     }
 
     return (
         <StyledGridItem
             onClick={(e) => {
-                console.log("event?", e)
+                console.log("click grid item event", e)
             }}
             image={image}
         >
@@ -52,6 +52,17 @@ const StyledGridItem = styled.div<{ image: any }>`
     display: flex;
     flex-flow: column nowrap;
     flex-grow: 2;
+    flex-shrink: 0;
+    border: 1px solid #eee;
+    border-radius: ${({ theme }) => theme.borderRadius};
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    width: 25%;
+
+    &:hover {
+        box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    }
 
     .product-image {
         background-image: url(${({ image }) => image});

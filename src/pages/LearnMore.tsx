@@ -16,7 +16,7 @@ const LearnMore = () => {
 }
 
 const StyledLearnMore = styled.div`
-    padding: ${({ theme }) => theme.padding.page};
+    padding: ${({ theme }) => theme.padding.page} 0;
     display: flex;
     flex-flow: column;
 `

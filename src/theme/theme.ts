@@ -30,7 +30,8 @@ const theme: DefaultTheme = {
     },
     padding: {
         gap: "80px",
-        page: "120px"
+        page: "120px",
+        pageBc: "40px"
     },
     borderRadius: "6px"
 }

@@ -57,8 +57,8 @@ const RecusriveBreadcrumb = ({
                         split[split.length - 2].toLowerCase()
                     )
                         ? split[split.length - 1]
-                              .replace("-", " ")
-                              .replace("_", " ")
+                              .replaceAll("-", " ")
+                              .replaceAll("_", " ")
                         : "Not found"}
                 </li>
             )

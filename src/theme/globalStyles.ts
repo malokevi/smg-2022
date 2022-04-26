@@ -22,10 +22,10 @@ const GlobalStyle = createGlobalStyle`
       }
   
       h1 {
-        font-size: ${({ theme }) => theme.fontSize.xxl};
+        font-size: ${({ theme }) => theme.fontSize.xl};
       }
       h2 {
-        font-size: ${({ theme }) => theme.fontSize.xl};
+        font-size: ${({ theme }) => theme.fontSize.lg};
       }
       h3 {
         font-size: ${({ theme }) => theme.fontSize.lg};
@@ -48,6 +48,11 @@ const GlobalStyle = createGlobalStyle`
         }
       }
   
+      .page-container {
+        padding: ${({ theme }) => theme.padding.pageBc} 0 ${({ theme }) =>
+    theme.padding.gap};
+      }
+
       button {
         cursor: pointer;
         padding: 0;
