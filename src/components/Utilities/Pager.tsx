@@ -12,7 +12,7 @@ const Pager = ({
     onChange: (e: any) => void
 }) => {
     const [pages, setPages] = useState<number[]>([])
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(0)
 
     useEffect(() => {
         onChange(page)

@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import Button from "../Utilities/Button"
 import ComingSoonImage from "../../assets/images/coming-soon.jpg"
+import { motion } from "framer-motion"
+import { fadeUp } from "../../shared/motion-variants"
 
 type GridItemPropsType = {
     image?: any
@@ -18,6 +20,7 @@ const GridItem = ({
     brand
 }: GridItemPropsType) => {
     const handleAddToCart = (e: any) => {
+        e.stopPropagation()
         console.log("add to cart event", e)
     }
 
@@ -27,6 +30,7 @@ const GridItem = ({
                 console.log("click grid item event", e)
             }}
             image={image}
+            variants={fadeUp}
         >
             <div className="product-image"></div>
             <div className="product-details">
@@ -48,7 +52,7 @@ const GridItem = ({
     )
 }
 
-const StyledGridItem = styled.div<{ image: any }>`
+const StyledGridItem = styled(motion.div)<{ image: any }>`
     display: flex;
     flex-flow: column nowrap;
     flex-grow: 2;
@@ -57,7 +61,7 @@ const StyledGridItem = styled.div<{ image: any }>`
     border-radius: ${({ theme }) => theme.borderRadius};
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.25s ease-in-out;
+    // transition: box-shadow 0.25s ease-in-out;
     width: 25%;
 
     &:hover {

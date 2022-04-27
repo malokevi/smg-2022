@@ -7,6 +7,8 @@ import GridItem from "../components/Products/GridItem"
 import Pagination from "../components/Utilities/Pagination"
 import { PaginationType } from "../shared/types"
 import TestProducts from "../static/products.json"
+import { motion } from "framer-motion"
+import { fadeUp, staggerChildren } from "../shared/motion-variants"
 
 const Products = () => {
     let { category } = useParams<"category">()
@@ -25,12 +27,6 @@ const Products = () => {
     }, [])
 
     useEffect(() => {
-        console.log(
-            "items",
-            TestProducts.slice(page.skip, page.skip + page.take),
-            page,
-            TestProducts
-        )
         setPageItems(TestProducts.slice(page.skip, page.skip + page.take))
     }, [page])
 
@@ -71,9 +67,15 @@ const Products = () => {
                                 onChange={handleSort}
                             />
                         </div>
-                        <div className="product-grid">
-                            {pageItems.length > 0 ? (
-                                [...pageItems, "", "", "", ""].map(
+
+                        {pageItems.length > 0 ? (
+                            <motion.div
+                                variants={staggerChildren}
+                                initial="hide"
+                                animate="show"
+                                className="product-grid"
+                            >
+                                {[...pageItems, "", "", "", ""].map(
                                     ({ label, price, salePrice, image }, i) =>
                                         label ? (
                                             <GridItem
@@ -87,13 +89,16 @@ const Products = () => {
                                                 )}`}
                                             />
                                         ) : (
-                                            <span className="spacer"></span>
+                                            <motion.span
+                                                variants={fadeUp}
+                                                className="spacer"
+                                            ></motion.span>
                                         )
-                                )
-                            ) : (
-                                <p>No matching products.</p>
-                            )}
-                        </div>
+                                )}
+                            </motion.div>
+                        ) : (
+                            <p>No matching products.</p>
+                        )}
                         <Pagination
                             pageTotal={pageItems.length}
                             onChange={handlePaginate}

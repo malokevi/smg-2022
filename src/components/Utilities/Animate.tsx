@@ -1,34 +1,19 @@
 import { AnimatePresence, motion } from "framer-motion"
 import React from "react"
 import styled from "styled-components"
-
-const DURATION = 0.25
+import { fade, fadeUp, fadeUpSpring } from "../../shared/motion-variants"
 
 const variants = {
-    fade: {
-        hide: {
-            opacity: 0,
-            transition: {
-                type: "tween",
-                duration: DURATION
-            }
-        },
-        show: {
-            opacity: 1,
-            transition: {
-                type: "tween",
-                duration: DURATION
-            }
-        }
-    },
-    fadeUp: {}
+    fadeUp,
+    fade,
+    fadeUpSpring
 }
 
 const Animate = ({
     type = "fade",
     children
 }: {
-    type?: "fade" | "fadeUp"
+    type?: "fade" | "fadeUp" | "fadeUpSpring"
     children: React.ReactNode
 }) => {
     return (

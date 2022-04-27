@@ -5,6 +5,12 @@ import Animate from "../../Utilities/Animate"
 import SleepCartoon from "../../../assets/images/sleep-cartoon.png"
 import PinkGirl from "../../../assets/images/pink-girl-banner.jpg"
 import { Col, Container, Row } from "../Grid"
+import { motion } from "framer-motion"
+import {
+    fadeUpSpring,
+    staggerChildren,
+    fadeLeft
+} from "../../../shared/motion-variants"
 
 const SlideOne = () => {
     return (
@@ -13,21 +19,31 @@ const SlideOne = () => {
                 <Container>
                     <Row>
                         <Col>
-                            <div className="hero-text">
-                                <h1>
+                            <motion.div
+                                initial="hide"
+                                animate="show"
+                                variants={staggerChildren}
+                                className="hero-text"
+                            >
+                                <motion.h1 variants={fadeUpSpring}>
                                     Providing Sleep Apnea Therapy Equipment For
                                     Over 15 Years
-                                </h1>
-                                <p>
+                                </motion.h1>
+                                <motion.p variants={fadeUpSpring}>
                                     At Sleep Management Group we have been
                                     working closely with our clients and their
                                     physicians, partnering to provide the
                                     support needed to achieve positive outcomes.
                                     SMG is focused on creating success stories.
-                                </p>
-                                <Link to="store">Visit The Store</Link>
-                            </div>
-                            <img
+                                </motion.p>
+                                <motion.span variants={fadeUpSpring}>
+                                    <Link to="store">Visit The Store</Link>
+                                </motion.span>
+                            </motion.div>
+                            <motion.img
+                                variants={fadeLeft}
+                                initial="hide"
+                                animate="show"
                                 alt=""
                                 className="cartoon-right"
                                 src={SleepCartoon}
@@ -47,17 +63,26 @@ const SlideTwo = () => {
                 <Container>
                     <Row>
                         <Col>
-                            <div className="hero-text">
-                                <h1>Get The Sleep You've Been Dreaming Of</h1>
-                                <p>
+                            <motion.div
+                                initial="hide"
+                                animate="show"
+                                variants={staggerChildren}
+                                className="hero-text"
+                            >
+                                <motion.h1 variants={fadeUpSpring}>
+                                    Get The Sleep You've Been Dreaming Of
+                                </motion.h1>
+                                <motion.p variants={fadeUpSpring}>
                                     Stay informed on the latest information in
                                     the field of sleep medicine. We've got the
                                     facts!
-                                </p>
-                                <Link to="/store">
-                                    Visit Our Knowledge Center
-                                </Link>
-                            </div>
+                                </motion.p>
+                                <motion.span variants={fadeUpSpring}>
+                                    <Link to="/store">
+                                        Visit Our Knowledge Center
+                                    </Link>
+                                </motion.span>
+                            </motion.div>
                         </Col>
                     </Row>
                 </Container>
