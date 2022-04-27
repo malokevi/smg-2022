@@ -38,6 +38,11 @@ const StyledSearchBar = styled.div`
         button {
             border-radius: 0 ${({ theme }) => theme.borderRadius}
                 ${({ theme }) => theme.borderRadius} 0 !important;
+            display: flex;
+
+            svg {
+                margin: auto;
+            }
         }
         input {
             flex-grow: 2;
