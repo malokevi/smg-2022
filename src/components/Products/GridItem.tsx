@@ -61,7 +61,7 @@ const StyledGridItem = styled(motion.div)<{ image: any }>`
     border-radius: ${({ theme }) => theme.borderRadius};
     overflow: hidden;
     cursor: pointer;
-    // transition: box-shadow 0.25s ease-in-out;
+    transition: box-shadow 0.25s ease-in-out;
     width: 25%;
 
     &:hover {

@@ -31,8 +31,16 @@ const Footer = () => {
                                 <li>
                                     <Link to="contact">Contact Us</Link>
                                 </li>
-                                <li>Knowledge Center</li>
-                                <li>Privacy Policy</li>
+                                <li>
+                                    <Link to="knowledge-center">
+                                        Knowledge Center
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="privacy-policy">
+                                        Privacy Policy
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </Col>
@@ -40,9 +48,19 @@ const Footer = () => {
                         <div>
                             <p>My Account</p>
                             <ul>
-                                <li>My Account</li>
-                                <li>Order History</li>
-                                <li>Wish List</li>
+                                <li>
+                                    <Link to="account">My Account</Link>
+                                </li>
+                                <li>
+                                    <Link to="account/orders">
+                                        Order History
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="account/wish-list">
+                                        Wish List
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </Col>

@@ -9,6 +9,8 @@ const LearnMore = lazy(() => import("./pages/LearnMore"))
 const NotFound = lazy(() => import("./pages/NotFound"))
 const Blog = lazy(() => import("./pages/Blog"))
 const Products = lazy(() => import("./pages/Products"))
+const Login = lazy(() => import("./pages/auth/Login"))
+const Register = lazy(() => import("./pages/auth/Register"))
 
 export const routes: RouteObject[] = [
     {
@@ -46,6 +48,16 @@ export const routes: RouteObject[] = [
                         path: ":category"
                     }
                 ]
+            },
+            {
+                path: "login",
+                label: "Login",
+                element: <Login />
+            },
+            {
+                path: "register",
+                label: "Register",
+                element: <Register />
             },
             {
                 path: "*",

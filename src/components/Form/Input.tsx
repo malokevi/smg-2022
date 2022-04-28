@@ -1,14 +1,14 @@
 import { useId } from "react"
 import styled from "styled-components"
 
-type InputType = {
+export type InputType = {
     name: string
     label?: string
     placeholder?: string
-    onChange: (e: any) => void
-    type: "text" | "number"
-    value: string | number | undefined
-    icon: any
+    onChange?: (e: any) => void
+    type: any
+    value?: string | number
+    icon?: any
 }
 
 const Input = ({
@@ -32,7 +32,7 @@ const Input = ({
                     type={type}
                     value={value}
                     placeholder={placeholder}
-                    onChange={(e) => onChange(e)}
+                    onChange={(e) => onChange && onChange(e)}
                 />
                 {icon && (
                     <button>

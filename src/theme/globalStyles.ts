@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-flow: column;
     min-height: 100%;
+    overflow-y: scroll;
 
     body {
       flex-grow: 2;

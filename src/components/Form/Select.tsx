@@ -2,12 +2,12 @@ import { useEffect, useId, useState } from "react"
 import styled from "styled-components"
 import { SelectOptionType } from "../../shared/types"
 
-type SelectType = {
+export type SelectType = {
     name: string
     label?: string
-    value?: any
-    onChange: (e: any) => void
-    options: SelectOptionType[]
+    value?: string | number
+    onChange?: (e: any) => void
+    options?: SelectOptionType[]
 }
 
 const Select = ({ name, label, options, value, onChange }: SelectType) => {
@@ -15,14 +15,15 @@ const Select = ({ name, label, options, value, onChange }: SelectType) => {
     const [val, setVal] = useState<number | undefined>()
 
     useEffect(() => {
-        options.forEach((option, i) => {
-            option.default && setVal(i)
-        })
+        options &&
+            options.forEach((option, i) => {
+                option.default && setVal(i)
+            })
     }, [])
 
     const handleChange = (e: any) => {
         setVal(e.target.value)
-        onChange(options[e.target.value])
+        onChange && onChange(options && options[e.target.value])
     }
 
     return (
@@ -32,11 +33,12 @@ const Select = ({ name, label, options, value, onChange }: SelectType) => {
                 <option disabled value="-1">
                     Select an option
                 </option>
-                {options.map(({ label }, i) => (
-                    <option key={`select-${label || ""}-${i}`} value={i}>
-                        {label}
-                    </option>
-                ))}
+                {options &&
+                    options.map(({ label }, i) => (
+                        <option key={`select-${label || ""}-${i}`} value={i}>
+                            {label}
+                        </option>
+                    ))}
             </select>
         </StyledSelect>
     )

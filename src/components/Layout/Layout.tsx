@@ -8,7 +8,7 @@ const Layout = () => {
     return (
         <StyledLayout>
             <Header />
-            <Suspense fallback={<></>}>
+            <Suspense fallback={<div className="placeholder"></div>}>
                 <Outlet />
             </Suspense>
             <Footer />
@@ -21,6 +21,10 @@ const StyledLayout = styled.div`
     flex-flow: column;
     position: relative;
     flex-grow: 2;
+
+    .placeholder {
+        min-height: 1000px;
+    }
 `
 
 export default Layout
