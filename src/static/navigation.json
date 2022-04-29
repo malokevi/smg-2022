@@ -1,15 +1,5 @@
 [
     {
-        "label": "Learn More",
-        "to": "learn-more",
-        "dropdown": [
-            {
-                "label": "category One",
-                "to": "learn-more/category-one"
-            }
-        ]
-    },
-    {
         "label": "Products",
         "to": "products",
         "dropdown": [
@@ -21,7 +11,13 @@
     },
     {
         "label": "Knowledge Center",
-        "to": "knowledge-center"
+        "to": "knowledge-center",
+        "dropdown": [
+            {
+                "label": "category One",
+                "to": "learn-more/category-one"
+            }
+        ]
     },
     {
         "label": "Blog",

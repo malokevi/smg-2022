@@ -13,7 +13,11 @@ const StyledModule = styled.div`
     width: 100%;
     max-width: 480px;
     margin: auto;
-    gap: 24px;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+
+    h1 {
+        margin-bottom: 42px;
+    }
 `
 
 export default Module

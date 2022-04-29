@@ -44,7 +44,7 @@ const StyledLogin = styled.div`
         ${({ theme }) => theme.padding.gap};
 
     h1 {
-        margin: auto;
+        margin: auto auto 48px;
     }
 
     a {

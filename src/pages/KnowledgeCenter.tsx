@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { Col, Container, Row } from "../components/Layout/Grid"
 
-const LearnMore = () => {
+const KnowledgeCenter = () => {
     return (
-        <StyledLearnMore>
+        <StyledKnowledgeCenter>
             <Container>
                 <Row>
                     <Col>
@@ -11,14 +11,14 @@ const LearnMore = () => {
                     </Col>
                 </Row>
             </Container>
-        </StyledLearnMore>
+        </StyledKnowledgeCenter>
     )
 }
 
-const StyledLearnMore = styled.div`
+const StyledKnowledgeCenter = styled.div`
     padding: ${({ theme }) => theme.padding.page} 0;
     display: flex;
     flex-flow: column;
 `
 
-export default LearnMore
+export default KnowledgeCenter

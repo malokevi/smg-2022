@@ -5,7 +5,7 @@ import Layout from "./components/Layout/Layout"
 
 const Home = lazy(() => import("./pages/Home"))
 const About = lazy(() => import("./pages/About"))
-const LearnMore = lazy(() => import("./pages/LearnMore"))
+const KnowledgeCenter = lazy(() => import("./pages/KnowledgeCenter"))
 const NotFound = lazy(() => import("./pages/NotFound"))
 const Blog = lazy(() => import("./pages/Blog"))
 const Products = lazy(() => import("./pages/Products"))
@@ -31,7 +31,7 @@ export const routes: RouteObject[] = [
             {
                 path: "knowledge-center",
                 label: "Knowlege Center",
-                element: <LearnMore />
+                element: <KnowledgeCenter />
             },
             {
                 path: "blog",

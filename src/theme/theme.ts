@@ -17,8 +17,8 @@ const theme: DefaultTheme = {
             faded: "#abadbc"
         },
         button: {
-            primary: "#f1f9ff",
-            secondary: "#eee",
+            primary: "#70cddd",
+            secondary: "white",
             warning: "#c1282d",
             danger: ""
         },
@@ -33,7 +33,8 @@ const theme: DefaultTheme = {
         page: "120px",
         pageBc: "40px"
     },
-    borderRadius: "6px"
+    borderRadius: "6px",
+    boxShadow: "0 8px 12px rgb(0 0 0 / 8%)"
 }
 
 export default theme
