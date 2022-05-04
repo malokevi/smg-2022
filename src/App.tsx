@@ -7,7 +7,9 @@ const Home = lazy(() => import("./pages/Home"))
 const About = lazy(() => import("./pages/About"))
 const KnowledgeCenter = lazy(() => import("./pages/KnowledgeCenter"))
 const NotFound = lazy(() => import("./pages/NotFound"))
-const Blog = lazy(() => import("./pages/Blog"))
+const BlogLayout = lazy(() => import("./pages/blog/BlogLayout"))
+const Blog = lazy(() => import("./pages/blog/Blog"))
+const BlogArticle = lazy(() => import("./pages/blog/BlogArticle"))
 const Products = lazy(() => import("./pages/Products"))
 const Login = lazy(() => import("./pages/auth/Login"))
 const Register = lazy(() => import("./pages/auth/Register"))
@@ -36,7 +38,18 @@ export const routes: RouteObject[] = [
             {
                 path: "blog",
                 label: "Blog",
-                element: <Blog />
+                element: <BlogLayout />,
+                children: [
+                    {
+                        index: true,
+                        label: "Blog",
+                        element: <Blog />
+                    },
+                    {
+                        path: ":article",
+                        element: <BlogArticle />
+                    }
+                ]
             },
             {
                 path: "products",

@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import { Col, Container, Row } from "../components/Layout/Grid"
-import TestData from "../static/blog.json"
-import BlogPreview from "../components/BlogPreview"
+import { Col, Container, Row } from "../../components/Layout/Grid"
+import TestData from "../../static/blog.json"
+import BlogPreview from "../../components/BlogPreview"
 import { motion } from "framer-motion"
-import { staggerChildren } from "../shared/motion-variants"
+import { staggerChildren } from "../../shared/motion-variants"
 
 const Blog = () => {
     return (
