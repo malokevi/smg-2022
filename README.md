@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project is bespoke as much as possible. The objective is to build an appealing marketing site/store hybrid without any UI libraries or copy/paste components. Ideally I can keep this up to date as a testament to my capabilities (time permitting). I have a series of objectives which I would like to hit:
+
+-   introduce module federation for major features.
+-   transition to Turbopack when it's out of beta.
+-   achieve 80%+ unit test coverage, implement E2E testing
+-   leverage AWS for the API (cognito for Auth, Lambda/API Gateway/Dynamo for backend services)
+-   migrate components, fonts, colours and other design-centric helpers to a Storybook design system hosted on npm
+
 ## Available Scripts
 
 In the project directory, you can run:
