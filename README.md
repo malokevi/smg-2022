@@ -7,6 +7,7 @@ This project is bespoke as much as possible. The objective is to build an appeal
 -   introduce module federation for major features.
 -   transition to Turbopack when it's out of beta.
 -   achieve 80%+ unit test coverage, implement E2E testing
+-   implement Git Workflows to automate testing
 -   leverage AWS for the API (cognito for Auth, Lambda/API Gateway/Dynamo for backend services)
 -   migrate components, fonts, colours and other design-centric helpers to a Storybook design system hosted on npm
 
