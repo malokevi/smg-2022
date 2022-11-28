@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { PaginationType } from "../../shared/types"
 import styled from "styled-components"
+
+import { PaginationType } from "../../shared/types"
 
 const Pager = ({
     settings,

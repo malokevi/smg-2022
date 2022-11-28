@@ -1,5 +1,6 @@
 import { lazy } from "react"
 import { useRoutes } from "react-router-dom"
+
 import { RouteObject } from "./shared/types"
 import Layout from "./components/Layout/Layout"
 

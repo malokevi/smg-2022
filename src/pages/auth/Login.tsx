@@ -1,8 +1,9 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
+
 import { Col, Container, Row } from "../../components/Layout/Grid"
 import Module from "../../components/Auth/Module"
 import Form, { FormFieldType } from "../../components/Form/Form"
-import { Link } from "react-router-dom"
 
 const loginForm: FormFieldType[] = [
     {

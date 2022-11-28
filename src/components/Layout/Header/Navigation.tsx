@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import { Container, Col, Row } from "../Grid"
 import { Link } from "react-router-dom"
+
+import { Container, Col, Row } from "../Grid"
 import NavData from "../../../static/navigation.json"
 
 type DropdownLinkType = {

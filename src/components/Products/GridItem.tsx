@@ -1,7 +1,8 @@
 import styled from "styled-components"
+import { motion } from "framer-motion"
+
 import Button from "../Utilities/Button"
 import ComingSoonImage from "../../assets/images/coming-soon.jpg"
-import { motion } from "framer-motion"
 import { fadeUp } from "../../shared/motion-variants"
 
 type GridItemPropsType = {

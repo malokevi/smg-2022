@@ -1,4 +1,5 @@
 import styled from "styled-components"
+
 import FisherPaykal from "../assets/images/vendors/fisher-and-paykel.png"
 import Kego from "../assets/images/vendors/kego.png"
 import Phillips from "../assets/images/vendors/phillips.png"

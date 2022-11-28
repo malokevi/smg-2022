@@ -1,7 +1,8 @@
 import styled from "styled-components"
+import { motion } from "framer-motion"
+
 import Button from "./Utilities/Button"
 import { fadeUp } from "../shared/motion-variants"
-import { motion } from "framer-motion"
 
 type BlogEntryPropsType = {
     copy: string

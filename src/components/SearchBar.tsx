@@ -1,7 +1,8 @@
 import styled from "styled-components"
+import { useState } from "react"
+
 import Input from "./Form/Input"
 import SearchIcon from "../assets/images/ico-search-white.svg"
-import { useState } from "react"
 
 const SearchBar = () => {
     const [search, setSearch] = useState<string | undefined>()

@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import React from "react"
 import styled from "styled-components"
+
 import { fade, fadeUp, fadeUpSpring } from "../../shared/motion-variants"
 
 const variants = {

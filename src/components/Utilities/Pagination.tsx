@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
+
 import { PaginationType } from "../../shared/types"
 import Select from "../Form/Select"
 import Pager from "./Pager"

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { Container, Row, Col } from "../Grid"
 import { useLocation } from "react-router-dom"
 import type { Location } from "react-router-dom"
+
+import { Container, Row, Col } from "../Grid"
 import { routes } from "../../../App"
 import { RouteObject } from "../../../shared/types"
 

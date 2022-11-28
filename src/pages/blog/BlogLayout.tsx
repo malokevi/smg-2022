@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import { Col, Container, Row } from "../../components/Layout/Grid"
 import { Outlet } from "react-router"
+
+import { Container } from "../../components/Layout/Grid"
 
 const BlogLayout = () => {
     return (

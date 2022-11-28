@@ -1,7 +1,8 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
+
 import { Col, Container, Row } from "../Grid"
 import Logo from "../../../assets/images/logo-final.png"
-import { Link } from "react-router-dom"
 import Cart from "../../Cart"
 import SearchBar from "../../SearchBar"
 import ProfileOptions from "./ProfileOptions"

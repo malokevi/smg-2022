@@ -1,5 +1,6 @@
 import { useEffect, useId, useState } from "react"
 import styled from "styled-components"
+
 import { SelectOptionType } from "../../shared/types"
 
 export type SelectType = {

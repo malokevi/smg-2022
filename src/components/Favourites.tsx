@@ -1,4 +1,5 @@
 import styled from "styled-components"
+
 import HeartIcon from "../assets/images/ico-heart.svg"
 
 const Favourites = () => {

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { motion } from "framer-motion"
+
 import Carousel from "../../Carousel"
 import Animate from "../../Utilities/Animate"
 import SleepCartoon from "../../../assets/images/sleep-cartoon.png"
 import PinkGirl from "../../../assets/images/pink-girl-banner.jpg"
 import { Col, Container, Row } from "../Grid"
-import { motion } from "framer-motion"
 import {
     fadeUpSpring,
     staggerChildren,

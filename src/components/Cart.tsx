@@ -1,4 +1,5 @@
 import styled from "styled-components"
+
 import CartIcon from "../assets/images/ico-cart.svg"
 
 const Cart = () => {

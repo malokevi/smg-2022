@@ -1,8 +1,9 @@
 import styled from "styled-components"
-import { Col, Container, Row } from "./Grid"
+import { Link } from "react-router-dom"
+
 import Logo from "../../assets/images/logo-final.png"
 import SocialLinks from "../SocialLinks"
-import { Link } from "react-router-dom"
+import { Col, Container, Row } from "./Grid"
 
 const Footer = () => {
     return (

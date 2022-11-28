@@ -1,7 +1,8 @@
 import styled from "styled-components"
+import { useNavigate } from "react-router-dom"
+
 import { Col, Container, Row } from "../components/Layout/Grid"
 import NotFoundVector from "../assets/images/404-vec.svg"
-import { useNavigate } from "react-router-dom"
 
 const NotFound = () => {
     const navigate = useNavigate()

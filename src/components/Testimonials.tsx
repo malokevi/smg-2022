@@ -1,4 +1,5 @@
 import styled from "styled-components"
+
 import DoubleQuote from "../assets/images/quotes.png"
 
 type TestimonialType = { text: string; author: string; regards: string }

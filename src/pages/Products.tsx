@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import styled from "styled-components"
+import { motion } from "framer-motion"
+
 import Select from "../components/Form/Select"
 import { Col, Container, Row } from "../components/Layout/Grid"
 import GridItem from "../components/Products/GridItem"
 import Pagination from "../components/Utilities/Pagination"
 import { PaginationType } from "../shared/types"
 import TestProducts from "../static/products.json"
-import { motion } from "framer-motion"
 import { fadeUp, staggerChildren } from "../shared/motion-variants"
 
 const Products = () => {

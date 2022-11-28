@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import ProfileIcon from "../../../assets/images/ico-profile.svg"
 import { Link } from "react-router-dom"
+
+import ProfileIcon from "../../../assets/images/ico-profile.svg"
 
 const ProfileOptions = () => {
     return (
