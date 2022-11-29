@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 import { Col, Container, Row } from "../components/Layout/Grid"
+import { PageTitle } from "../components/PageTitle"
 
 const KnowledgeCenter = () => {
     return (
@@ -8,7 +9,7 @@ const KnowledgeCenter = () => {
             <Container>
                 <Row>
                     <Col>
-                        <h1>Knowledge Center</h1>
+                        <PageTitle>Knowledge Center</PageTitle>
                     </Col>
                 </Row>
             </Container>

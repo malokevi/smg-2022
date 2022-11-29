@@ -1,5 +1,7 @@
+import { PageTitle } from "../components/PageTitle"
+
 const About = () => {
-    return <h1>about</h1>
+    return <PageTitle>about</PageTitle>
 }
 
 export default About

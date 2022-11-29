@@ -14,10 +14,6 @@ const BlogLayout = () => {
 }
 
 const StyledBlogLayout = styled.div`
-    h1 {
-        margin-bottom: 52px;
-    }
-
     padding: ${({ theme }) => theme.padding.pageBc} 0
         ${({ theme }) => theme.padding.gap};
 

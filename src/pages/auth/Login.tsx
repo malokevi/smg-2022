@@ -1,24 +1,7 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
 
+import { LoginModule } from "../../components/Auth"
 import { Col, Container, Row } from "../../components/Layout/Grid"
-import Module from "../../components/Auth/Module"
-import Form, { FormFieldType } from "../../components/Form/Form"
-
-const loginForm: FormFieldType[] = [
-    {
-        type: "text",
-        label: "Email",
-        placeholder: "Enter your username...",
-        name: "email"
-    },
-    {
-        type: "password",
-        label: "Password",
-        placeholder: "Enter your password...",
-        name: "password"
-    }
-]
 
 const Login = () => {
     return (
@@ -26,11 +9,7 @@ const Login = () => {
             <Container>
                 <Row>
                     <Col>
-                        <Module>
-                            <h1>Login</h1>
-                            <Form fields={loginForm} />
-                            <Link to="/register">Create New Account</Link>
-                        </Module>
+                        <LoginModule />
                     </Col>
                 </Row>
             </Container>
@@ -43,10 +22,6 @@ const StyledLogin = styled.div`
     flex-flow: column;
     padding: ${({ theme }) => theme.padding.pageBc} 0
         ${({ theme }) => theme.padding.gap};
-
-    h1 {
-        margin: auto auto 48px;
-    }
 
     a {
         margin: auto;
