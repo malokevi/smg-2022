@@ -1,10 +1,6 @@
 import styled from "styled-components"
 
-const Module = ({ children }: { children: React.ReactNode }) => {
-    return <StyledModule>{children}</StyledModule>
-}
-
-const StyledModule = styled.div`
+export const AuthContainer = styled.div`
     display: flex;
     flex-flow: column;
     padding: 52px 38px;
@@ -14,10 +10,4 @@ const StyledModule = styled.div`
     max-width: 480px;
     margin: auto;
     box-shadow: ${({ theme }) => theme.boxShadow};
-
-    h1 {
-        margin-bottom: 42px;
-    }
 `
-
-export default Module

@@ -10,6 +10,7 @@ import Pagination from "../components/Utilities/Pagination"
 import { PaginationType } from "../shared/types"
 import TestProducts from "../static/products.json"
 import { fadeUp, staggerChildren } from "../shared/motion-variants"
+import { PageTitle } from "../components/PageTitle"
 
 const Products = () => {
     let { category } = useParams<"category">()
@@ -47,7 +48,9 @@ const Products = () => {
                         <p>nav</p>
                     </Col>
                     <Col className="grid-container" sm={12} md={8} lg={9}>
-                        <h1>{category || "All Products"}</h1>
+                        <PageTitle marginBottom={0}>
+                            {category || "All Products"}
+                        </PageTitle>
                         <div className="sort">
                             <p className="fade">{`Items ${pageItems.length} of ${total}`}</p>
 

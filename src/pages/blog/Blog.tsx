@@ -5,6 +5,7 @@ import { Col, Container, Row } from "../../components/Layout/Grid"
 import TestData from "../../static/blog.json"
 import BlogPreview from "../../components/BlogPreview"
 import { staggerChildren } from "../../shared/motion-variants"
+import { PageTitle } from "../../components/PageTitle"
 
 const Blog = () => {
     return (
@@ -12,7 +13,7 @@ const Blog = () => {
             <Container>
                 <Row>
                     <Col>
-                        <h1>Blog</h1>
+                        <PageTitle>Blog</PageTitle>
                     </Col>
                 </Row>
                 <Row>
@@ -38,10 +39,6 @@ const Blog = () => {
 }
 
 const StyledBlog = styled.div`
-    h1 {
-        margin-bottom: 52px;
-    }
-
     padding: ${({ theme }) => theme.padding.pageBc} 0
         ${({ theme }) => theme.padding.gap};
 

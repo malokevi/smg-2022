@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 import { Col, Container, Row } from "../../components/Layout/Grid"
+import { PageTitle } from "../../components/PageTitle"
 
 const BlogArticle = () => {
     return (
@@ -8,7 +9,7 @@ const BlogArticle = () => {
             <Container>
                 <Row>
                     <Col>
-                        <h1>Blog</h1>
+                        <PageTitle>Blog</PageTitle>
                     </Col>
                 </Row>
             </Container>
@@ -17,10 +18,6 @@ const BlogArticle = () => {
 }
 
 const StyledBlogArticle = styled.div`
-    h1 {
-        margin-bottom: 52px;
-    }
-
     padding: ${({ theme }) => theme.padding.pageBc} 0
         ${({ theme }) => theme.padding.gap};
 `
