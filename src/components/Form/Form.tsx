@@ -56,7 +56,6 @@ const Form = ({ fields }: FormPropsType) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        console.log("values", values)
     }
 
     return (

@@ -42,6 +42,7 @@ const Pager = ({
                 <button
                     className={`button-reset ${val === page ? "active" : ""}`}
                     onClick={() => setPage(val)}
+                    key={val}
                 >
                     {val + 1}
                 </button>

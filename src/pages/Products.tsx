@@ -3,30 +3,37 @@ import { useParams } from "react-router"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 
-import Select from "../components/Form/Select"
 import { Col, Container, Row } from "../components/Layout/Grid"
-import GridItem from "../components/Products/GridItem"
 import Pagination from "../components/Utilities/Pagination"
-import { PaginationType } from "../shared/types"
+import { PaginationTotalsType, PaginationType } from "../shared/types"
 import TestProducts from "../static/products.json"
 import { fadeUp, staggerChildren } from "../shared/motion-variants"
 import { PageTitle } from "../components/PageTitle"
+import { GridItem, ProductsToolbar } from "../components/store"
+import { ProductsFilterDataType } from "../components/store/common/types.common"
+import { ProductsToolbarChangeEvent } from "../components/store/components/ProductsToolbar"
 
 const Products = () => {
     let { category } = useParams<"category">()
-    const [total, setTotal] = useState<number>(0)
+    const [paginationTotals, setPaginationTotals] =
+        useState<PaginationTotalsType>({
+            currentPage: 0,
+            total: 0
+        }) // todo - type
     const [pageItems, setPageItems] = useState<any[]>([]) // todo - type
     const [page, setPage] = useState<PaginationType>({
         skip: 0,
         take: 12
     })
-    const [sort, setSort] = useState<string | undefined>()
+    const [sort, setSort] = useState<ProductsFilterDataType[]>([])
 
     useEffect(() => {
-        // todo
-        // setTotal(data.length)
-        setTotal(TestProducts.length)
-    }, [])
+        // TODO - live data
+        setPaginationTotals({
+            currentPage: pageItems.length,
+            total: TestProducts.length
+        })
+    }, [pageItems])
 
     useEffect(() => {
         setPageItems(TestProducts.slice(page.skip, page.skip + page.take))
@@ -36,8 +43,8 @@ const Products = () => {
         setPage(e)
     }
 
-    const handleSort = (e: any) => {
-        setSort(e)
+    const handleSort = (e: ProductsToolbarChangeEvent) => {
+        setSort({ ...sort, ...e })
     }
 
     return (
@@ -45,32 +52,18 @@ const Products = () => {
             <Container>
                 <Row>
                     <Col sm={12} md={4} lg={3}>
+                        {/* TODO - implement sidenav */}
                         <p>nav</p>
                     </Col>
                     <Col className="grid-container" sm={12} md={8} lg={9}>
                         <PageTitle marginBottom={0}>
                             {category || "All Products"}
                         </PageTitle>
-                        <div className="sort">
-                            <p className="fade">{`Items ${pageItems.length} of ${total}`}</p>
 
-                            <p>Sort By</p>
-                            <Select
-                                name="pagesort"
-                                options={[
-                                    {
-                                        value: "price",
-                                        label: "Price",
-                                        default: true
-                                    },
-                                    {
-                                        value: "size",
-                                        label: "Size"
-                                    }
-                                ]}
-                                onChange={handleSort}
-                            />
-                        </div>
+                        <ProductsToolbar
+                            onChange={handleSort}
+                            paginationTotals={paginationTotals}
+                        />
 
                         {pageItems.length > 0 ? (
                             <motion.div
@@ -79,7 +72,7 @@ const Products = () => {
                                 animate="show"
                                 className="product-grid"
                             >
-                                {[...pageItems, "", "", "", ""].map(
+                                {pageItems.map(
                                     ({ label, price, salePrice, image }, i) =>
                                         label ? (
                                             <GridItem
@@ -106,7 +99,7 @@ const Products = () => {
                         <Pagination
                             pageTotal={pageItems.length}
                             onChange={handlePaginate}
-                            total={total}
+                            total={paginationTotals.total}
                         />
                     </Col>
                 </Row>
@@ -149,9 +142,9 @@ const StyledStoreLayout = styled.div`
         gap: 24px;
 
         .product-grid {
-            display: flex;
-            flex-flow: row wrap;
-            gap: 48px;
+            display: grid;
+            grid-gap: 48px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         }
     }
 `

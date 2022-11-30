@@ -3,6 +3,10 @@ import styled from "styled-components"
 
 import { PaginationType } from "../../shared/types"
 import Select from "../Form/Select"
+import {
+    ProductsFilterDataType,
+    ProductsFilterDataValueType
+} from "../store/common/types.common"
 import Pager from "./Pager"
 
 const pageSizes = [
@@ -12,14 +16,16 @@ const pageSizes = [
     },
     {
         value: 12,
-        label: "12",
-        default: true
+        label: "12"
     },
     {
         value: 24,
         label: "24"
     }
 ]
+
+const DEFAULT_PAGE_SIZE = 12
+const PAGE_SIZE_NAME = "pagesize"
 
 const Pagination = ({
     total,
@@ -32,17 +38,19 @@ const Pagination = ({
 }) => {
     const [page, setPage] = useState<PaginationType>({
         skip: 0,
-        take: 12
+        take: DEFAULT_PAGE_SIZE
     })
 
     useEffect(() => {
         onChange(page)
     }, [page])
 
-    const handlePageSizeChange = (e: any) => {
+    const handlePageSizeChange = (pageSize: ProductsFilterDataValueType) => {
+        const formatted =
+            typeof pageSize === "string" ? parseInt(pageSize) : pageSize
         setPage({
             skip: 0,
-            take: e.value
+            take: formatted || DEFAULT_PAGE_SIZE
         })
     }
 
@@ -59,7 +67,13 @@ const Pagination = ({
                 <Select
                     name="pagesize"
                     options={pageSizes}
-                    onChange={handlePageSizeChange}
+                    defaultValue={{
+                        name: PAGE_SIZE_NAME,
+                        value: DEFAULT_PAGE_SIZE
+                    }}
+                    onChange={({ value }: ProductsFilterDataType) =>
+                        handlePageSizeChange(value)
+                    }
                 />
             </div>
         </StyledPagination>

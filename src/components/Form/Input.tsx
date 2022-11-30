@@ -1,11 +1,13 @@
 import { useId } from "react"
 import styled from "styled-components"
 
+import { ProductsFilterDataType } from "../store/common/types.common"
+
 export type InputType = {
     name: string
     label?: string
     placeholder?: string
-    onChange?: (e: any) => void
+    onChange?: (e: ProductsFilterDataType) => void
     type: any
     value?: string | number
     icon?: any
@@ -32,7 +34,9 @@ const Input = ({
                     type={type}
                     value={value}
                     placeholder={placeholder}
-                    onChange={(e) => onChange && onChange(e)}
+                    onChange={({ target: { value: v } }) =>
+                        onChange && onChange({ name, value: v })
+                    }
                 />
                 {icon && (
                     <button>
