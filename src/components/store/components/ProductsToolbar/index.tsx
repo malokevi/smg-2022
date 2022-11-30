@@ -4,6 +4,8 @@ import { PaginationTotalsType } from "../../../../shared/types"
 import Select from "../../../Form/Select"
 import { ProductsFilterDataType } from "../../common/types.common"
 
+import * as S from "./styles"
+
 export type ProductsToolbarChangeEvent = ProductsFilterDataType[]
 
 type ProductsToolbarType = {
@@ -32,7 +34,7 @@ export const ProductsToolbar = ({
     }
 
     return (
-        <div className="sort">
+        <S.ProductsToolbar>
             <p className="fade">{`Items ${currentPage} of ${total}`}</p>
 
             <p>Sort By</p>
@@ -50,6 +52,6 @@ export const ProductsToolbar = ({
                 ]}
                 onChange={handleFiltersChange}
             />
-        </div>
+        </S.ProductsToolbar>
     )
 }
