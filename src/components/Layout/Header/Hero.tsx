@@ -92,6 +92,7 @@ const Hero = () => {
         <StyledHero>
             <Swiper
                 settings={{
+                    pagination: false,
                     navigation: {
                         nextEl: ".swiper-button-next",
                         prevEl: ".swiper-button-prev"
@@ -109,7 +110,7 @@ const Hero = () => {
                     </div>
                 </Swiper.Slide>
             </Swiper>
-            <div>
+            <div className="hero__pagination">
                 <div className="swiper-button-next"></div>
                 <div className="swiper-button-prev"></div>
             </div>
@@ -126,6 +127,14 @@ const StyledHero = styled.div`
     .full-height {
         height: 100%;
         display: flex;
+    }
+
+    .hero__pagination {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 76px;
     }
 `
 

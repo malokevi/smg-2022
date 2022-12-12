@@ -11,7 +11,9 @@ type SwiperContainerProps = {
     children: React.ReactNode
     className?: string
     settings?: {
-        navigation: any
+        navigation?: any
+        pagination?: any
+        scrollbar?: any
     }
 }
 
@@ -19,7 +21,9 @@ export const SwiperContainer = ({
     children,
     className,
     settings = {
-        navigation: true
+        navigation: true,
+        pagination: { clickable: true },
+        scrollbar: { draggable: true }
     }
 }: SwiperContainerProps) => {
     return (
@@ -28,8 +32,8 @@ export const SwiperContainer = ({
             spaceBetween={0}
             slidesPerView={1}
             navigation={settings.navigation}
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
+            pagination={settings.pagination}
+            scrollbar={settings.scrollbar}
             observer
             observeParents
             // onSwiper={(swiper) => console.log(swiper)}
