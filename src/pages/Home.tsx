@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { Col, Container, Row } from "../components/Layout/Grid"
 import Hero from "../components/Layout/Header/Hero"
-import Testimonials from "../components/Testimonials"
+import { Testimonials, TestimonialsCarousel } from "../components/Testimonials"
 import Brands from "../components/Brands"
 import ElderlySleep from "../assets/images/elderly-sleep.jpeg"
 import WeightImage from "../assets/images/sleep-apnea-weight.jpeg"
@@ -42,7 +42,14 @@ const Home = () => {
                 <StyledTestimonials>
                     <Container>
                         <Row>
-                            <Testimonials data={TestimonialsData} />
+                            <Testimonials
+                                className="testimonials__desktop"
+                                data={TestimonialsData}
+                            />
+                            <TestimonialsCarousel
+                                className="testimonials__mobile"
+                                data={TestimonialsData}
+                            />
                         </Row>
                     </Container>
                 </StyledTestimonials>
@@ -81,6 +88,22 @@ const Home = () => {
 const StyledTestimonials = styled.div`
     display: flex;
     padding: 76px 0;
+
+    .testimonials__desktop {
+        display: none;
+
+        @media (min-width: 768px) {
+            display: flex;
+        }
+    }
+
+    .testimonials__mobile {
+        display: flex;
+
+        @media (min-width: 768px) {
+            display: none;
+        }
+    }
 `
 
 const StyledBrands = styled.div`

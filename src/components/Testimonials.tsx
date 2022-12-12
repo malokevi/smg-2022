@@ -1,19 +1,34 @@
 import styled from "styled-components"
+import { SwiperSlide } from "swiper/react"
 
 import DoubleQuote from "../assets/images/quotes.png"
+import { Swiper } from "./swiper"
 
 type TestimonialType = { text: string; author: string; regards: string }
 type TestimonialsType = {
     data: TestimonialType[]
+    className: string
 }
 
-const Testimonials = ({ data }: TestimonialsType) => {
+export const Testimonials = ({ data, className }: TestimonialsType) => {
     return (
-        <StyledTestimonials>
+        <StyledTestimonials className={className}>
             {data.map((t) => (
                 <Testimonial key={`testimonial-${t.author}`} {...t} />
             ))}
         </StyledTestimonials>
+    )
+}
+
+export const TestimonialsCarousel = ({ data, className }: TestimonialsType) => {
+    return (
+        <Swiper className={className}>
+            {data.map((t) => (
+                <SwiperSlide key={`testimonial-${t.author}`}>
+                    <Testimonial {...t} />
+                </SwiperSlide>
+            ))}
+        </Swiper>
     )
 }
 
@@ -72,5 +87,3 @@ const StyledTestimonial = styled.div`
         margin: 0 auto;
     }
 `
-
-export default Testimonials
