@@ -13,7 +13,7 @@ export type InputType = {
     icon?: any
 }
 
-const Input = ({
+export const Input = ({
     name,
     label,
     type,
@@ -24,26 +24,23 @@ const Input = ({
 }: InputType) => {
     const id = useId()
 
+    const handleInputTextChange = (e: React.FormEvent<HTMLInputElement>) => {
+        const target = e.target as HTMLInputElement
+        onChange && onChange({ name, value: target.value })
+    }
+
     return (
         <StyledInput>
             {label && <label htmlFor={id}></label>}
-            <div className="input-container">
-                <input
-                    name={name}
-                    id={id}
-                    type={type}
-                    value={value}
-                    placeholder={placeholder}
-                    onChange={({ target: { value: v } }) =>
-                        onChange && onChange({ name, value: v })
-                    }
-                />
-                {icon && (
-                    <button>
-                        <img alt="store search" src={icon} />
-                    </button>
-                )}
-            </div>
+            <input
+                className="input-text"
+                name={name}
+                id={id}
+                type={type}
+                value={value}
+                placeholder={placeholder}
+                onChange={handleInputTextChange}
+            />
         </StyledInput>
     )
 }
@@ -51,26 +48,10 @@ const Input = ({
 const StyledInput = styled.div`
     display: flex;
     flex-flow: column nowrap;
+    flex-grow: 2;
 
-    .input-container {
-        display: flex;
-        flex-flow: row nowrap;
-
-        input {
-            padding: 8px 14px;
-        }
-
-        button {
-            padding: 4px 12px;
-            width: 100px;
-            background-color: ${({ theme }) => theme.colors.blue};
-
-            img {
-                height: 24px;
-                margin: auto;
-            }
-        }
+    .input-text {
+        box-sizing: border-box; // todo - add to reset
+        padding: 8px 14px;
     }
 `
-
-export default Input

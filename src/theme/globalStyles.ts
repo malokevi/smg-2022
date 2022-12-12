@@ -43,7 +43,8 @@ const GlobalStyle = createGlobalStyle`
       a {
         text-decoration: none;
         link-style: none;
-        color: ${({ theme }) => theme.colors.text.dark};
+        color: ${({ theme }) =>
+            theme.colors.text.dark}; // todo - create link component
         transition: color .25s ease-in-out;
         
         &:hover {

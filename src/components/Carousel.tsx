@@ -1,6 +1,8 @@
 import { DragEvent } from "react"
 import { useCallback, useState, useRef } from "react"
 import styled from "styled-components"
+import { buttonReset } from "../theme/mixins/resets"
+import { Col, Container, Row } from "./Layout/Grid"
 
 const Carousel = ({ slides }: { slides: (() => JSX.Element)[] }) => {
     const [active, setActive] = useState(0)
@@ -56,21 +58,41 @@ const Carousel = ({ slides }: { slides: (() => JSX.Element)[] }) => {
                 ) : undefined
             })}
 
-            <button
-                className="left button-reset"
-                onClick={() => setActive(changeSlide(active - 1))}
-            >
-                &#10094;
-            </button>
-            <button
-                className="right button-reset"
-                onClick={() => setActive(changeSlide(active + 1))}
-            >
-                &#10095;
-            </button>
+            <StyledButtonContainer>
+                <Row>
+                    <Col className="flex-col">
+                        <button
+                            className="left"
+                            onClick={() => setActive(changeSlide(active - 1))}
+                        >
+                            &#10094;
+                        </button>
+                        <button
+                            className="right"
+                            onClick={() => setActive(changeSlide(active + 1))}
+                        >
+                            &#10095;
+                        </button>
+                    </Col>
+                </Row>
+            </StyledButtonContainer>
         </StyledCarousel>
     )
 }
+
+const StyledButtonContainer = styled(Container)`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+
+    .flex-col {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+`
 
 const StyledCarousel = styled.div`
     display: flex;
@@ -82,7 +104,7 @@ const StyledCarousel = styled.div`
 
     &:active {
         cursor: grab;
-        cursor: grabbing;
+        cursor: grabbing; // todo - what is going on here? repeats
         cursor: -moz-grabbing;
         cursor: -webkit-grabbing;
     }
@@ -90,17 +112,10 @@ const StyledCarousel = styled.div`
     button {
         &.left,
         &.right {
-            position: absolute;
+            ${buttonReset}
+            bottom: 20px;
             font-size: 32px;
             line-height: 1;
-            top: 48%;
-        }
-
-        &.left {
-            left: 24px;
-        }
-        &.right {
-            right: 24px;
         }
     }
 `

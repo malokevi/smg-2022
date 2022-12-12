@@ -2,15 +2,19 @@ import styled from "styled-components"
 
 import HeartIcon from "../assets/images/ico-heart.svg"
 
-const Favourites = () => {
+type FavoritesProps = {
+    className?: string
+}
+
+export const Favorites = ({ className }: FavoritesProps) => {
     return (
-        <StyledFavourites className="button-reset">
+        <StyledFavorites className={className}>
             <img src={HeartIcon} alt="" />
-        </StyledFavourites>
+        </StyledFavorites>
     )
 }
 
-const StyledFavourites = styled.button`
+const StyledFavorites = styled.button`
     display: flex;
     margin: auto 0;
 
@@ -18,5 +22,3 @@ const StyledFavourites = styled.button`
         height: 28px;
     }
 `
-
-export default Favourites

@@ -4,16 +4,16 @@ import { Link } from "react-router-dom"
 import { Col, Container, Row } from "../Grid"
 import Logo from "../../../assets/images/logo-final.png"
 import Cart from "../../Cart"
-import SearchBar from "../../SearchBar"
 import ProfileOptions from "./ProfileOptions"
-import Favourites from "../../Favourites"
+import { Favorites } from "../../Favorites"
+import { SearchBar } from "../../Utilities/SearchBar"
 
 const HeaderBody = () => {
     return (
         <StyledHeaderBody>
             <Container>
                 <Row>
-                    <Col lg={3} md={4} sm={5}>
+                    <Col lg={4} md={4} sm={5}>
                         <Link to="">
                             <img
                                 alt="Sleep Management Group homepage link"
@@ -22,8 +22,8 @@ const HeaderBody = () => {
                             />
                         </Link>
                     </Col>
-                    <Col lg={9} md={8} sm={7}>
-                        <AccountOptions />
+                    <Col lg={8} md={8} sm={7}>
+                        <MenuTools />
                     </Col>
                 </Row>
             </Container>
@@ -31,22 +31,45 @@ const HeaderBody = () => {
     )
 }
 
-const AccountOptions = () => {
+const MenuTools = () => {
     return (
-        <StyledAccountOptions>
-            <SearchBar />
-            <Cart />
-            <Favourites />
-            <ProfileOptions />
-        </StyledAccountOptions>
+        <StyledMenuTools>
+            <div className="menu-tools__section">
+                <SearchBar />
+            </div>
+            <div className="menu-tools__section">
+                <Cart />
+                <Favorites className="menu-tools__section__favorites" />
+                <ProfileOptions />
+            </div>
+        </StyledMenuTools>
     )
 }
 
-const StyledAccountOptions = styled.div`
+const StyledMenuTools = styled.div`
     display: flex;
-    flex-flow: row nowrap;
-    gap: 28px;
+    flex-flow: column;
+    gap: 12px 28px;
     margin: auto 0 auto auto;
+    flex-direction: column-reverse;
+
+    @media (min-width: 1320px) {
+        flex-flow: row nowrap;
+    }
+
+    .menu-tools__section {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 28px;
+    }
+
+    .menu-tools__section__favorites {
+        display: none;
+
+        @media (min-width: 860px) {
+            display: flex;
+        }
+    }
 `
 
 const StyledHeaderBody = styled.div`
@@ -55,8 +78,13 @@ const StyledHeaderBody = styled.div`
     padding: 12px 0;
 
     .logo {
-        max-height: 130px;
+        max-height: 105px;
         align-self: center;
+        transition: max-height 0.25s ease-in-out;
+
+        @media (min-width: 1200px) {
+            max-height: 130px;
+        }
     }
 `
 

@@ -7,7 +7,7 @@ import {
     ProductsFilterDataType,
     ProductsFilterDataValueType
 } from "../store/common/types.common"
-import Pager from "./Pager"
+import { Pager } from "./Pager"
 
 const pageSizes = [
     {

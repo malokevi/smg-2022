@@ -36,7 +36,7 @@ const StyledStoreLayout = styled.div`
         .product-grid {
             display: grid;
             grid-gap: 48px;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         }
     }
 `

@@ -10,16 +10,17 @@ const variants = {
     fadeUpSpring
 }
 
-const Animate = ({
-    type = "fade",
-    children
-}: {
+type AnimateProps = {
     type?: "fade" | "fadeUp" | "fadeUpSpring"
     children: React.ReactNode
-}) => {
+    className?: string
+}
+
+const Animate = ({ type = "fade", children, className }: AnimateProps) => {
     return (
         <AnimatePresence>
             <StyledAnimate
+                className={className}
                 variants={variants[type]}
                 initial="hide"
                 animate="show"

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 import { Col, Container, Row } from "../components/Layout/Grid"
 import NotFoundVector from "../assets/images/404-vec.svg"
+import { buttonReset } from "../theme/mixins/resets"
 
 const NotFound = () => {
     const navigate = useNavigate()
@@ -15,10 +16,7 @@ const NotFound = () => {
                         <img src={NotFoundVector} alt="" />
                         <div className="text-blob">
                             <p>Lost?</p>
-                            <button
-                                onClick={() => navigate(-1)}
-                                className="button-reset"
-                            >
+                            <button onClick={() => navigate(-1)}>
                                 Go back!
                             </button>
                         </div>
@@ -55,8 +53,10 @@ const StyledNotFound = styled.div`
         }
 
         button {
+            ${buttonReset}
+
             &:hover {
-                color: ${({ theme }) => theme.colors.blue}}
+                color: ${({ theme }) => theme.colors.blue};
             }
         }
     }
