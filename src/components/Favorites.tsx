@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 import HeartIcon from "../assets/images/ico-heart.svg"
+import { buttonReset } from "../theme/mixins/resets"
 
 type FavoritesProps = {
     className?: string
@@ -15,6 +16,7 @@ export const Favorites = ({ className }: FavoritesProps) => {
 }
 
 const StyledFavorites = styled.button`
+    ${buttonReset}
     display: flex;
     margin: auto 0;
 

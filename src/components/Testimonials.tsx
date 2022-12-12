@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { SwiperSlide } from "swiper/react"
 
 import DoubleQuote from "../assets/images/quotes.png"
 import { Swiper } from "./swiper"
@@ -24,9 +23,9 @@ export const TestimonialsCarousel = ({ data, className }: TestimonialsType) => {
     return (
         <Swiper className={className}>
             {data.map((t) => (
-                <SwiperSlide key={`testimonial-${t.author}`}>
+                <Swiper.Slide key={`testimonial-${t.author}`}>
                     <Testimonial {...t} />
-                </SwiperSlide>
+                </Swiper.Slide>
             ))}
         </Swiper>
     )

@@ -2,8 +2,6 @@ import { Link } from "react-router-dom"
 import styled, { css } from "styled-components"
 import { motion } from "framer-motion"
 
-import Carousel from "../../Carousel"
-import Animate from "../../Utilities/Animate"
 import SleepCartoon from "../../../assets/images/sleep-cartoon.png"
 import PinkGirl from "../../../assets/images/pink-girl-banner.jpg"
 import { Col, Container, Row } from "../Grid"
@@ -12,10 +10,11 @@ import {
     staggerChildren,
     fadeLeft
 } from "../../../shared/motion-variants"
+import { Swiper } from "../../swiper"
 
 const SlideOne = () => {
     return (
-        <StyledSlideOne draggable={false}>
+        <StyledSlideOne>
             <Container>
                 <Row>
                     <Col>
@@ -57,7 +56,7 @@ const SlideOne = () => {
 
 const SlideTwo = () => {
     return (
-        <StyledSlideTwo draggable={false}>
+        <StyledSlideTwo>
             <div className="overlay-dark" />
             <Container className="slide-content">
                 <Row>
@@ -90,46 +89,49 @@ const SlideTwo = () => {
 
 const Hero = () => {
     return (
-        <StyledHero draggable={false}>
-            <StyledAnimate>
-                <Carousel slides={[SlideOne, SlideTwo]} />
-            </StyledAnimate>
+        <StyledHero>
+            <Swiper
+                settings={{
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev"
+                    }
+                }}
+            >
+                <Swiper.Slide>
+                    <div className="full-height">
+                        <SlideOne />
+                    </div>
+                </Swiper.Slide>
+                <Swiper.Slide>
+                    <div className="full-height">
+                        <SlideTwo />
+                    </div>
+                </Swiper.Slide>
+            </Swiper>
+            <div>
+                <div className="swiper-button-next"></div>
+                <div className="swiper-button-prev"></div>
+            </div>
         </StyledHero>
     )
 }
-
-const StyledAnimate = styled(Animate)`
-    display: flex;
-    flex-flow: column;
-    width: 100%;
-    flex: 1;
-
-    & > div {
-        flex: 1;
-    }
-`
 
 const StyledHero = styled.div`
     display: flex;
     flex-flow: column;
     width: 100%;
-    min-height: 400px;
+    position: relative;
 
-    @media (min-width: 768px) {
-        min-height: 580px;
-    }
-
-    @media (min-width: 1650px) {
-        min-height: 632px;
+    .full-height {
+        height: 100%;
+        display: flex;
     }
 `
 
 const SlideStyles = css`
     padding: 32px 0 76px;
     width: 100%;
-    height: 100%;
-    flex-grow: 2;
-    flex: 1;
 
     h1 {
         font-size: ${({ theme }) => theme.fontSize.xl};
@@ -178,15 +180,23 @@ const StyledSlideOne = styled.div`
     .cartoon-right {
         position: absolute;
         right: -225px;
+        width: 800px;
         bottom: 0;
-        width: 1028px;
+        opacity: 0.3 !important;
+        display: none;
 
-        @media (max-width: 1349px) {
-            opacity: 0.3 !important;
+        @media (min-width: 500px) {
+            width: 850px;
+            right: -325px;
+            display: block;
         }
 
-        @media (min-width: 1350px) {
-            opacity: 0.9;
+        @media (min-width: 768px) {
+            width: 1028px;
+        }
+
+        @media (min-width: 1250px) {
+            opacity: 0.9 !important;
         }
 
         @media (min-width: 1650px) {

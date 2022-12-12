@@ -1,5 +1,4 @@
-import { Slide } from "./components/Slide"
+import { SwiperSlide as Slide } from "swiper/react"
 import { SwiperContainer } from "./components/SwiperContainer"
 
-export { Slide }
 export const Swiper = Object.assign(SwiperContainer, { Slide })
