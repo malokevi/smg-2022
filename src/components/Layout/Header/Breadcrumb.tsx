@@ -9,7 +9,7 @@ import { RouteObject } from "../../../shared/types"
 
 const OMITTED_ROUTES = ["/"]
 
-const RecusriveBreadcrumb = ({
+const RecursiveBreadcrumb = ({
     location,
     routes
 }: {
@@ -43,7 +43,7 @@ const RecusriveBreadcrumb = ({
                     </li>
                     {children &&
                         !skip &&
-                        RecusriveBreadcrumb({
+                        RecursiveBreadcrumb({
                             routes: children,
                             location
                         })}
@@ -75,7 +75,7 @@ const Breadcrumb = () => {
                 <Row>
                     <Col>
                         <ul>
-                            <RecusriveBreadcrumb
+                            <RecursiveBreadcrumb
                                 routes={routes}
                                 location={location}
                             />
