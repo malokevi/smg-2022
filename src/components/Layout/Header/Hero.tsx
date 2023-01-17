@@ -212,7 +212,7 @@ const StyledSlideOne = styled.div`
         bottom: 0;
         opacity: 0.3 !important;
         display: none;
-        transition: opacity 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
 
         @media (min-width: 500px) {
             width: 850px;
