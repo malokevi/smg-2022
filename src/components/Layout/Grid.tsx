@@ -99,7 +99,6 @@ const StyledRow = styled.div`
     display: flex;
     flex-flow: row wrap;
     flex-grow: 2;
-    overflow: hidden;
 `
 
 const StyledCol = styled.div`

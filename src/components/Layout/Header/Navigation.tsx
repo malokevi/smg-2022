@@ -75,6 +75,7 @@ const StyledNavigation = styled.div`
 
     .row {
         position: relative;
+        overflow: visible;
     }
 
     li {

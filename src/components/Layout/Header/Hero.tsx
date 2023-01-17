@@ -119,6 +119,7 @@ const StyledHero = styled.div`
     flex-flow: column;
     width: 100%;
     position: relative;
+    overflow: hidden;
 
     .full-height {
         height: 100%;
