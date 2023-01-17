@@ -15,8 +15,8 @@ const RecusriveBreadcrumb = ({
 }: {
     location: Location
     routes: RouteObject[]
-}) => {
-    let Component = <></>
+}): JSX.Element | null => {
+    let Component: JSX.Element | null = <></>
 
     for (let i = 0; i < routes.length; i++) {
         const { path, children, label, skipChildren } = routes[i]
@@ -51,18 +51,15 @@ const RecusriveBreadcrumb = ({
             )
             break
         } else if (i === routes.length - 1 && !match) {
-            //if route accepts parameters, show parameter as current
-            Component = (
+            Component = ["products"].includes(
+                split[split.length - 2].toLowerCase()
+            ) ? (
                 <li className="fade">
-                    {["products"].includes(
-                        split[split.length - 2].toLowerCase()
-                    )
-                        ? split[split.length - 1]
-                              .replaceAll("-", " ")
-                              .replaceAll("_", " ")
-                        : "Not found"}
+                    {split[split.length - 1]
+                        .replaceAll("-", " ")
+                        .replaceAll("_", " ")}
                 </li>
-            )
+            ) : null
         }
     }
 

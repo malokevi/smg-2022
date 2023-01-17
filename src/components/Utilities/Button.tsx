@@ -24,7 +24,11 @@ const Button = ({
 
 const StyledButton = styled.button<{ version: ButtonVersionType }>`
     background-color: ${({ theme, version }) => theme.colors.button[version]};
-    border: 1px solid ${({ theme }) => theme.colors.gray};
+    border: 1px solid
+        ${({ theme, version }) =>
+            version === "primary"
+                ? theme.colors.white
+                : theme.colors.button.primary};
     color: ${({ theme, version }) =>
         version === "primary"
             ? theme.colors.white
