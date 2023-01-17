@@ -9,10 +9,10 @@ const QuickLinks = () => {
                 <Row>
                     <Col>
                         <div className="quick-links">
-                            <p>
+                            <p className="quick-links__text">
                                 <span>Free shipping:</span> on orders $150+
                             </p>
-                            <p>
+                            <p className="quick-links__text">
                                 <span>Call toll free:</span>{" "}
                                 <a href="tel:1-555-482-0291">1-555-482-0291</a>
                             </p>
@@ -32,18 +32,26 @@ const StyledQuickLinks = styled.div`
 
     .quick-links {
         display: flex;
-        flex-flow: row nowrap;
-        gap: 32px;
+        flex-flow: column;
+        gap: 8px 32px;
         text-transform: uppercase;
         margin: auto;
 
-        span {
-            color: ${({ theme }) => theme.colors.red};
-            font-weight: bold;
+        @media (min-width: 500px) {
+            flex-flow: row nowrap;
+        }
+    }
+
+    .quick-links__text {
+        font-size: ${({ theme }) => theme.fontSize.xxs};
+
+        @media (min-width: 768px) {
+            font-size: ${({ theme }) => theme.fontSize.xs};
         }
 
-        p {
-            font-size: ${({ theme }) => theme.fontSize.xs};
+        & > span {
+            color: ${({ theme }) => theme.colors.red};
+            font-weight: bold;
         }
     }
 `

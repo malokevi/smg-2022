@@ -1,69 +1,14 @@
-import styled from "styled-components"
 import { motion } from "framer-motion"
+import styled from "styled-components"
 
-import Button from "../Utilities/Button"
-import ComingSoonImage from "../../assets/images/coming-soon.jpg"
-import { fadeUp } from "../../shared/motion-variants"
-
-type GridItemPropsType = {
-    image?: any
-    label: string
-    price: number
-    salePrice?: number
-    brand?: string
-}
-
-const GridItem = ({
-    image = ComingSoonImage,
-    label,
-    price,
-    salePrice,
-    brand
-}: GridItemPropsType) => {
-    const handleAddToCart = (e: any) => {
-        e.stopPropagation()
-        console.log("add to cart event", e)
-    }
-
-    return (
-        <StyledGridItem
-            onClick={(e) => {
-                console.log("click grid item event", e)
-            }}
-            image={image}
-            variants={fadeUp}
-        >
-            <div className="product-image"></div>
-            <div className="product-details">
-                <p>{label}</p>
-
-                <div>
-                    <div className="price">
-                        {salePrice && <p>${salePrice.toFixed(2)}</p>}
-                        <p>${price.toFixed(2)}</p>
-                    </div>
-                    <Button
-                        onClick={handleAddToCart}
-                        version="primary"
-                        label="Add to Cart"
-                    />
-                </div>
-            </div>
-        </StyledGridItem>
-    )
-}
-
-const StyledGridItem = styled(motion.div)<{ image: any }>`
+export const GridItem = styled(motion.div)<{ image: any }>`
     display: flex;
     flex-flow: column nowrap;
-    flex-grow: 2;
-    flex-shrink: 0;
     border: 1px solid #eee;
     border-radius: ${({ theme }) => theme.borderRadius};
     overflow: hidden;
     cursor: pointer;
     transition: box-shadow 0.25s ease-in-out;
-    width: 25%;
 
     &:hover {
         box-shadow: 0 0 20px rgb(0 0 0 / 10%);
@@ -122,5 +67,3 @@ const StyledGridItem = styled(motion.div)<{ image: any }>`
         }
     }
 `
-
-export default GridItem

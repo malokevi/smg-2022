@@ -1,7 +1,18 @@
+import clsx from "clsx"
 import styled from "styled-components"
 
-export const Container = ({ children }: { children: React.ReactNode }) => {
-    return <StyledContainer className="container">{children}</StyledContainer>
+export const Container = ({
+    children,
+    className
+}: {
+    children: React.ReactNode
+    className?: string
+}) => {
+    return (
+        <StyledContainer className={clsx("container", className)}>
+            {children}
+        </StyledContainer>
+    )
 }
 
 export const Row = ({ children }: { children: React.ReactNode }) => {
@@ -25,7 +36,10 @@ export const Col = ({
 }: ColType) => {
     return (
         <StyledCol
-            className={`col col-sm-${sm} col-md-${md} col-lg-${lg} ${className}`}
+            className={clsx(
+                `col col-sm-${sm} col-md-${md} col-lg-${lg}`,
+                className
+            )}
         >
             {children && children}
         </StyledCol>

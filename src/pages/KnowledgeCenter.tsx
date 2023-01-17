@@ -18,9 +18,13 @@ const KnowledgeCenter = () => {
 }
 
 const StyledKnowledgeCenter = styled.div`
-    padding: ${({ theme }) => theme.padding.page} 0;
+    padding: ${({ theme }) => theme.padding.pageBc} 0;
     display: flex;
     flex-flow: column;
+
+    @media (min-width: 768px) {
+        padding: ${({ theme }) => theme.padding.pageBc} 0;
+    }
 `
 
 export default KnowledgeCenter

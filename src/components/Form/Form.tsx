@@ -2,7 +2,7 @@ import { useState } from "react"
 import styled from "styled-components"
 
 import Button from "../Utilities/Button"
-import Input, { InputType } from "./Input"
+import { Input, InputType } from "./Input"
 import Select, { SelectType } from "./Select"
 
 type TypeLiterals = "text" | "password" | "select"
@@ -56,7 +56,6 @@ const Form = ({ fields }: FormPropsType) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        console.log("values", values)
     }
 
     return (

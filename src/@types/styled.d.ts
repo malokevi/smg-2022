@@ -16,7 +16,10 @@ declare module "styled-components" {
         }
 
         padding: {
-            page: string
+            page: {
+                desktop: string
+                mobile: string
+            }
             gap: string
             pageBc: string
         }
@@ -24,7 +27,9 @@ declare module "styled-components" {
         colors: {
             text: {
                 dark: string
+                darkHover: string
                 light: string
+                lightHover: string
                 faded: string
             }
             button: {

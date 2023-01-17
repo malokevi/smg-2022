@@ -2,41 +2,54 @@ import { useEffect, useId, useState } from "react"
 import styled from "styled-components"
 
 import { SelectOptionType } from "../../shared/types"
+import { ProductsFilterDataType } from "../store/common/types.common"
 
 export type SelectType = {
     name: string
     label?: string
-    value?: string | number
-    onChange?: (e: any) => void
+    defaultValue?: ProductsFilterDataType
+    onChange?: (e: ProductsFilterDataType) => void
     options?: SelectOptionType[]
 }
 
-const Select = ({ name, label, options, value, onChange }: SelectType) => {
+const Select = ({
+    name,
+    label,
+    options,
+    defaultValue,
+    onChange
+}: SelectType) => {
     const id = useId()
-    const [val, setVal] = useState<number | undefined>()
+    const [val, setVal] = useState<ProductsFilterDataType | undefined>(
+        defaultValue
+    )
 
     useEffect(() => {
-        options &&
-            options.forEach((option, i) => {
-                option.default && setVal(i)
-            })
-    }, [])
+        onChange && val && onChange(val)
+    }, [val])
 
-    const handleChange = (e: any) => {
-        setVal(e.target.value)
-        onChange && onChange(options && options[e.target.value])
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setVal({ name, value: e.target.value })
     }
 
     return (
         <StyledSelect>
             {label && <label htmlFor={id}></label>}
-            <select value={val} name={name} id={id} onChange={handleChange}>
+            <select
+                value={val?.value}
+                name={name}
+                id={id}
+                onChange={handleChange}
+            >
                 <option disabled value="-1">
                     Select an option
                 </option>
                 {options &&
-                    options.map(({ label }, i) => (
-                        <option key={`select-${label || ""}-${i}`} value={i}>
+                    options.map(({ label, value }, i) => (
+                        <option
+                            key={`select-${label || ""}-${i}`}
+                            value={value}
+                        >
                             {label}
                         </option>
                     ))}

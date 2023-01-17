@@ -4,6 +4,8 @@ import { useRoutes } from "react-router-dom"
 import { RouteObject } from "./shared/types"
 import Layout from "./components/Layout/Layout"
 
+import "swiper/css/bundle"
+
 const Home = lazy(() => import("./pages/Home"))
 const About = lazy(() => import("./pages/About"))
 const KnowledgeCenter = lazy(() => import("./pages/KnowledgeCenter"))

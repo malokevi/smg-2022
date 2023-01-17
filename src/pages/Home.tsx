@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { Col, Container, Row } from "../components/Layout/Grid"
 import Hero from "../components/Layout/Header/Hero"
-import Testimonials from "../components/Testimonials"
+import { Testimonials, TestimonialsCarousel } from "../components/Testimonials"
 import Brands from "../components/Brands"
 import ElderlySleep from "../assets/images/elderly-sleep.jpeg"
 import WeightImage from "../assets/images/sleep-apnea-weight.jpeg"
@@ -21,14 +21,7 @@ const Home = () => {
             <StyledTrail>
                 <Container>
                     <Row>
-                        <Col sm={12} md={6} lg={6}>
-                            <img
-                                src={WeightImage}
-                                alt=""
-                                className="image-left"
-                            />
-                        </Col>
-                        <Col sm={12} md={6} lg={6}>
+                        <Col sm={12} md={6} lg={8}>
                             <div className="text-right">
                                 {copyText[0].map(
                                     (item: HomePageCopyType, index) => {
@@ -37,18 +30,44 @@ const Home = () => {
                                 )}
                             </div>
                         </Col>
+                        <Col
+                            className="image-col hidden-sm"
+                            sm={12}
+                            md={6}
+                            lg={4}
+                        >
+                            <img
+                                src={WeightImage}
+                                alt=""
+                                className="image-left"
+                            />
+                        </Col>
                     </Row>
                 </Container>
                 <StyledTestimonials>
                     <Container>
                         <Row>
-                            <Testimonials data={TestimonialsData} />
+                            <Testimonials
+                                className="testimonials__desktop"
+                                data={TestimonialsData}
+                            />
+                            <TestimonialsCarousel
+                                className="testimonials__mobile"
+                                data={TestimonialsData}
+                            />
                         </Row>
                     </Container>
                 </StyledTestimonials>
                 <Container>
                     <Row>
-                        <Col sm={12} md={6} lg={6}>
+                        <Col className="image-col" sm={12} md={6} lg={4}>
+                            <img
+                                src={ElderlySleep}
+                                alt=""
+                                className="image-left"
+                            />
+                        </Col>
+                        <Col sm={12} md={6} lg={8}>
                             <div className="text-right">
                                 {copyText[1].map(
                                     (item: HomePageCopyType, index) => {
@@ -56,13 +75,6 @@ const Home = () => {
                                     }
                                 )}
                             </div>
-                        </Col>
-                        <Col sm={12} md={6} lg={6}>
-                            <img
-                                src={ElderlySleep}
-                                alt=""
-                                className="image-left"
-                            />
                         </Col>
                     </Row>
                 </Container>
@@ -80,7 +92,22 @@ const Home = () => {
 
 const StyledTestimonials = styled.div`
     display: flex;
-    padding: 76px 0;
+
+    .testimonials__desktop {
+        display: none;
+
+        @media (min-width: 1300px) {
+            display: flex;
+        }
+    }
+
+    .testimonials__mobile {
+        display: flex;
+
+        @media (min-width: 1300px) {
+            display: none;
+        }
+    }
 `
 
 const StyledBrands = styled.div`
@@ -96,28 +123,62 @@ const StyledBrands = styled.div`
 const StyledTrail = styled.div`
     display: flex;
     flex-flow: column;
-    padding: ${({ theme }) => theme.padding.page} 0;
+    padding: ${({ theme }) => theme.padding.page.mobile} 0;
     background-image: url(${Trail});
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: 1400px 100%;
     gap: ${({ theme }) => theme.padding.gap};
 
+    @media (min-width: 768px) {
+        padding: ${({ theme }) => theme.padding.page.desktop} 0;
+    }
+
+    .row {
+        gap: 48px 0;
+    }
+
     .col {
+        position: relative;
+
+        &.image-col {
+            &.hidden-sm {
+                display: none;
+
+                @media (min-width: 768px) {
+                    display: flex;
+                }
+            }
+
+            @media (min-width: 768px) {
+                display: flex;
+            }
+        }
+
         img {
+            position: sticky;
+            top: 18px;
             width: 100%;
             border-radius: 30px;
+
+            @media (max-width: 768px) {
+                height: 300px;
+                object-fit: cover;
+                object-position: 100% 70%;
+            }
         }
 
         h2 {
             font-size: 42px;
         }
 
-        &:first-of-type {
-            padding-right: 40px;
-        }
-        &:last-of-type {
-            padding-left: 40px;
+        @media (min-width: 768px) {
+            &:first-of-type {
+                padding-right: 20px;
+            }
+            &:last-of-type {
+                padding-left: 20px;
+            }
         }
     }
 

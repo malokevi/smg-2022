@@ -20,7 +20,7 @@ const StyledHeader = styled.div`
     display: flex;
     flex-flow: column;
     background-color: ${({ theme }) => theme.colors.white};
-    z-index: 1;
+    z-index: 2;
 `
 
 export default Header

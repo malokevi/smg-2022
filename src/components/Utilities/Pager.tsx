@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import styled from "styled-components"
 
 import { PaginationType } from "../../shared/types"
+import { buttonReset } from "../../theme/mixins/resets"
 
-const Pager = ({
+export const Pager = ({
     settings,
     total,
     onChange
@@ -32,7 +33,7 @@ const Pager = ({
     return (
         <StyledPager>
             <button
-                className="left button-reset"
+                className="left"
                 disabled={page === pages[0]}
                 onClick={() => setPage(page - 1)}
             >
@@ -40,14 +41,15 @@ const Pager = ({
             </button>
             {pages.map((val: number) => (
                 <button
-                    className={`button-reset ${val === page ? "active" : ""}`}
+                    className={`${val === page ? "active" : ""}`}
                     onClick={() => setPage(val)}
+                    key={val}
                 >
                     {val + 1}
                 </button>
             ))}
             <button
-                className="right button-reset"
+                className="right"
                 disabled={page === pages[pages.length - 1]}
                 onClick={() => setPage(page + 1)}
             >
@@ -63,7 +65,8 @@ const StyledPager = styled.div`
     margin-right: auto;
     gap: 4px;
 
-    button {
+    & > button {
+        ${buttonReset}
         padding: 8px;
 
         &.active {
@@ -74,5 +77,3 @@ const StyledPager = styled.div`
         }
     }
 `
-
-export default Pager

@@ -1,15 +1,22 @@
 import styled from "styled-components"
 
 import DoubleQuote from "../assets/images/quotes.png"
+import { Swiper } from "./swiper"
 
-type TestimonialType = { text: string; author: string; regards: string }
+type TestimonialType = {
+    text: string
+    author: string
+    regards: string
+    children?: React.ReactNode
+}
 type TestimonialsType = {
     data: TestimonialType[]
+    className: string
 }
 
-const Testimonials = ({ data }: TestimonialsType) => {
+export const Testimonials = ({ data, className }: TestimonialsType) => {
     return (
-        <StyledTestimonials>
+        <StyledTestimonials className={className}>
             {data.map((t) => (
                 <Testimonial key={`testimonial-${t.author}`} {...t} />
             ))}
@@ -17,7 +24,33 @@ const Testimonials = ({ data }: TestimonialsType) => {
     )
 }
 
-const Testimonial = ({ text, author, regards }: TestimonialType) => {
+export const TestimonialsCarousel = ({ data, className }: TestimonialsType) => {
+    return (
+        <StyledTestimonialSwiper
+            settings={{
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                },
+                autoHeight: true,
+                pagination: false,
+                scrollbar: false
+            }}
+            className={className}
+        >
+            {data.map((t) => (
+                <Swiper.Slide key={`testimonial-${t.author}`}>
+                    <Testimonial {...t}>
+                        <div className="swiper-button-next"></div>
+                        <div className="swiper-button-prev"></div>
+                    </Testimonial>
+                </Swiper.Slide>
+            ))}
+        </StyledTestimonialSwiper>
+    )
+}
+
+const Testimonial = ({ text, author, regards, children }: TestimonialType) => {
     return (
         <StyledTestimonial>
             <img src={DoubleQuote} alt="" />
@@ -26,9 +59,17 @@ const Testimonial = ({ text, author, regards }: TestimonialType) => {
                 <p className="regards">{regards}</p>
                 <p>{author}</p>
             </div>
+            {children}
         </StyledTestimonial>
     )
 }
+
+const StyledTestimonialSwiper = styled(Swiper)`
+    & > .swiper-button-prev,
+    & > .swiper-button-next {
+        display: none;
+    }
+`
 
 const StyledTestimonials = styled.div`
     display: flex;
@@ -37,15 +78,24 @@ const StyledTestimonials = styled.div`
 `
 
 const StyledTestimonial = styled.div`
+    position: relative;
     display: flex;
     flex-flow: column;
     background-color: white;
     text-align: center;
-    box-shadow: 0 8px 12px rgb(0 0 0 / 8%);
+    box-shadow: 0 0px 14px rgb(0 0 0 / 8%);
     padding: 48px 24px;
-    width: 356px;
-    margin: 0 auto;
+    margin: 18px auto;
     gap: 32px;
+    width: auto;
+
+    @media (min-width: 1300px) {
+        width: 356px;
+    }
+
+    && {
+        margin: 18px 24px;
+    }
 
     p {
         font-size: ${({ theme }) => theme.fontSize.sm};
@@ -71,6 +121,17 @@ const StyledTestimonial = styled.div`
         width: 40px;
         margin: 0 auto;
     }
-`
 
-export default Testimonials
+    .swiper-button-next,
+    .swiper-button-prev {
+        bottom: 6px;
+        right: 6px;
+        top: auto;
+        color: ${({ theme }) => theme.colors.blue};
+
+        &::after {
+            font-weight: bold;
+            font-size: 24px;
+        }
+    }
+`

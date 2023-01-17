@@ -35,21 +35,25 @@ const Navigation = () => {
                                         <Link to={to}>{label}</Link>
 
                                         {dropdown && (
-                                            <ul>
-                                                {dropdown.map(
-                                                    ({ label, to }, i) => {
-                                                        return (
-                                                            <li
-                                                                key={`${key}-${i}`}
-                                                            >
-                                                                <Link to={to}>
-                                                                    {label}
-                                                                </Link>
-                                                            </li>
-                                                        )
-                                                    }
-                                                )}
-                                            </ul>
+                                            <div className="dropdown-container">
+                                                <ul>
+                                                    {dropdown.map(
+                                                        ({ label, to }, i) => {
+                                                            return (
+                                                                <li
+                                                                    key={`${key}-${i}`}
+                                                                >
+                                                                    <Link
+                                                                        to={to}
+                                                                    >
+                                                                        {label}
+                                                                    </Link>
+                                                                </li>
+                                                            )
+                                                        }
+                                                    )}
+                                                </ul>
+                                            </div>
                                         )}
                                     </li>
                                 )
@@ -97,30 +101,35 @@ const StyledNavigation = styled.div`
                 padding-right: 0;
             }
 
-            &:hover ul {
+            &:hover .dropdown-container {
                 display: flex;
             }
 
-            & > ul {
+            & > div {
                 position: absolute;
                 left: 0;
                 top: 100%;
                 background-color: white;
-                width: 100%;
+                right: 0;
                 box-shadow: 0 8px 12px rgb(0 0 0 / 8%);
                 display: none;
-                list-style: none;
-                flex-flow: row wrap;
-                gap: 32px;
-                padding: 30px 22px;
+                padding: 30px 24px;
 
-                li {
-                    width: 25%;
-                    margin: 0;
+                & > ul {
+                    width: 100%;
+                    list-style: none;
+                    flex-flow: row wrap;
+                    gap: 32px;
+                    padding: 0;
 
-                    a {
-                        padding: 10px;
-                        font-size: ${({ theme }) => theme.fontSize.xs};
+                    li {
+                        width: 25%;
+                        margin: 0;
+
+                        a {
+                            padding: 10px;
+                            font-size: ${({ theme }) => theme.fontSize.xs};
+                        }
                     }
                 }
             }

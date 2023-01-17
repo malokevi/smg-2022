@@ -24,8 +24,8 @@ const Blog = () => {
                             initial="hide"
                             animate="show"
                         >
-                            {TestData.map((item) => (
-                                <BlogPreview {...item} />
+                            {TestData.map((item, i) => (
+                                <BlogPreview key={`bpr-${i}`} {...item} />
                             ))}
                         </motion.div>
                     </Col>
@@ -39,9 +39,6 @@ const Blog = () => {
 }
 
 const StyledBlog = styled.div`
-    padding: ${({ theme }) => theme.padding.pageBc} 0
-        ${({ theme }) => theme.padding.gap};
-
     .grid-container {
         display: flex;
         flex-flow: column;

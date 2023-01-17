@@ -13,14 +13,16 @@ const theme: DefaultTheme = {
     colors: {
         text: {
             dark: "#131c4b",
+            darkHover: "#5f6791",
             light: "#fff",
+            lightHover: "#fff",
             faded: "#abadbc"
         },
         button: {
             primary: "#70cddd",
             secondary: "white",
             warning: "#c1282d",
-            danger: ""
+            danger: "red"
         },
         gray: "#eee",
         red: "#c1282d",
@@ -30,7 +32,10 @@ const theme: DefaultTheme = {
     },
     padding: {
         gap: "80px",
-        page: "120px",
+        page: {
+            desktop: "120px",
+            mobile: "80px"
+        },
         pageBc: "40px"
     },
     borderRadius: "6px",
