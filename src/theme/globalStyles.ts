@@ -42,13 +42,12 @@ const GlobalStyle = createGlobalStyle`
   
       a {
         text-decoration: none;
-        link-style: none;
+        font-style: none;
         color: ${({ theme }) =>
             theme.colors.text.dark}; // todo - create link component
-        transition: color .25s ease-in-out;
-        
+
         &:hover {
-          color: ${({ theme }) => theme.colors.blue};
+          color: ${({ theme }) => theme.colors.text.darkHover};
         }
       }
   
