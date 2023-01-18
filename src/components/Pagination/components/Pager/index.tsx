@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import styled from "styled-components"
 
-import { PaginationType } from "../../shared/types"
-import { buttonReset } from "../../theme/mixins/resets"
+import { PaginationType } from "../../../../shared/types"
+
+import * as S from "./styles"
 
 export const Pager = ({
     settings,
@@ -31,7 +31,7 @@ export const Pager = ({
     }, [settings, total])
 
     return (
-        <StyledPager>
+        <S.Pager>
             <button
                 className="left"
                 disabled={page === pages[0]}
@@ -55,25 +55,6 @@ export const Pager = ({
             >
                 &#10095;
             </button>
-        </StyledPager>
+        </S.Pager>
     )
 }
-
-const StyledPager = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    margin-right: auto;
-    gap: 4px;
-
-    & > button {
-        ${buttonReset}
-        padding: 8px;
-
-        &.active {
-            font-weight: bold;
-        }
-        &:disabled {
-            opacity: 0.3;
-        }
-    }
-`

@@ -1,14 +1,19 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-import Button from "../Utilities/Button"
+import Button from "../Button"
+import { ButtonVersionType } from "../Button/styles"
 import { Input, InputType } from "./Input"
 import Select, { SelectType } from "./Select"
 
-type TypeLiterals = "text" | "password" | "select"
+export enum InputTypes {
+    TEXT = "text",
+    PASSWORD = "password",
+    SELECT = "select"
+}
 
 export interface FormFieldType extends InputType, SelectType {
-    type: TypeLiterals
+    type: InputTypes
 }
 
 type FormPropsType = {
@@ -25,13 +30,13 @@ const RenderField = ({
     let elem = <></>
 
     switch (field.type) {
-        case "text":
+        case InputTypes.TEXT:
             elem = <Input onChange={onChange} {...field} />
             break
-        case "password":
+        case InputTypes.PASSWORD:
             elem = <Input onChange={onChange} {...field} />
             break
-        case "select":
+        case InputTypes.SELECT:
             elem = <Select onChange={onChange} {...field} />
             break
         default:
@@ -71,7 +76,7 @@ const Form = ({ fields }: FormPropsType) => {
 
             <Button
                 label="Submit"
-                version="primary"
+                version={ButtonVersionType.PRIMARY}
                 type="submit"
                 onClick={handleSubmit}
             />

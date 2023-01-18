@@ -1,35 +1,13 @@
-import styled from "styled-components"
 import { motion } from "framer-motion"
+import styled from "styled-components"
 
-type PositionLiteralType = "relative" | "fixed" | "absolute"
-
-type LoaderPropsType = {
-    visible?: boolean
-    position?: PositionLiteralType
+export enum LoaderPositionType {
+    RELATIVE = "relative",
+    ABSOLUTE = "absolute",
+    FIXED = "fixed"
 }
 
-const Loader = ({ position = "absolute", visible = true }: LoaderPropsType) => {
-    return (
-        <StyledLoader
-            position={position}
-            animate={{ opacity: visible ? 1 : 0 }}
-        >
-            <div className="lds-grid">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </StyledLoader>
-    )
-}
-
-const StyledLoader = styled(motion.div)<{ position: PositionLiteralType }>`
+export const Loader = styled(motion.div)<{ position: LoaderPositionType }>`
     position: ${({ position }) => position};
     top: 0;
     left: 0;
@@ -110,5 +88,3 @@ const StyledLoader = styled(motion.div)<{ position: PositionLiteralType }>`
         }
     }
 `
-
-export default Loader

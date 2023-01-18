@@ -3,7 +3,7 @@ import { useRoutes } from "react-router-dom"
 import "swiper/css/bundle"
 
 import { RouteObject } from "./shared/types"
-import Layout from "./components/Layout/Layout"
+import Layout from "./components/Layout"
 
 const Home = lazy(() => import("./pages/Home"))
 const About = lazy(() => import("./pages/About"))

@@ -3,13 +3,13 @@ import styled from "styled-components"
 import { useLocation } from "react-router-dom"
 import type { Location } from "react-router-dom"
 
-import { Container, Row, Col } from "../Grid"
-import { routes } from "../../../App"
-import { RouteObject } from "../../../shared/types"
+import { Container, Row, Col } from "../../Grid"
+import { routes } from "../../../../App"
+import { RouteObject } from "../../../../shared/types"
 
 const OMITTED_ROUTES = ["/"]
 
-const RecusriveBreadcrumb = ({
+const RecursiveBreadcrumb = ({
     location,
     routes
 }: {
@@ -43,7 +43,7 @@ const RecusriveBreadcrumb = ({
                     </li>
                     {children &&
                         !skip &&
-                        RecusriveBreadcrumb({
+                        RecursiveBreadcrumb({
                             routes: children,
                             location
                         })}
@@ -75,7 +75,7 @@ const Breadcrumb = () => {
                 <Row>
                     <Col>
                         <ul>
-                            <RecusriveBreadcrumb
+                            <RecursiveBreadcrumb
                                 routes={routes}
                                 location={location}
                             />

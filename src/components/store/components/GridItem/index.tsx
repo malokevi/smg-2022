@@ -1,6 +1,7 @@
 import { fadeUp } from "../../../../shared/motion-variants"
-import Button from "../../../Utilities/Button"
+import Button from "../../../Button"
 import ComingSoonImage from "../../../../assets/images/coming-soon.jpg"
+import { ButtonVersionType } from "../../../Button/styles"
 
 import * as S from "./styles"
 
@@ -16,8 +17,7 @@ export const GridItem = ({
     image = ComingSoonImage,
     name,
     price,
-    salePrice,
-    vendor // TODO - unused var
+    salePrice
 }: GridItemPropsType) => {
     const handleAddToCart = (e: any) => {
         e.stopPropagation()
@@ -43,7 +43,7 @@ export const GridItem = ({
                     </div>
                     <Button
                         onClick={handleAddToCart}
-                        version="primary"
+                        version={ButtonVersionType.PRIMARY}
                         label="Add to Cart"
                     />
                 </div>

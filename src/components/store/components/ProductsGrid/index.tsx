@@ -6,45 +6,45 @@ import { useSelector } from "react-redux"
 import { fadeUp, staggerChildren } from "../../../../shared/motion-variants"
 import { Col } from "../../../Layout/Grid"
 import { PageTitle } from "../../../PageTitle"
-import Pagination from "../../../Utilities/Pagination"
 import { ProductsFilterDataType } from "../../common/types.common"
-import { PaginationTotalsType, PaginationType } from "../../../../shared/types"
 import { useAppDispatch } from "../../../../store/store"
 import { getProducts } from "../../../../store/reducers/products.slice"
-import { GridItem } from "../GridItem"
 import { ProductsToolbar, ProductsToolbarChangeEvent } from "../ProductsToolbar"
+import { GridItem } from "../GridItem"
+import { Pagination } from "../../../Pagination"
+import { PaginationTotalsType, PaginationType } from "../../../../shared/types"
 
 export const ProductsGrid = () => {
     const dispatch = useAppDispatch()
     const { products } = useSelector(({ products: p }: any) => p)
-
     let { category } = useParams<"category">()
-    const [paginationTotals, setPaginationTotals] =
-        useState<PaginationTotalsType>({
-            currentPage: 0,
-            total: 0
-        }) // todo - type
-    const [pageItems, setPageItems] = useState<any[]>([]) // todo - type
+    const [pageItems, setPageItems] = useState<any[]>([])
+    const [sort, setSort] = useState<ProductsFilterDataType[]>([])
     const [page, setPage] = useState<PaginationType>({
         skip: 0,
         take: 12
     })
-    const [sort, setSort] = useState<ProductsFilterDataType[]>([])
+    const [paginationTotals, setPaginationTotals] =
+        useState<PaginationTotalsType>({
+            currentPage: 0,
+            total: 0
+        })
 
     useEffect(() => {
         dispatch(getProducts())
     }, [])
 
     useEffect(() => {
-        // TODO - live data
+        const slicedPageItems = products.data.slice(
+            page.skip,
+            page.skip + page.take
+        )
+
+        setPageItems(slicedPageItems)
         setPaginationTotals({
-            currentPage: pageItems.length,
+            currentPage: slicedPageItems.length,
             total: products.data.length
         })
-    }, [pageItems])
-
-    useEffect(() => {
-        setPageItems(products.data.slice(page.skip, page.skip + page.take))
     }, [page, products.data])
 
     const handlePaginate = (e: any) => {
@@ -54,8 +54,6 @@ export const ProductsGrid = () => {
     const handleSort = (e: ProductsToolbarChangeEvent) => {
         setSort({ ...sort, ...e })
     }
-
-    console.log("products", products.data)
 
     return (
         <Col className="grid-container" sm={12} md={8} lg={9}>
@@ -100,6 +98,7 @@ export const ProductsGrid = () => {
             ) : (
                 <p>No matching products.</p>
             )}
+
             <Pagination
                 pageTotal={pageItems.length}
                 onChange={handlePaginate}
