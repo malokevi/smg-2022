@@ -55,8 +55,6 @@ export const ProductsGrid = () => {
         setSort({ ...sort, ...e })
     }
 
-    console.log(pageItems, pageItems)
-
     return (
         <Col className="grid-container" sm={12} md={8} lg={9}>
             <PageTitle marginBottom={0}>{category || "All Products"}</PageTitle>
@@ -75,19 +73,20 @@ export const ProductsGrid = () => {
                 >
                     {pageItems.map(
                         (
-                            { attributes: { name, price, salePrice, image } },
+                            {
+                                id,
+                                attributes: { name, price, salePrice, image }
+                            },
                             i
                         ) =>
                             name ? (
                                 <GridItem
+                                    id={id}
                                     name={name}
                                     price={price}
                                     salePrice={salePrice}
                                     image={`${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}`}
-                                    key={`product${i}-${name.replaceAll(
-                                        " ",
-                                        ""
-                                    )}`}
+                                    key={`product-${id}`}
                                 />
                             ) : (
                                 <motion.span
