@@ -75,6 +75,7 @@ const StyledMenuTools = styled.div`
 const StyledHeaderBody = styled.div`
     display: flex;
     flex-flow: column;
+    overflow: hidden;
     padding: 12px 0;
 
     .logo {

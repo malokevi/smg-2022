@@ -21,5 +21,4 @@ const StyledHeader = styled.div`
     flex-flow: column;
     background-color: ${({ theme }) => theme.colors.white};
     z-index: 2;
-    overflow: hidden;
 `
