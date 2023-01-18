@@ -1,26 +1,6 @@
 import styled from "styled-components"
 
-import CartIcon from "../assets/images/ico-cart.svg"
-
-type CartProps = {
-    className?: string
-}
-
-const Cart = ({ className }: CartProps) => {
-    return (
-        <StyledCartContainer className={className}>
-            <div className="cart">
-                <img alt="" src={CartIcon} />
-
-                <div className="cart-list">
-                    <p>You have no items in your shopping cart</p>
-                </div>
-            </div>
-        </StyledCartContainer>
-    )
-}
-
-const StyledCartContainer = styled.div`
+export const Cart = styled.div`
     position: relative;
     z-index: 2;
 
@@ -61,5 +41,3 @@ const StyledCartContainer = styled.div`
         }
     }
 `
-
-export default Cart
