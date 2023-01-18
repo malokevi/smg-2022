@@ -1,19 +1,23 @@
 import { useParams } from "react-router"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { useSelector } from "react-redux"
 
 import { fadeUp, staggerChildren } from "../../../../shared/motion-variants"
 import { Col } from "../../../Layout/Grid"
 import { PageTitle } from "../../../PageTitle"
 import Pagination from "../../../Utilities/Pagination"
-import { GridItem } from "../GridItem"
-import { ProductsToolbar, ProductsToolbarChangeEvent } from "../ProductsToolbar"
 import { ProductsFilterDataType } from "../../common/types.common"
 import { PaginationTotalsType, PaginationType } from "../../../../shared/types"
-
-import TestProducts from "../../../../static/products.json"
+import { useAppDispatch } from "../../../../store/store"
+import { getProducts } from "../../../../store/reducers/products.slice"
+import { GridItem } from "../GridItem"
+import { ProductsToolbar, ProductsToolbarChangeEvent } from "../ProductsToolbar"
 
 export const ProductsGrid = () => {
+    const dispatch = useAppDispatch()
+    const { products } = useSelector(({ products: p }: any) => p)
+
     let { category } = useParams<"category">()
     const [paginationTotals, setPaginationTotals] =
         useState<PaginationTotalsType>({
@@ -28,16 +32,20 @@ export const ProductsGrid = () => {
     const [sort, setSort] = useState<ProductsFilterDataType[]>([])
 
     useEffect(() => {
+        dispatch(getProducts())
+    }, [])
+
+    useEffect(() => {
         // TODO - live data
         setPaginationTotals({
             currentPage: pageItems.length,
-            total: TestProducts.length
+            total: products.data.length
         })
     }, [pageItems])
 
     useEffect(() => {
-        setPageItems(TestProducts.slice(page.skip, page.skip + page.take))
-    }, [page])
+        setPageItems(products.data.slice(page.skip, page.skip + page.take))
+    }, [page, products.data])
 
     const handlePaginate = (e: any) => {
         setPage(e)
@@ -46,6 +54,8 @@ export const ProductsGrid = () => {
     const handleSort = (e: ProductsToolbarChangeEvent) => {
         setSort({ ...sort, ...e })
     }
+
+    console.log("products", products.data)
 
     return (
         <Col className="grid-container" sm={12} md={8} lg={9}>
@@ -63,21 +73,28 @@ export const ProductsGrid = () => {
                     animate="show"
                     className="product-grid"
                 >
-                    {pageItems.map(({ label, price, salePrice, image }, i) =>
-                        label ? (
-                            <GridItem
-                                label={label}
-                                price={price}
-                                salePrice={salePrice}
-                                image={image}
-                                key={`product${i}-${label.replaceAll(" ", "")}`}
-                            />
-                        ) : (
-                            <motion.span
-                                variants={fadeUp}
-                                className="spacer"
-                            ></motion.span>
-                        )
+                    {pageItems.map(
+                        (
+                            { attributes: { name, price, salePrice, image } },
+                            i
+                        ) =>
+                            name ? (
+                                <GridItem
+                                    name={name}
+                                    price={price}
+                                    salePrice={salePrice}
+                                    image={`${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}`}
+                                    key={`product${i}-${name.replaceAll(
+                                        " ",
+                                        ""
+                                    )}`}
+                                />
+                            ) : (
+                                <motion.span
+                                    variants={fadeUp}
+                                    className="spacer"
+                                ></motion.span>
+                            )
                     )}
                 </motion.div>
             ) : (
