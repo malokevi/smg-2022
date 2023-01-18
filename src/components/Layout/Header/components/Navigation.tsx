@@ -90,6 +90,10 @@ const StyledNavigation = styled.div`
         flex-grow: 2;
 
         & > li {
+            @media (max-width: 640px) {
+                display: none;
+            }
+
             padding: 16px 28px;
             text-transform: uppercase;
 

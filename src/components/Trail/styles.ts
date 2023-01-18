@@ -29,7 +29,7 @@ export const Trail = styled.div`
     background-image: url(${TrailBG});
     background-repeat: no-repeat;
     background-position: 50%;
-    background-size: 1400px 100%;
+    background-size: 1000px 100%;
     gap: ${({ theme }) => theme.padding.gap};
 
     @media (min-width: 768px) {

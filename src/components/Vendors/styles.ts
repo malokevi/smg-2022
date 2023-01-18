@@ -2,9 +2,9 @@ import styled from "styled-components"
 
 export const Brands = styled.div`
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
 
     img {
         align-self: center;

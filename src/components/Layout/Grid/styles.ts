@@ -65,6 +65,10 @@ export const Col = styled.div`
         ${RenderCol("lg")}
     }
 
+    @media (min-width: 992px) {
+        padding: 0 24px;
+    }
+
     @media (min-width: 768px) and (max-width: 1200px) {
         ${RenderCol("md")}
     }
