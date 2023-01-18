@@ -6,6 +6,7 @@ import { ButtonVersionType } from "../../../Button/styles"
 import * as S from "./styles"
 
 type GridItemPropsType = {
+    id: string
     image?: any
     name: string
     price: number
