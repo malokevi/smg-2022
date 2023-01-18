@@ -1,39 +1,6 @@
 import styled from "styled-components"
-import { useState } from "react"
 
-import SearchIcon from "../../../assets/images/ico-search-white.svg"
-import { Input } from "../../Form/Input"
-
-export const SearchBar = () => {
-    const [search, setSearch] = useState<string | undefined>()
-
-    const handleSearch = (e: any) => {
-        setSearch(e.target.value)
-    }
-
-    return (
-        <StyledSearchBar>
-            <Input
-                name="search"
-                icon={SearchIcon}
-                onChange={handleSearch}
-                value={search}
-                type="text"
-                placeholder="Search the store..."
-            />
-
-            <button className="searchBar__button">
-                <img
-                    className="searchBar__button__image"
-                    alt="store search"
-                    src={SearchIcon}
-                />
-            </button>
-        </StyledSearchBar>
-    )
-}
-
-const StyledSearchBar = styled.div`
+export const SearchBar = styled.div`
     display: flex;
     flex-flow: row nowrap;
     flex-grow: 2;

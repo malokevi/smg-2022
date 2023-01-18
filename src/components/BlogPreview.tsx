@@ -1,8 +1,9 @@
 import styled from "styled-components"
 import { motion } from "framer-motion"
 
-import Button from "./Utilities/Button"
+import Button from "./Button"
 import { fadeUp } from "../shared/motion-variants"
+import { ButtonVersionType } from "./Button/styles"
 
 type BlogEntryPropsType = {
     copy: string
@@ -24,7 +25,7 @@ const BlogPreview = ({ copy, title, image, date }: BlogEntryPropsType) => {
                     onClick={(e: any) => {
                         console.log("read more click")
                     }}
-                    version="secondary"
+                    version={ButtonVersionType.SECONDARY}
                 />
             </div>
         </StyledBlogEntry>

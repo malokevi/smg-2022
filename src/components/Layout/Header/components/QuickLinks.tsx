@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { Container, Row, Col } from "../Grid"
+import { Container, Row, Col } from "../../Grid"
 
 const QuickLinks = () => {
     return (

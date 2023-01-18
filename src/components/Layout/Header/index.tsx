@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
-import HeaderBody from "./HeaderBody"
-import Navigation from "./Navigation"
-import QuickLinks from "./QuickLinks"
-import Breadcrumb from "./Breadcrumb"
+import HeaderBody from "./components/HeaderBody"
+import Navigation from "./components/Navigation"
+import QuickLinks from ".//components/QuickLinks"
+import Breadcrumb from "./components/Breadcrumb"
 
-const Header = () => {
+export const Header = () => {
     return (
         <StyledHeader>
             <QuickLinks />
@@ -21,6 +21,5 @@ const StyledHeader = styled.div`
     flex-flow: column;
     background-color: ${({ theme }) => theme.colors.white};
     z-index: 2;
+    overflow: hidden;
 `
-
-export default Header

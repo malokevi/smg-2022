@@ -1,50 +1,4 @@
-import clsx from "clsx"
 import styled from "styled-components"
-
-export const Container = ({
-    children,
-    className
-}: {
-    children: React.ReactNode
-    className?: string
-}) => {
-    return (
-        <StyledContainer className={clsx("container", className)}>
-            {children}
-        </StyledContainer>
-    )
-}
-
-export const Row = ({ children }: { children: React.ReactNode }) => {
-    return <StyledRow className="row">{children}</StyledRow>
-}
-
-type ColType = {
-    className?: string
-    children?: React.ReactNode
-    sm?: number
-    md?: number
-    lg?: number
-}
-
-export const Col = ({
-    children,
-    className,
-    sm = 12,
-    md = 12,
-    lg = 12
-}: ColType) => {
-    return (
-        <StyledCol
-            className={clsx(
-                `col col-sm-${sm} col-md-${md} col-lg-${lg}`,
-                className
-            )}
-        >
-            {children && children}
-        </StyledCol>
-    )
-}
 
 const RenderCol = (unit: "sm" | "md" | "lg") => {
     return `
@@ -87,7 +41,7 @@ const RenderCol = (unit: "sm" | "md" | "lg") => {
     `
 }
 
-const StyledContainer = styled.div`
+export const Container = styled.div`
     display: flex;
     flex-flow: column;
     width: 100%;
@@ -95,13 +49,13 @@ const StyledContainer = styled.div`
     margin: 0 auto;
 `
 
-const StyledRow = styled.div`
+export const Row = styled.div`
     display: flex;
     flex-flow: row wrap;
     flex-grow: 2;
 `
 
-const StyledCol = styled.div`
+export const Col = styled.div`
     display: flex;
     flex-flow: column;
     padding: 0 15px;

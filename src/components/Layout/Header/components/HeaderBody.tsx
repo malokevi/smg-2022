@@ -1,12 +1,12 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
-import { Col, Container, Row } from "../Grid"
-import Logo from "../../../assets/images/logo-final.png"
-import Cart from "../../Cart"
+import { Col, Container, Row } from "../../Grid"
+import Logo from "../../../../assets/images/logo-final.png"
+import Cart from "../../../Cart"
 import ProfileOptions from "./ProfileOptions"
-import { Favorites } from "../../Favorites"
-import { SearchBar } from "../../Utilities/SearchBar"
+import { Favorites } from "../../../Favorites"
+import { SearchBar } from "../../../SearchBar"
 
 const HeaderBody = () => {
     return (
