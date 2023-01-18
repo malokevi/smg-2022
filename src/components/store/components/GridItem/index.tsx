@@ -6,18 +6,18 @@ import * as S from "./styles"
 
 type GridItemPropsType = {
     image?: any
-    label: string
+    name: string
     price: number
     salePrice?: number
-    brand?: string
+    vendor?: string
 }
 
 export const GridItem = ({
     image = ComingSoonImage,
-    label,
+    name,
     price,
     salePrice,
-    brand // TODO - unused var
+    vendor // TODO - unused var
 }: GridItemPropsType) => {
     const handleAddToCart = (e: any) => {
         e.stopPropagation()
@@ -34,7 +34,7 @@ export const GridItem = ({
         >
             <div className="product-image"></div>
             <div className="product-details">
-                <p>{label}</p>
+                <p>{name}</p>
 
                 <div>
                     <div className="price">
