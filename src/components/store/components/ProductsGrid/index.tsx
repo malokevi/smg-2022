@@ -55,6 +55,8 @@ export const ProductsGrid = () => {
         setSort({ ...sort, ...e })
     }
 
+    console.log(pageItems, pageItems)
+
     return (
         <Col className="grid-container" sm={12} md={8} lg={9}>
             <PageTitle marginBottom={0}>{category || "All Products"}</PageTitle>
