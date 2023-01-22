@@ -65,8 +65,9 @@ const Form = ({ fields }: FormPropsType) => {
 
     return (
         <StyledForm>
-            {fields.map((field) => (
+            {fields.map((field, i) => (
                 <RenderField
+                    key={`${field.name}-${i}`}
                     onChange={(e) =>
                         handleFieldChange({ event: e, name: field.name })
                     }

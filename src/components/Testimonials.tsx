@@ -88,6 +88,7 @@ const StyledTestimonial = styled.div`
     margin: 18px auto;
     gap: 32px;
     width: auto;
+    flex-grow: 2;
 
     @media (min-width: 1300px) {
         width: 356px;

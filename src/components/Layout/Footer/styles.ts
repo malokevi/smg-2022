@@ -54,6 +54,7 @@ export const Footer = styled.div`
             color: #abadbc;
             margin: auto;
             font-size: ${({ theme }) => theme.fontSize.xs};
+            text-align: center;
         }
     }
 `
