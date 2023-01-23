@@ -14,9 +14,8 @@ import { GridItem } from "../GridItem"
 import { Pagination } from "../../../Pagination"
 import { PaginationTotalsType, PaginationType } from "../../../../shared/types"
 
-export const ProductsGrid = () => {
+export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
     const dispatch = useAppDispatch()
-    const { products } = useSelector(({ products: p }: any) => p)
     let { category } = useParams<"category">()
     const [pageItems, setPageItems] = useState<any[]>([])
     const [sort, setSort] = useState<ProductsFilterDataType[]>([])
@@ -35,17 +34,14 @@ export const ProductsGrid = () => {
     }, [])
 
     useEffect(() => {
-        const slicedPageItems = products.data.slice(
-            page.skip,
-            page.skip + page.take
-        )
+        const slicedPageItems = products.slice(page.skip, page.skip + page.take)
 
         setPageItems(slicedPageItems)
         setPaginationTotals({
             currentPage: slicedPageItems.length,
-            total: products.data.length
+            total: products.length
         })
-    }, [page, products.data])
+    }, [page, products])
 
     const handlePaginate = (e: any) => {
         setPage(e)

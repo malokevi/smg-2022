@@ -1,9 +1,22 @@
 import styled from "styled-components"
+import { useQuery } from "@apollo/client"
 
 import { Col, Container, Row } from "../components/Layout/Grid"
 import { ProductsGrid } from "../components/store"
+import { GET_PRODUCTS } from "../gql/queries"
+import { ApolloResponseT } from "../shared/types"
 
 const Products = () => {
+    const { loading, error, data }: ApolloResponseT = useQuery(GET_PRODUCTS)
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+    if (error) {
+        return <p>{error.message}</p>
+    }
+
     return (
         <StyledStoreLayout className="page-container">
             <Container>
@@ -11,7 +24,7 @@ const Products = () => {
                     <Col sm={12} md={4} lg={3}>
                         <p>nav</p>
                     </Col>
-                    <ProductsGrid />
+                    <ProductsGrid products={data?.products?.data} />
                 </Row>
             </Container>
         </StyledStoreLayout>
