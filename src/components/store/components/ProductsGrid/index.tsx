@@ -1,21 +1,17 @@
 import { useParams } from "react-router"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { useSelector } from "react-redux"
 
 import { fadeUp, staggerChildren } from "../../../../shared/motion-variants"
 import { Col } from "../../../Layout/Grid"
 import { PageTitle } from "../../../PageTitle"
 import { ProductsFilterDataType } from "../../common/types.common"
-import { useAppDispatch } from "../../../../store/store"
-import { getProducts } from "../../../../store/reducers/products.slice"
 import { ProductsToolbar, ProductsToolbarChangeEvent } from "../ProductsToolbar"
 import { GridItem } from "../GridItem"
 import { Pagination } from "../../../Pagination"
 import { PaginationTotalsType, PaginationType } from "../../../../shared/types"
 
 export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
-    const dispatch = useAppDispatch()
     let { category } = useParams<"category">()
     const [pageItems, setPageItems] = useState<any[]>([])
     const [sort, setSort] = useState<ProductsFilterDataType[]>([])
@@ -28,10 +24,6 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
             currentPage: 0,
             total: 0
         })
-
-    useEffect(() => {
-        dispatch(getProducts())
-    }, [])
 
     useEffect(() => {
         const slicedPageItems = products.slice(page.skip, page.skip + page.take)
