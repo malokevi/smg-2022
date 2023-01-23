@@ -77,6 +77,10 @@ const StyledHeaderBody = styled.div`
     flex-flow: column;
     padding: 12px 0;
 
+    @media (max-width: 640px) {
+        overflow: hidden;
+    }
+
     .logo {
         max-height: 105px;
         align-self: center;

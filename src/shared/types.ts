@@ -1,3 +1,7 @@
+import { ApolloError } from "@apollo/client"
+
+import { Query } from "../gql/graphql"
+
 export type RouteObject = {
     caseSensitive?: boolean
     children?: RouteObject[]
@@ -23,4 +27,10 @@ export type PaginationType = {
 export type PaginationTotalsType = {
     currentPage: number
     total: number
+}
+
+export type ApolloResponseT = {
+    loading: boolean
+    error?: ApolloError
+    data?: Query
 }
