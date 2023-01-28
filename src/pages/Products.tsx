@@ -1,7 +1,8 @@
 import styled from "styled-components"
+import { useQuery } from "@apollo/client"
 
 import { Col, Container, Row } from "../components/Layout/Grid"
-import { ProductsGrid } from "../components/store"
+import { ProductsGridLayout } from "../components/store/components/ProductsGridLayout"
 
 const Products = () => {
     return (
@@ -11,7 +12,9 @@ const Products = () => {
                     <Col sm={12} md={4} lg={3}>
                         <p>nav</p>
                     </Col>
-                    <ProductsGrid />
+                    <Col className="grid-container" sm={12} md={8} lg={9}>
+                        <ProductsGridLayout />
+                    </Col>
                 </Row>
             </Container>
         </StyledStoreLayout>

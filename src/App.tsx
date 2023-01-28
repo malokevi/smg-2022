@@ -1,10 +1,9 @@
-import { lazy } from "react"
+import { lazy, Suspense } from "react"
 import { useRoutes } from "react-router-dom"
+import "swiper/css/bundle"
 
 import { RouteObject } from "./shared/types"
-import Layout from "./components/Layout/Layout"
-
-import "swiper/css/bundle"
+import Layout from "./components/Layout"
 
 const Home = lazy(() => import("./pages/Home"))
 const About = lazy(() => import("./pages/About"))
@@ -17,6 +16,11 @@ const Products = lazy(() => import("./pages/Products"))
 const Login = lazy(() => import("./pages/auth/Login"))
 const Register = lazy(() => import("./pages/auth/Register"))
 
+const SuspendRoute = ({ children }: { children: React.ReactNode }) => {
+    // todo - add suspended route fallback component
+    return <Suspense fallback={<></>}>{children}</Suspense>
+}
+
 export const routes: RouteObject[] = [
     {
         path: "/",
@@ -26,38 +30,66 @@ export const routes: RouteObject[] = [
             {
                 index: true,
                 label: "Home",
-                element: <Home />
+                element: (
+                    <SuspendRoute>
+                        <Home />
+                    </SuspendRoute>
+                )
             },
             {
                 path: "about",
                 label: "About",
-                element: <About />
+                element: (
+                    <SuspendRoute>
+                        <About />
+                    </SuspendRoute>
+                )
             },
             {
                 path: "knowledge-center",
                 label: "Knowlege Center",
-                element: <KnowledgeCenter />
+                element: (
+                    <SuspendRoute>
+                        <KnowledgeCenter />
+                    </SuspendRoute>
+                )
             },
             {
                 path: "blog",
                 label: "Blog",
-                element: <BlogLayout />,
+                element: (
+                    <SuspendRoute>
+                        <BlogLayout />
+                    </SuspendRoute>
+                ),
                 children: [
                     {
                         index: true,
                         label: "Blog",
-                        element: <Blog />
+                        element: (
+                            <SuspendRoute>
+                                <Blog />
+                            </SuspendRoute>
+                        )
                     },
                     {
                         path: ":article",
-                        element: <BlogArticle />
+                        element: (
+                            <SuspendRoute>
+                                <BlogArticle />
+                            </SuspendRoute>
+                        )
                     }
                 ]
             },
             {
                 path: "products",
                 label: "Products",
-                element: <Products />,
+                element: (
+                    <SuspendRoute>
+                        <Products />
+                    </SuspendRoute>
+                ),
                 skipChildren: true,
                 children: [
                     {
@@ -68,25 +100,36 @@ export const routes: RouteObject[] = [
             {
                 path: "login",
                 label: "Login",
-                element: <Login />
+                element: (
+                    <SuspendRoute>
+                        <Login />
+                    </SuspendRoute>
+                )
             },
             {
                 path: "register",
                 label: "Register",
-                element: <Register />
+                element: (
+                    <SuspendRoute>
+                        <Register />
+                    </SuspendRoute>
+                )
             },
             {
                 path: "*",
                 label: "Not Found",
-                element: <NotFound />
+                element: (
+                    <SuspendRoute>
+                        <NotFound />
+                    </SuspendRoute>
+                )
             }
         ]
     }
 ]
 
 const App = () => {
-    let element = useRoutes(routes)
-    return element
+    return useRoutes(routes)
 }
 
 export default App

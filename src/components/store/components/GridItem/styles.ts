@@ -17,7 +17,8 @@ export const GridItem = styled(motion.div)<{ image: any }>`
     .product-image {
         background-image: url(${({ image }) => image});
         height: 300px;
-        background-size: cover;
+        background-size: 80%;
+        background-repeat: no-repeat;
         background-position: 50%;
     }
 
