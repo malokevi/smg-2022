@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 import Logo from "../../../assets/images/logo-final.png"
-import SocialLinks from "../../SocialLinks"
+import { SocialLinks } from "./components/SocialLinks"
 import { Col, Container, Row } from "../Grid"
 
 import * as S from "./styles"
