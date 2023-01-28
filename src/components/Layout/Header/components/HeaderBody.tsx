@@ -5,7 +5,7 @@ import { Col, Container, Row } from "../../Grid"
 import Logo from "../../../../assets/images/logo-final.png"
 import Cart from "../../../Cart"
 import ProfileOptions from "./ProfileOptions"
-import { Favorites } from "../../../Favorites"
+import { Favorites } from "./Favorites"
 import { SearchBar } from "../../../SearchBar"
 
 const HeaderBody = () => {

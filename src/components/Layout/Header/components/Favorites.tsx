@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import HeartIcon from "../assets/images/ico-heart.svg"
-import { buttonReset } from "../theme/mixins/resets"
+import HeartIcon from "../../../../assets/images/ico-heart.svg"
+import { buttonReset } from "../../../../theme/mixins/resets"
 
 type FavoritesProps = {
     className?: string
