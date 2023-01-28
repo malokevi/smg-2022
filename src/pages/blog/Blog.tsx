@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 
 import { Col, Container, Row } from "../../components/Layout/Grid"
 import TestData from "../../static/blog.json"
-import BlogPreview from "../../components/BlogPreview"
+import { BlogPreview } from "../../components/Blog"
 import { staggerChildren } from "../../shared/motion-variants"
 import { PageTitle } from "../../components/PageTitle"
 

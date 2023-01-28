@@ -1,4 +1,4 @@
-import MetaIcon from "../assets/images/meta-icon.png"
+import MetaIcon from "../../../../../assets/images/meta-icon.png"
 
 import * as S from './styles'
 
