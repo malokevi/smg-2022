@@ -4,10 +4,6 @@ export const Hamburger = styled.button`
     border: none;
     background: transparent;
 
-    @media(min-width: 768px) {
-        display: none;
-    }
-
     span {
         width: 50px;
         height: 5px;

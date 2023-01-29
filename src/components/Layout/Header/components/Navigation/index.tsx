@@ -5,6 +5,10 @@ import NavData from "../../../../../static/navigation.json"
 
 import * as S from './styles'
 
+type NavigationPropsT = {
+    isOpenOnMobile: boolean
+}
+
 type DropdownLinkType = {
     to: string
     label: string
@@ -16,11 +20,13 @@ interface LinkType extends DropdownLinkType {
 
 export type NavType = LinkType[]
 
-export const Navigation = () => {
+export const Navigation = ({ isOpenOnMobile }: NavigationPropsT) => {
     const navData: NavType = NavData
 
+    console.log('isOpenOnMobile', isOpenOnMobile)
+
     return (
-        <S.Navigation>
+        <S.Navigation isOpenOnMobile={isOpenOnMobile}>
             <Container>
                 <Row>
                     <Col>

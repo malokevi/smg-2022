@@ -1,24 +1,40 @@
-import styled from "styled-components"
+import { createContext, useContext, useState } from "react"
 
 import { Navigation } from "./components/Navigation"
 import { QuickLinks } from "./components/QuickLinks"
 import { Breadcrumb } from "./components/Breadcrumb"
 import { HeaderBody } from "./components/HeaderBody"
 
-export const Header = () => {
-    return (
-        <StyledHeader>
-            <QuickLinks />
-            <HeaderBody />
-            <Navigation />
-            <Breadcrumb />
-        </StyledHeader>
-    )
+import * as S from './styles'
+
+type HeaderContextValueT = {
+    setMobileNavIsOpen: (isOpen: boolean) => void
 }
 
-const StyledHeader = styled.div`
-    display: flex;
-    flex-flow: column;
-    background-color: ${({ theme }) => theme.colors.white};
-    z-index: 2;
-`
+const HeaderContext = createContext({
+    setMobileNavIsOpen: (isOpen: boolean) => { }
+} as HeaderContextValueT)
+
+// custom hook for quick access to context
+export const useHeaderContext = () => useContext(HeaderContext)
+
+export const Header = () => {
+    const [mobileNavIsOpen, setMobileNavIsOpen] = useState(false)
+
+    const handleMobileNavChange = (isOpen: boolean) => {
+        setMobileNavIsOpen(isOpen)
+    }
+
+    return (
+        <HeaderContext.Provider value={{
+            setMobileNavIsOpen: handleMobileNavChange
+        }}>
+            <S.Header>
+                <QuickLinks />
+                <HeaderBody />
+                <Navigation isOpenOnMobile={mobileNavIsOpen} />
+                <Breadcrumb />
+            </S.Header>
+        </HeaderContext.Provider>
+    )
+}

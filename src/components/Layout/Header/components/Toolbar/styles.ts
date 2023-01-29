@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Hamburger } from "../Hamburger"
 
 export const Toolbar = styled.div`
     display: flex;
@@ -12,9 +13,13 @@ export const Toolbar = styled.div`
     }
 
     .menu-tools__section {
-        display: flex;
+        display: none;
         flex-flow: row nowrap;
         gap: 28px;
+
+        @media(min-width: 768px) {
+            display: flex;
+        }
     }
 
     .menu-tools__section__favorites {
@@ -23,5 +28,11 @@ export const Toolbar = styled.div`
         @media (min-width: 860px) {
             display: flex;
         }
+    }
+`
+
+export const StyledHamburger = styled(Hamburger)`
+    @media(min-width: 768px) {
+        display: none;
     }
 `

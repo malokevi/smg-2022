@@ -1,11 +1,15 @@
 import styled from "styled-components"
 
-export const Navigation = styled.div`
+export const Navigation = styled.div<{ isOpenOnMobile: boolean }>`
     display: flex;
     flex-flow: column;
     border-top: 1px solid ${({ theme }) => theme.colors.gray};
     box-shadow: 0 10px 10px -10px rgb(0 0 0 / 10%);
     z-index: 1;
+
+    @media(max-width: 767px) {
+        height: ${({ isOpenOnMobile }) => isOpenOnMobile ? 'auto' : 0}
+    }
 
     .row {
         position: relative;

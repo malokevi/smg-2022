@@ -1,16 +1,25 @@
-import clsx from 'clsx'
 import { useState } from 'react'
+import clsx from 'clsx'
+
 import * as S from './styles'
 
-export const Hamburger = () => {
+type HamburgerPropsT = {
+    className?: string
+    onClick?: (isOpen: boolean) => void
+}
+
+export const Hamburger = ({ className, onClick }: HamburgerPropsT) => {
     const [navIsOpen, setNavIsOpen] = useState(false)
 
     const handleToggleMobileNav = () => {
-        setNavIsOpen((prev) => !prev)
+        const isOpen = !navIsOpen
+        setNavIsOpen(isOpen)
+        onClick && onClick(isOpen)
+
     }
 
     return (
-        <S.Hamburger className={clsx({ "is-active": navIsOpen })} onClick={handleToggleMobileNav}>
+        <S.Hamburger className={clsx(className, { "is-active": navIsOpen })} onClick={handleToggleMobileNav}>
             <span></span>
             <span></span>
             <span></span>
