@@ -6,7 +6,7 @@ import { Header } from "./Header"
 
 import * as S from "./styles"
 
-const Layout = () => {
+export const Layout = () => {
     return (
         <S.Layout>
             <Header />
@@ -17,5 +17,3 @@ const Layout = () => {
         </S.Layout>
     )
 }
-
-export default Layout

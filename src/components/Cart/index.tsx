@@ -6,7 +6,7 @@ type CartProps = {
     className?: string
 }
 
-const Cart = ({ className }: CartProps) => {
+export const Cart = ({ className }: CartProps) => {
     return (
         <S.Cart className={className}>
             <div className="cart">
@@ -19,5 +19,3 @@ const Cart = ({ className }: CartProps) => {
         </S.Cart>
     )
 }
-
-export default Cart

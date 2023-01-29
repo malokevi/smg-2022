@@ -1,1 +1,1 @@
-export { BlogPreview } from './components/BlogPreview'
+export * from './components/BlogPreview'

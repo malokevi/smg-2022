@@ -1,2 +1,2 @@
-export { Testimonials } from './components/Testimonials'
-export { TestimonialsCarousel } from './components/TestimonialsCarousel'
+export * from './components/Testimonials'
+export * from './components/TestimonialsCarousel'

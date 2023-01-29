@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-import HeaderBody from "./components/HeaderBody"
-import Navigation from "./components/Navigation"
-import QuickLinks from ".//components/QuickLinks"
-import Breadcrumb from "./components/Breadcrumb"
+import { Navigation } from "./components/Navigation"
+import { QuickLinks } from "./components/QuickLinks"
+import { Breadcrumb } from "./components/Breadcrumb"
+import { HeaderBody } from "./components/HeaderBody"
 
 export const Header = () => {
     return (
