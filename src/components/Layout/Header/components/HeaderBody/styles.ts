@@ -9,13 +9,18 @@ export const Layout = styled.div`
         overflow: hidden;
     }
 
-    .logo {
-        max-height: 105px;
-        align-self: center;
-        transition: max-height 0.25s ease-in-out;
+    .logo-link {
+        margin: auto 0;
 
-        @media (min-width: 1200px) {
-            max-height: 130px;
+        .logo-link__logo {
+            max-height: 105px;
+            max-width: 100%;
+            align-self: center;
+            transition: max-height 0.25s ease-in-out;
+    
+            @media (min-width: 1200px) {
+                max-height: 130px;
+            }
         }
     }
 `

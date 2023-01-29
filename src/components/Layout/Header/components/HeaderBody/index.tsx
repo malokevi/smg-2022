@@ -11,16 +11,16 @@ export const HeaderBody = () => {
         <S.Layout>
             <Container>
                 <Row>
-                    <Col lg={4} md={4} sm={5}>
-                        <Link to="">
+                    <Col lg={4} md={6} sm={7}>
+                        <Link className="logo-link" to="">
                             <img
                                 alt="Sleep Management Group homepage link"
-                                className="logo"
+                                className="logo-link__logo"
                                 src={Logo}
                             />
                         </Link>
                     </Col>
-                    <Col lg={8} md={8} sm={7}>
+                    <Col lg={8} md={6} sm={5}>
                         <Toolbar />
                     </Col>
                 </Row>

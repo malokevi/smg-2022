@@ -5,6 +5,7 @@ export const Brands = styled.div`
     flex-flow: row wrap;
     width: 100%;
     justify-content: space-around;
+    gap: 42px;
 
     img {
         align-self: center;
