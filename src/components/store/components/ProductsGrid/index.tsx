@@ -73,7 +73,7 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
                                     name={name}
                                     price={price}
                                     salePrice={salePrice}
-                                    image={`${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}`}
+                                    image={image.data ? `${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}` : undefined}
                                     key={`product-${id}`}
                                 />
                             ) : (
