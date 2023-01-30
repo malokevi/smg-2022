@@ -44,7 +44,7 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
     }
 
     return (
-        <Col className="grid-container" sm={12} md={8} lg={9}>
+        <>
             <PageTitle marginBottom={0}>{category || "All Products"}</PageTitle>
 
             <ProductsToolbar
@@ -93,6 +93,6 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
                 onChange={handlePaginate}
                 total={paginationTotals.total}
             />
-        </Col>
+        </>
     )
 }

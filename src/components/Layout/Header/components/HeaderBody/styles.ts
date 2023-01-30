@@ -15,8 +15,8 @@ export const Layout = styled.div<{ mobileNavIsOpen: boolean }>`
         }
     `}}
 
-    @media (max-width: 640px) {
-        overflow: hidden;
+    @media (max-width: 767px) {
+        border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
     }
 
     .logo-link {

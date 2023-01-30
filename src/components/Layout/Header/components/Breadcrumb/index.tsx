@@ -5,6 +5,7 @@ import type { Location } from "react-router-dom"
 import { Container, Row, Col } from "../../../Grid"
 import { routes } from "../../../../../App"
 import { RouteObject } from "../../../../../shared/types"
+import { useHeaderContext } from "../.."
 
 import * as S from './styles'
 
@@ -68,10 +69,11 @@ const RecursiveBreadcrumb = ({
 }
 
 export const Breadcrumb = () => {
+    const { mobileNavIsOpen } = useHeaderContext()
     const location: Location = useLocation()
 
     return !OMITTED_ROUTES.includes(location.pathname) ? (
-        <S.Breadcrumb>
+        <S.Breadcrumb isHiddenOnMobile={mobileNavIsOpen}>
             <Container>
                 <Row>
                     <Col>
