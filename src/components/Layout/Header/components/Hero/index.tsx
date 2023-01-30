@@ -3,7 +3,7 @@ import { SlideOne, SlideTwo } from "./slides"
 
 import * as S from "./styles"
 
-const Hero = () => {
+export const Hero = () => {
     return (
         <S.Hero>
             <Swiper
@@ -29,5 +29,3 @@ const Hero = () => {
         </S.Hero>
     )
 }
-
-export default Hero

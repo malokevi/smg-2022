@@ -7,7 +7,7 @@ type LoaderPropsType = {
     position?: LoaderPositionType
 }
 
-const Loader = ({
+export const Loader = ({
     position = LoaderPositionType.ABSOLUTE,
     visible = true
 }: LoaderPropsType) => {
@@ -27,5 +27,3 @@ const Loader = ({
         </S.Loader>
     )
 }
-
-export default Loader

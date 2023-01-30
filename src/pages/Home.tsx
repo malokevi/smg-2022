@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import Hero from "../components/Layout/Header/components/Hero"
+import { Hero } from "../components/Layout/Header/components/Hero"
 import { Trail } from "../components/Trail"
 import { Vendors } from "../components/Vendors/Brands"
 

@@ -5,7 +5,11 @@ import { Input } from "../Form/Input"
 
 import * as S from "./styles"
 
-export const SearchBar = () => {
+type SearchBarPropsT = {
+    isDisabled?: boolean
+}
+
+export const SearchBar = ({ isDisabled = false }: SearchBarPropsT) => {
     const [search, setSearch] = useState<string | undefined>()
 
     const handleSearch = (e: any) => {
@@ -16,14 +20,14 @@ export const SearchBar = () => {
         <S.SearchBar>
             <Input
                 name="search"
-                icon={SearchIcon}
                 onChange={handleSearch}
                 value={search}
                 type="text"
                 placeholder="Search the store..."
+                isDisabled={isDisabled}
             />
 
-            <button className="searchBar__button">
+            <button disabled={isDisabled} className="searchBar__button">
                 <img
                     className="searchBar__button__image"
                     alt="store search"

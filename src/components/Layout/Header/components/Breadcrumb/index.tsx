@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
-import styled from "styled-components"
 import { useLocation } from "react-router-dom"
 import type { Location } from "react-router-dom"
 
-import { Container, Row, Col } from "../../Grid"
-import { routes } from "../../../../App"
-import { RouteObject } from "../../../../shared/types"
+import { Container, Row, Col } from "../../../Grid"
+import { routes } from "../../../../../App"
+import { RouteObject } from "../../../../../shared/types"
+
+import * as S from './styles'
 
 const OMITTED_ROUTES = ["/"]
 
@@ -66,11 +67,11 @@ const RecursiveBreadcrumb = ({
     return Component
 }
 
-const Breadcrumb = () => {
+export const Breadcrumb = () => {
     const location: Location = useLocation()
 
     return !OMITTED_ROUTES.includes(location.pathname) ? (
-        <StyledBreadcrumb>
+        <S.Breadcrumb>
             <Container>
                 <Row>
                     <Col>
@@ -83,38 +84,7 @@ const Breadcrumb = () => {
                     </Col>
                 </Row>
             </Container>
-        </StyledBreadcrumb>
+        </S.Breadcrumb>
     ) : null
 }
 
-const StyledBreadcrumb = styled.div`
-    padding: 24px 0;
-    ul {
-        display: flex;
-        flex-flow: row nowrap;
-        gap: 24px;
-        list-style: none;
-        padding: 0;
-
-        li,
-        p,
-        span {
-            font-size: ${({ theme }) => theme.fontSize.xs};
-            text-transform: capitalize;
-        }
-
-        .fade {
-            opacity: 0.7;
-        }
-
-        li {
-            .link-slash {
-                display: flex;
-                flex-flow: row nowrap;
-                gap: 24px;
-            }
-        }
-    }
-`
-
-export default Breadcrumb

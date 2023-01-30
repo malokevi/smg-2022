@@ -1,8 +1,11 @@
 [
     {
         "label": "Products",
-        "to": "products",
         "dropdown": [
+            {
+                "label": "All Products",
+                "to": "products"
+            },
             {
                 "label": "CPAP Masks",
                 "to": "products/masks"
@@ -11,8 +14,11 @@
     },
     {
         "label": "Knowledge Center",
-        "to": "knowledge-center",
         "dropdown": [
+            {
+                "label": "All Topics",
+                "to": "learn-more"
+            },
             {
                 "label": "category One",
                 "to": "learn-more/category-one"

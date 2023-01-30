@@ -5,6 +5,7 @@ export const Brands = styled.div`
     flex-flow: row wrap;
     width: 100%;
     justify-content: space-around;
+    gap: 42px;
 
     img {
         align-self: center;
@@ -17,6 +18,10 @@ export const BrandsContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.lightblue};
 
     img {
-        max-height: 100px;
+        max-height: 60px;
+
+        @media (min-width: 768px) {
+            max-height: 100px;
+        }
     }
 `
