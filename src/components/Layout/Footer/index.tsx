@@ -68,12 +68,16 @@ export const Footer = () => {
                     </Col>
                 </Row>
             </Container>
-            <div className="copyright">
-                <p>
-                    © {new Date().getFullYear()} Sleep Management Group. All
-                    rights reserved.
-                </p>
-            </div>
+            <Row>
+                <Col>
+                    <div className="copyright">
+                        <p>
+                            © {new Date().getFullYear()} Sleep Management Group. All
+                            rights reserved.
+                        </p>
+                    </div>
+                </Col>
+            </Row>
         </S.Footer>
     )
 }

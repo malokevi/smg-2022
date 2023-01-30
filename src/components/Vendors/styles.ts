@@ -18,6 +18,10 @@ export const BrandsContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.lightblue};
 
     img {
-        max-height: 100px;
+        max-height: 60px;
+
+        @media (min-width: 768px) {
+            max-height: 100px;
+        }
     }
 `

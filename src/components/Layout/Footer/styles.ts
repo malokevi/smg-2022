@@ -11,21 +11,47 @@ export const Footer = styled.div`
 
         .col {
             & > img {
-                margin-bottom: 42px;
-                max-width: 90%;
+                max-width: 100%;
+                width: 360px;
+                margin: 0 auto 48px auto;
+
+                @media(min-width: 768px) {
+                    margin: 0 0 42px 0;
+                    max-width: 90%;
+                }
             }
 
             &.f-logos {
                 p {
                     margin-bottom: 12px;
+
+                    @media(max-width: 767px) {
+                        text-align: center;
+                    }
+                }
+
+                & > div {
+                    @media(max-width: 767px) {
+                        margin: auto;
+                    }
                 }
             }
 
             &.footer-nav {
+                @media(max-width: 767px) {
+                    margin-top: 48px;
+
+                }
+
                 & > div {
                     display: flex;
                     flex-flow: column nowrap;
-                    margin-left: auto;
+                    text-align: center;
+
+                    @media(min-width: 768px) {
+                        margin-left: auto;
+                        text-align: left;
+                    }
 
                     p {
                         margin-bottom: 18px;
@@ -38,7 +64,10 @@ export const Footer = styled.div`
                         gap: 18px;
                         list-style: none;
                         padding: 0;
-                        margin-left: auto;
+
+                        @media(min-width: 768px) {
+                            margin-left: auto;
+                        }
                     }
                 }
             }
