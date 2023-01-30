@@ -7,11 +7,11 @@ import { Options } from "../Options"
 import * as S from './styles'
 
 export const Toolbar = () => {
-    const { setMobileNavIsOpen } = useHeaderContext()
+    const { setMobileNavIsOpen, mobileNavIsOpen } = useHeaderContext()
 
     return (
         <S.Toolbar>
-            <S.StyledHamburger onClick={(isOpen: boolean) => setMobileNavIsOpen(isOpen)} />
+            <S.StyledHamburger onClick={(isOpen: boolean) => setMobileNavIsOpen(isOpen)} value={mobileNavIsOpen} />
             <div className="menu-tools__section">
                 <SearchBar />
             </div>

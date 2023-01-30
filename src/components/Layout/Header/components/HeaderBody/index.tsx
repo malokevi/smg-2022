@@ -2,21 +2,31 @@ import { Link } from "react-router-dom"
 
 import { Col, Container, Row } from "../../../Grid"
 import Logo from "../../../../../assets/images/logo-final.png"
+import LogoMobile from "../../../../../assets/images/logo-mobile.png"
 import { Toolbar } from "../Toolbar"
 
 import * as S from './styles'
 
-export const HeaderBody = () => {
+type HeaderBodyPropsT = {
+    mobileNavIsOpen?: boolean
+}
+
+export const HeaderBody = ({ mobileNavIsOpen = false }: HeaderBodyPropsT) => {
     return (
-        <S.Layout>
+        <S.Layout mobileNavIsOpen={mobileNavIsOpen}>
             <Container>
                 <Row>
                     <Col lg={4} md={6} sm={7}>
                         <Link className="logo-link" to="">
                             <img
-                                alt="Sleep Management Group homepage link"
+                                alt="Sleep Management Group homepage"
                                 className="logo-link__logo"
                                 src={Logo}
+                            />
+                            <img
+                                alt="Sleep Management Group homepage"
+                                className="logo-link__logo-mobile"
+                                src={LogoMobile}
                             />
                         </Link>
                     </Col>

@@ -19,7 +19,7 @@ export const Hero = styled.div`
         display: flex;
         width: 100%;
         height: 14px;
-        z-index: 2;
+        z-index: 1;
 
         .swiper-pagination-bullet {
             background: #2b2b52;

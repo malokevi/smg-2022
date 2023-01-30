@@ -5,8 +5,8 @@ export const Hamburger = styled.button`
     background: transparent;
 
     span {
-        width: 50px;
-        height: 5px;
+        width: 40px;
+        height: 3px;
         background-color: ${({ theme }) => theme.colors.text.dark};
         display: block;
         margin: 8px auto;
@@ -23,10 +23,10 @@ export const Hamburger = styled.button`
     }
 
     &.is-active span:nth-child(1) {
-        transform: translateY(13px) rotate(45deg);
+        transform: translateY(11px) rotate(45deg);
     }
 
     &.is-active span:nth-child(3){
-        transform: translateY(-13px) rotate(-45deg);
+        transform: translateY(-11px) rotate(-45deg);
     }
 `

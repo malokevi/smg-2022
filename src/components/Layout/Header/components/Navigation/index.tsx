@@ -1,7 +1,10 @@
+import clsx from "clsx"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
-import { Container, Col, Row } from "../../../Grid"
+import Caret from '../../../../../assets/images/caret-down.svg'
 import NavData from "../../../../../static/navigation.json"
+import { Col, Row } from "../../../Grid"
 
 import * as S from './styles'
 
@@ -14,22 +17,27 @@ type DropdownLinkType = {
     label: string
 }
 
-interface LinkType extends DropdownLinkType {
+interface LinkType extends Omit<DropdownLinkType, "to"> {
     dropdown?: DropdownLinkType[]
+    to?: string
 }
 
 export type NavType = LinkType[]
 
 export const Navigation = ({ isOpenOnMobile }: NavigationPropsT) => {
+    const [visibleSubnav, setVisibleSubnav] = useState<number | undefined>()
     const navData: NavType = NavData
 
-    console.log('isOpenOnMobile', isOpenOnMobile)
+    const handleSetVisibleSubnav = (index?: number) => {
+        setVisibleSubnav(index === visibleSubnav ? undefined : index)
+    }
 
     return (
         <S.Navigation isOpenOnMobile={isOpenOnMobile}>
-            <Container>
+            <S.StyledContainer>
                 <Row>
                     <Col>
+                        <S.StyledMobileToolbar />
                         <ul className="navigation">
                             {navData.map(({ dropdown, label, to }, index) => {
                                 const key = `${label.replaceAll(
@@ -38,8 +46,12 @@ export const Navigation = ({ isOpenOnMobile }: NavigationPropsT) => {
                                 )}-${to}-${index}`
 
                                 return (
-                                    <li key={key}>
-                                        <Link to={to}>{label}</Link>
+                                    <li key={key} className={clsx("navigation__item", { "navigation__item--is-active": index === visibleSubnav })}>
+                                        {
+                                            to
+                                                ? <Link to={to}>{label}</Link>
+                                                : <button type="button" onClick={() => handleSetVisibleSubnav(index)}>{label} <img alt="" src={Caret} /></button>
+                                        }
 
                                         {dropdown && (
                                             <div className="dropdown-container">
@@ -68,7 +80,7 @@ export const Navigation = ({ isOpenOnMobile }: NavigationPropsT) => {
                         </ul>
                     </Col>
                 </Row>
-            </Container>
+            </S.StyledContainer>
         </S.Navigation>
     )
 }

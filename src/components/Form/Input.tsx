@@ -10,7 +10,7 @@ export type InputType = {
     onChange?: (e: ProductsFilterDataType) => void
     type: any
     value?: string | number
-    icon?: any
+    isDisabled?: boolean
 }
 
 export const Input = ({
@@ -20,7 +20,7 @@ export const Input = ({
     value,
     onChange,
     placeholder,
-    icon
+    isDisabled,
 }: InputType) => {
     const id = useId()
 
@@ -38,6 +38,7 @@ export const Input = ({
                 id={id}
                 type={type}
                 value={value}
+                disabled={isDisabled}
                 placeholder={placeholder}
                 onChange={handleInputTextChange}
             />

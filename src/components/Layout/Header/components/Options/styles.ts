@@ -16,7 +16,7 @@ export const Options = styled.div`
 
         & > div {
             display: flex;
-            flex-flow: row nowrap;
+            flex-flow: row wrap;
             gap: 8px;
         }
     }

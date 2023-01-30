@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useRef, useState } from "react"
 
 import { Navigation } from "./components/Navigation"
 import { QuickLinks } from "./components/QuickLinks"
@@ -8,10 +8,12 @@ import { HeaderBody } from "./components/HeaderBody"
 import * as S from './styles'
 
 type HeaderContextValueT = {
+    mobileNavIsOpen: boolean
     setMobileNavIsOpen: (isOpen: boolean) => void
 }
 
 const HeaderContext = createContext({
+    mobileNavIsOpen: false,
     setMobileNavIsOpen: (isOpen: boolean) => { }
 } as HeaderContextValueT)
 
@@ -27,11 +29,12 @@ export const Header = () => {
 
     return (
         <HeaderContext.Provider value={{
-            setMobileNavIsOpen: handleMobileNavChange
+            setMobileNavIsOpen: handleMobileNavChange,
+            mobileNavIsOpen
         }}>
             <S.Header>
                 <QuickLinks />
-                <HeaderBody />
+                <HeaderBody mobileNavIsOpen={mobileNavIsOpen} />
                 <Navigation isOpenOnMobile={mobileNavIsOpen} />
                 <Breadcrumb />
             </S.Header>

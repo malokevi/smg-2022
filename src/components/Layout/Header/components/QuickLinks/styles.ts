@@ -1,10 +1,14 @@
 import styled from "styled-components"
 
 export const QuickLinks = styled.div`
-    display: flex;
     flex-flow: column;
     padding: 12px 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+    display: none;
+
+    @media(min-width: 768px) {
+        display: flex;
+    }
 
     .quick-links {
         display: flex;
