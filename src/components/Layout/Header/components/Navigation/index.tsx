@@ -60,7 +60,7 @@ export const Navigation = () => {
                 <Row>
                     <Col>
                         <S.StyledMobileToolbar />
-                        <ul className="navigation">
+                        <ul ref={navRef} className="navigation">
                             {navData.map(({ dropdown, label, to }, index) => {
                                 const key = `${label.replaceAll(
                                     " ",
