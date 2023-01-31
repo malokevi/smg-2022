@@ -1,6 +1,6 @@
-import clsx from "clsx"
 import { useEffect, useRef, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import clsx from "clsx"
 
 import Caret from '../../../../../assets/images/caret-down.svg'
 import NavData from "../../../../../static/navigation.json"
@@ -22,30 +22,31 @@ interface LinkType extends Omit<DropdownLinkType, "to"> {
 export type NavType = LinkType[]
 
 export const Navigation = () => {
-    const { mobileNavIsOpen } = useHeaderContext()
+    const { mobileNavIsOpen, setMobileNavIsOpen } = useHeaderContext()
     const [visibleSubnav, setVisibleSubnav] = useState<number | undefined>()
     const navData: NavType = NavData
     const navRef = useRef<HTMLUListElement | null>(null)
-    let location = useLocation();
+    let location = useLocation()
 
     // on route change, scroll to top and close navigation
     useEffect(() => {
-        handleSetVisibleSubnav();
-        window.scrollTo(0, 0);
+        handleSetVisibleSubnav()
+        setMobileNavIsOpen(false)
+        window.scrollTo(0, 0)
     }, [location]);
 
     // close subnav when clicking outside of navigation
     useEffect(() => {
         const handleClickOutside = ({ target }: MouseEvent): void => {
             if (navRef.current && !navRef.current.contains(target as Node)) {
-                handleSetVisibleSubnav();
+                handleSetVisibleSubnav()
             }
         };
 
-        document.addEventListener('click', handleClickOutside, true);
+        document.addEventListener('click', handleClickOutside, true)
 
         return () => {
-            document.removeEventListener('click', handleClickOutside, true);
+            document.removeEventListener('click', handleClickOutside, true)
         };
     }, []);
 

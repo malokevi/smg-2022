@@ -8,6 +8,11 @@ const GlobalStyle = createGlobalStyle`
     flex-flow: column;
     min-height: 100%;
     overflow-y: scroll;
+    box-sizing: border-box;
+    
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
 
     body {
       flex-grow: 2;
@@ -44,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         font-style: none;
         color: ${({ theme }) =>
-            theme.colors.text.dark}; // todo - create link component
+    theme.colors.text.dark}; // todo - create link component
 
         &:hover {
           color: ${({ theme }) => theme.colors.text.darkHover};

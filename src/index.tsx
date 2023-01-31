@@ -9,6 +9,7 @@ import { store } from "./store/store"
 import App from "./App"
 import defaultTheme from "./theme/theme"
 import GlobalStyle from "./theme/globalStyles"
+import { AuthenticationProvider } from "./auth/AuthenticationProvider"
 
 const client = new ApolloClient({
     uri: `${process.env.REACT_APP_STRAPI_ENDPOINT}/graphql`,
@@ -18,15 +19,17 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(document.getElementById("root")!)
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <ThemeProvider theme={defaultTheme}>
-                <GlobalStyle />
-                <ReduxProvider store={store}>
-                    <ApolloProvider client={client}>
-                        <App />
-                    </ApolloProvider>
-                </ReduxProvider>
-            </ThemeProvider>
-        </BrowserRouter>
+        <AuthenticationProvider>
+            <BrowserRouter>
+                <ThemeProvider theme={defaultTheme}>
+                    <GlobalStyle />
+                    <ReduxProvider store={store}>
+                        <ApolloProvider client={client}>
+                            <App />
+                        </ApolloProvider>
+                    </ReduxProvider>
+                </ThemeProvider>
+            </BrowserRouter>
+        </AuthenticationProvider>
     </React.StrictMode>
 )
