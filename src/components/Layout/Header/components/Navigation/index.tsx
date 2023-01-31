@@ -1,11 +1,11 @@
 import clsx from "clsx"
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { useHeaderContext } from "../.."
+import { useEffect, useRef, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 
 import Caret from '../../../../../assets/images/caret-down.svg'
 import NavData from "../../../../../static/navigation.json"
 import { Col, Row } from "../../../Grid"
+import { useHeaderContext } from "../.."
 
 import * as S from './styles'
 
@@ -25,6 +25,29 @@ export const Navigation = () => {
     const { mobileNavIsOpen } = useHeaderContext()
     const [visibleSubnav, setVisibleSubnav] = useState<number | undefined>()
     const navData: NavType = NavData
+    const navRef = useRef<HTMLUListElement | null>(null)
+    let location = useLocation();
+
+    // on route change, scroll to top and close navigation
+    useEffect(() => {
+        handleSetVisibleSubnav();
+        window.scrollTo(0, 0);
+    }, [location]);
+
+    // close subnav when clicking outside of navigation
+    useEffect(() => {
+        const handleClickOutside = ({ target }: MouseEvent): void => {
+            if (navRef.current && !navRef.current.contains(target as Node)) {
+                handleSetVisibleSubnav();
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside, true);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, []);
 
     const handleSetVisibleSubnav = (index?: number) => {
         setVisibleSubnav(index === visibleSubnav ? undefined : index)
@@ -36,7 +59,7 @@ export const Navigation = () => {
                 <Row>
                     <Col>
                         <S.StyledMobileToolbar />
-                        <ul className="navigation">
+                        <ul ref={navRef} className="navigation">
                             {navData.map(({ dropdown, label, to }, index) => {
                                 const key = `${label.replaceAll(
                                     " ",
