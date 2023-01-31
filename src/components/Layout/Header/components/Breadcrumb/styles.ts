@@ -1,7 +1,12 @@
 import styled from "styled-components"
 
-export const Breadcrumb = styled.div`
+export const Breadcrumb = styled.div<{ isHiddenOnMobile: boolean }>`
     padding: 24px 0;
+
+    @media (max-width: 767px) {
+        display: ${({ isHiddenOnMobile }) => isHiddenOnMobile ? "none" : "block"};
+    }
+
     ul {
         display: flex;
         flex-flow: row nowrap;

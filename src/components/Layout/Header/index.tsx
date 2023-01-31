@@ -34,8 +34,8 @@ export const Header = () => {
         }}>
             <S.Header>
                 <QuickLinks />
-                <HeaderBody mobileNavIsOpen={mobileNavIsOpen} />
-                <Navigation isOpenOnMobile={mobileNavIsOpen} />
+                <HeaderBody />
+                <Navigation />
                 <Breadcrumb />
             </S.Header>
         </HeaderContext.Provider>

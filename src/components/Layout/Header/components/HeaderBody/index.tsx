@@ -3,15 +3,14 @@ import { Link } from "react-router-dom"
 import { Col, Container, Row } from "../../../Grid"
 import Logo from "../../../../../assets/images/logo-final.png"
 import LogoMobile from "../../../../../assets/images/logo-mobile.png"
+import { useHeaderContext } from "../.."
 import { Toolbar } from "../Toolbar"
 
 import * as S from './styles'
 
-type HeaderBodyPropsT = {
-    mobileNavIsOpen?: boolean
-}
+export const HeaderBody = () => {
+    const { mobileNavIsOpen } = useHeaderContext()
 
-export const HeaderBody = ({ mobileNavIsOpen = false }: HeaderBodyPropsT) => {
     return (
         <S.Layout mobileNavIsOpen={mobileNavIsOpen}>
             <Container>

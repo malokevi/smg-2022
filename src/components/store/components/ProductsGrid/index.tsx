@@ -44,7 +44,7 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
     }
 
     return (
-        <Col className="grid-container" sm={12} md={8} lg={9}>
+        <>
             <PageTitle marginBottom={0}>{category || "All Products"}</PageTitle>
 
             <ProductsToolbar
@@ -73,7 +73,7 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
                                     name={name}
                                     price={price}
                                     salePrice={salePrice}
-                                    image={`${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}`}
+                                    image={image.data ? `${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}` : undefined}
                                     key={`product-${id}`}
                                 />
                             ) : (
@@ -93,6 +93,6 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
                 onChange={handlePaginate}
                 total={paginationTotals.total}
             />
-        </Col>
+        </>
     )
 }
