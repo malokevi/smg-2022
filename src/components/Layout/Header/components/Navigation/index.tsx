@@ -1,11 +1,11 @@
 import clsx from "clsx"
 import { useEffect, useRef, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { useHeaderContext } from "../.."
 
 import Caret from '../../../../../assets/images/caret-down.svg'
 import NavData from "../../../../../static/navigation.json"
 import { Col, Row } from "../../../Grid"
+import { useHeaderContext } from "../.."
 
 import * as S from './styles'
 
@@ -28,11 +28,13 @@ export const Navigation = () => {
     const navRef = useRef<HTMLUListElement | null>(null)
     let location = useLocation();
 
+    // on route change, scroll to top and close navigation
     useEffect(() => {
         handleSetVisibleSubnav();
         window.scrollTo(0, 0);
     }, [location]);
 
+    // close subnav when clicking outside of navigation
     useEffect(() => {
         const handleClickOutside = ({ target }: MouseEvent): void => {
             if (navRef.current && !navRef.current.contains(target as Node)) {
