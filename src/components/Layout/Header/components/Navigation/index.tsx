@@ -1,16 +1,13 @@
 import clsx from "clsx"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useHeaderContext } from "../.."
 
 import Caret from '../../../../../assets/images/caret-down.svg'
 import NavData from "../../../../../static/navigation.json"
 import { Col, Row } from "../../../Grid"
 
 import * as S from './styles'
-
-type NavigationPropsT = {
-    isOpenOnMobile: boolean
-}
 
 type DropdownLinkType = {
     to: string
@@ -24,7 +21,8 @@ interface LinkType extends Omit<DropdownLinkType, "to"> {
 
 export type NavType = LinkType[]
 
-export const Navigation = ({ isOpenOnMobile }: NavigationPropsT) => {
+export const Navigation = () => {
+    const { mobileNavIsOpen } = useHeaderContext()
     const [visibleSubnav, setVisibleSubnav] = useState<number | undefined>()
     const navData: NavType = NavData
 
@@ -33,7 +31,7 @@ export const Navigation = ({ isOpenOnMobile }: NavigationPropsT) => {
     }
 
     return (
-        <S.Navigation isOpenOnMobile={isOpenOnMobile}>
+        <S.Navigation isOpenOnMobile={mobileNavIsOpen}>
             <S.StyledContainer>
                 <Row>
                     <Col>
