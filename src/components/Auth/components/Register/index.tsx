@@ -48,7 +48,6 @@ export const RegisterModule = () => {
     }
 
     useEffect(() => {
-        console.log('check data reg', data)
         !!data && setUser(data.register)
     }, [data])
 

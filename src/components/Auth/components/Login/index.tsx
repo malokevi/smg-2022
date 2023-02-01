@@ -30,12 +30,10 @@ export const LoginModule = () => {
 
     const handleLogin = async (values: { [key: string]: any }, e: SubmitEvent) => {
         e.preventDefault()
-        console.log('check values', values)
         userLogin({ variables: values })
     }
 
     useEffect(() => {
-        console.log('check data login', data)
         !!data && setUser(data.login)
     }, [data])
 

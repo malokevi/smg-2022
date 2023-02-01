@@ -39,6 +39,7 @@ declare module "styled-components" {
                 danger: string
             }
             gray: string
+            lightGray: string
             red: string
             blue: string
             white: string

@@ -25,6 +25,7 @@ const theme: DefaultTheme = {
             danger: "red"
         },
         gray: "#eee",
+        lightGray: "#eaeaea",
         red: "#c1282d",
         blue: "#70CDDD",
         white: "#fff",

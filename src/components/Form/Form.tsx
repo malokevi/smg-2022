@@ -68,7 +68,6 @@ const Form = ({ fields, onSubmit }: FormPropsT) => {
         value: any // TODO - strict type
         name: string
     }) => {
-        console.log(!!value, value.length, value, name)
         //reset as undefined when input is falsy
         setValues({ ...values, [name]: value || undefined })
     }
