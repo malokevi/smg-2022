@@ -46,7 +46,7 @@ const RenderField = ({
 
 type FormPropsT = {
     fields: FormFieldType[]
-    onSubmit: (e: any) => void
+    onSubmit: (values: { [key: string]: any }, e: SubmitEvent) => void
 }
 
 const Form = ({ fields, onSubmit }: FormPropsT) => {
@@ -75,7 +75,7 @@ const Form = ({ fields, onSubmit }: FormPropsT) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        onSubmit(values)
+        onSubmit(values, e)
     }
 
     return (

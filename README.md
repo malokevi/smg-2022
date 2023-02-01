@@ -19,3 +19,4 @@ yarn start
 -   implement Git Workflows to automate testing
 -   migrate components, fonts, colours and other design-centric helpers to a Storybook design system hosted on npm
 -   add Strapi backend, fronend, and component library to an NX monorepo to help facilitate development
+-   Integrate multiple payment providers (Shopify? Stripe?)

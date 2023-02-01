@@ -1,5 +1,9 @@
+import { useMutation } from "@apollo/client"
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
 
+import { useAuthContext } from "../../../../auth/AuthenticationProvider"
+import { USER_LOGIN } from "../../../../gql/mutations"
 import Form, { FormFieldType, InputTypes } from "../../../Form/Form"
 import { PageTitle } from "../../../PageTitle"
 import { AuthContainer } from "../AuthContainer"
@@ -10,7 +14,7 @@ const loginForm: FormFieldType[] = [
         type: InputTypes.TEXT,
         label: "Email",
         placeholder: "Enter your username...",
-        name: "email"
+        name: "identifier"
     },
     {
         type: InputTypes.PASSWORD,
@@ -21,9 +25,23 @@ const loginForm: FormFieldType[] = [
 ]
 
 export const LoginModule = () => {
-    const handleLogin = () => {
-        // TODO - handle login
+    const { setUser } = useAuthContext()
+    const [userLogin, { loading, error, data }] = useMutation(USER_LOGIN)
+
+    const handleLogin = async (values: { [key: string]: any }, e: SubmitEvent) => {
+        e.preventDefault()
+        console.log('check values', values)
+        userLogin({ variables: values })
     }
+
+    useEffect(() => {
+        console.log('check data login', data)
+        !!data && setUser(data.login)
+    }, [data])
+
+
+    if (loading) return <p>Submitting...</p>;
+    if (error) return <p>Submission error! ${error.message}`</p>;
 
     return (
         <AuthContainer>

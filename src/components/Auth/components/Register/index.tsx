@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useMutation } from "@apollo/client"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useAuthContext } from "../../../../auth/AuthenticationProvider"
 import { API } from "../../../../auth/constants"
 import { setToken } from "../../../../auth/helpers"
+import { USER_REGISTER } from "../../../../gql/mutations"
 
 import Form, { FormFieldType, InputTypes } from "../../../Form/Form"
 import { PageTitle } from "../../../PageTitle"
@@ -12,8 +14,14 @@ import { headingMarginBottom } from "../common/common.constants"
 const registerForm: FormFieldType[] = [
     {
         type: InputTypes.TEXT,
-        label: "Email Address",
+        label: "Username",
         placeholder: "Enter your username...",
+        name: "username"
+    },
+    {
+        type: InputTypes.TEXT,
+        label: "Email Address",
+        placeholder: "Enter your email...",
         name: "email"
     },
     {
@@ -32,45 +40,21 @@ const registerForm: FormFieldType[] = [
 
 export const RegisterModule = () => {
     const { setUser } = useAuthContext()
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [userRegister, { loading, error, data }] = useMutation(USER_REGISTER)
 
-    const handleRegister = async (values: { [key: string]: any }) => {
-        setIsLoading(true);
-        try {
-            const response = await fetch(`${API}/auth/local/register`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(values),
-            });
+    const handleRegister = async (values: { [key: string]: any }, e: SubmitEvent) => {
+        e.preventDefault()
+        userRegister({ variables: values })
+    }
 
-            const data = await response.json();
-            if (data?.error) {
-                throw data?.error;
-            } else {
-                // set the token
-                setToken(data.jwt);
+    useEffect(() => {
+        console.log('check data reg', data)
+        !!data && setUser(data.register)
+    }, [data])
 
-                // set the user
-                setUser(data.user);
 
-                // TODO - handle success
-                // message.success(`Welcome to Social Cards ${data.user.username}!`);
-
-                // TODO - handle navigation
-                // navigate("/profile", { replace: true });
-            }
-        } catch (error) {
-            console.error(error);
-            // TODO - handle error
-            // setError(error?.message ?? "Something went wrong!");
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
+    if (loading) return <p>Submitting...</p>;
+    if (error) return <p>Submission error! ${error.message}`</p>;
 
     return (
         <AuthContainer>
