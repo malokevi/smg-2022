@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { API, BEARER } from "./constants";
-import { getToken } from "./helpers";
+import { getToken, removeToken } from "./helpers";
 
 type UserT = { [key: string]: any }
 
@@ -9,6 +9,7 @@ type AuthContextT = {
     user?: UserT;
     isLoading: boolean;
     setUser: (user: { [key: string]: any }) => void;
+    logoutUser: () => void
 }
 
 type AuthenticationProviderPropsT = {
@@ -19,6 +20,7 @@ export const AuthContext = createContext({
     user: undefined,
     isLoading: false,
     setUser: () => { },
+    logoutUser: () => { },
 } as AuthContextT);
 
 export const useAuthContext = () => useContext(AuthContext);
@@ -26,8 +28,14 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthenticationProvider = ({ children }: AuthenticationProviderPropsT) => {
     const [userData, setUserData] = useState<UserT>();
     const [isLoading, setIsLoading] = useState(false);
-
     const authToken = getToken();
+
+    useEffect(() => {
+        if (authToken) {
+            fetchLoggedInUser(authToken);
+        }
+    }, [authToken]);
+
 
     const fetchLoggedInUser = async (token: string) => {
         setIsLoading(true);
@@ -52,14 +60,13 @@ export const AuthenticationProvider = ({ children }: AuthenticationProviderProps
         setUserData(user);
     };
 
-    useEffect(() => {
-        if (authToken) {
-            fetchLoggedInUser(authToken);
-        }
-    }, [authToken]);
+    const handleLogout = (callback?: () => void) => {
+        removeToken();
+        callback && callback()
+    };
 
     return (
-        <AuthContext.Provider value={{ user: userData, setUser: handleUser, isLoading }}>
+        <AuthContext.Provider value={{ user: userData, setUser: handleUser, logoutUser: handleLogout, isLoading }}>
             {children}
         </AuthContext.Provider>
     )

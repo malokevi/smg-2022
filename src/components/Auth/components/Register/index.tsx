@@ -22,7 +22,7 @@ const registerForm: FormFieldType[] = [
         type: InputTypes.PASSWORD,
         label: "Confirm Password",
         placeholder: "Confirm your password...",
-        name: "password"
+        name: "passwordConfirm"
     }
 ]
 
