@@ -16,10 +16,6 @@ export interface FormFieldType extends InputType, SelectType {
     type: InputTypes
 }
 
-type FormPropsType = {
-    fields: FormFieldType[]
-}
-
 type RenderFieldPropsT = {
     field: FormFieldType
     onChange?: (e: any) => void
@@ -48,7 +44,12 @@ const RenderField = ({
     return elem
 }
 
-const Form = ({ fields }: FormPropsType) => {
+type FormPropsT = {
+    fields: FormFieldType[]
+    onSubmit: (e: any) => void
+}
+
+const Form = ({ fields, onSubmit }: FormPropsT) => {
     const [values, setValues] = useState(() => {
         // initialize form field values to undefined.
         const initialValues: { [key: string]: any } = {}
@@ -74,7 +75,7 @@ const Form = ({ fields }: FormPropsType) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        console.log(values)
+        onSubmit(values)
     }
 
     return (

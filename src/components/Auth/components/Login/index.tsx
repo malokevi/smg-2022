@@ -21,12 +21,16 @@ const loginForm: FormFieldType[] = [
 ]
 
 export const LoginModule = () => {
+    const handleLogin = () => {
+        // TODO - handle login
+    }
+
     return (
         <AuthContainer>
             <PageTitle marginBottom={headingMarginBottom} centered>
                 Login
             </PageTitle>
-            <Form fields={loginForm} />
+            <Form fields={loginForm} onSubmit={handleLogin} />
             <Link to="/register">Create New Account</Link>
         </AuthContainer>
     )
