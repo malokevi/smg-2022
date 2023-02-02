@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 
 import ProfileIcon from "../../../../../assets/images/ico-profile.svg"
 import { useAuthContext } from "../../../../../auth/AuthenticationProvider"
+import Button from "../../../../Button"
+import { ButtonVersionType } from "../../../../Button/styles"
 
 import * as S from './styles'
 
@@ -22,7 +24,7 @@ export const Options = () => {
                         </>)
                         : (
                             <>
-                                <button onClick={() => logoutUser()}>Logout</button>
+                                <Button version={ButtonVersionType.LINK} label="Logout" onClick={logoutUser} /> / <Link to="profile">My Profile</Link>
                             </>
                         )
                     }

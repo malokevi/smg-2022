@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
-import { removeToken } from "./helpers";
+import { TOKEN_KEY, USER_KEY } from "./constants";
+import { deleteStorage, getStorage, setStorage } from "./helpers";
 
 type UserT = { [key: string]: any }
 
 type AuthContextT = {
     user?: UserT;
-    setUser: (user: { [key: string]: any }) => void;
+    loginUser: (user: { [key: string]: any }, token: string, callback?: () => void) => void;
     logoutUser: () => void
 }
 
@@ -16,7 +16,7 @@ type AuthenticationProviderPropsT = {
 
 export const AuthContext = createContext({
     user: undefined,
-    setUser: () => { },
+    loginUser: () => { },
     logoutUser: () => { },
 } as AuthContextT);
 
@@ -26,24 +26,35 @@ export const AuthenticationProvider = ({ children }: AuthenticationProviderProps
     const [userData, setUserData] = useState<UserT>();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!userData && token) {
-            removeToken();
+        const user = getStorage(USER_KEY);
+        const token = getStorage(TOKEN_KEY);
+        
+        if ((user && token) && typeof userData === 'undefined') {
+            setUserData(JSON.parse(user));
         }
-    }, [userData])
+    }, [])
 
-    const handleSetUser = (user: UserT) => {
+    // TODO - use cookies instead of local storage. add TTL
+    const handleLogin = (
+        user: UserT, 
+        token: string,
+        callback?: () => void
+    ) => {    
+        setStorage(TOKEN_KEY, token)
+        setStorage(USER_KEY, JSON.stringify(user))
         setUserData(user);
+        callback && callback();
     };
 
-    // callback for redirection or any action following logout
     const handleLogout = (callback?: () => void) => {
+        deleteStorage(TOKEN_KEY);
+        deleteStorage(USER_KEY);
         setUserData(undefined);
         callback && callback();
     };
 
     return (
-        <AuthContext.Provider value={{ user: userData, setUser: handleSetUser, logoutUser: handleLogout }}>
+        <AuthContext.Provider value={{ user: userData, loginUser: handleLogin, logoutUser: handleLogout }}>
             {children}
         </AuthContext.Provider>
     )

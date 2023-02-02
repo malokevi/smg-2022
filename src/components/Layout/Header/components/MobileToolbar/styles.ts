@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { buttonReset } from "../../../../theme/mixins/resets";
+import { buttonReset } from "../../../../../theme/mixins/resets";
 
 // TODO : Improve responsiveness down to 320px
 export const MobileToolbar = styled.div<{ showSearch: boolean }>`

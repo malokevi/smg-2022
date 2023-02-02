@@ -1,6 +1,6 @@
-import { useMutation } from "@apollo/client"
 import { useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
+import { useMutation } from "@apollo/client"
 
 import { useAuthContext } from "../../../../auth/AuthenticationProvider"
 import { USER_LOGIN } from "../../../../gql/mutations"
@@ -25,7 +25,7 @@ const loginForm: FormFieldType[] = [
 ]
 
 export const LoginModule = () => {
-    const { setUser } = useAuthContext()
+    const { loginUser, user } = useAuthContext()
     const [userLogin, { loading, error, data }] = useMutation(USER_LOGIN)
 
     const handleLogin = async (values: { [key: string]: any }, e: SubmitEvent) => {
@@ -34,14 +34,17 @@ export const LoginModule = () => {
     }
 
     useEffect(() => {
-        !!data && setUser(data.login)
+        if(!!data) {
+            const { user, jwt } = data.login;  
+            loginUser(user, jwt)
+        }
     }, [data])
 
-
+    // TODO - Add loading and error states
     if (loading) return <p>Submitting...</p>;
     if (error) return <p>Submission error! ${error.message}`</p>;
 
-    return (
+    return user ? <Navigate to="/" /> : (
         <AuthContainer>
             <PageTitle marginBottom={headingMarginBottom} centered>
                 Login

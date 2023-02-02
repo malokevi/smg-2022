@@ -22,7 +22,8 @@ const theme: DefaultTheme = {
             primary: "#70cddd",
             secondary: "white",
             warning: "#c1282d",
-            danger: "red"
+            danger: "red",
+            link: "transparent"
         },
         gray: "#eee",
         lightGray: "#eaeaea",

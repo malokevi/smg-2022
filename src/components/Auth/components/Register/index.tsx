@@ -1,11 +1,9 @@
 import { useMutation } from "@apollo/client"
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { useAuthContext } from "../../../../auth/AuthenticationProvider"
-import { API } from "../../../../auth/constants"
-import { setToken } from "../../../../auth/helpers"
-import { USER_REGISTER } from "../../../../gql/mutations"
+import { useEffect } from "react"
+import { Link, Navigate } from "react-router-dom"
 
+import { useAuthContext } from "../../../../auth/AuthenticationProvider"
+import { USER_REGISTER } from "../../../../gql/mutations"
 import Form, { FormFieldType, InputTypes } from "../../../Form/Form"
 import { PageTitle } from "../../../PageTitle"
 import { AuthContainer } from "../AuthContainer"
@@ -39,7 +37,7 @@ const registerForm: FormFieldType[] = [
 ]
 
 export const RegisterModule = () => {
-    const { setUser } = useAuthContext()
+    const { loginUser, user } = useAuthContext()
     const [userRegister, { loading, error, data }] = useMutation(USER_REGISTER)
 
     const handleRegister = async (values: { [key: string]: any }, e: SubmitEvent) => {
@@ -48,14 +46,17 @@ export const RegisterModule = () => {
     }
 
     useEffect(() => {
-        !!data && setUser(data.register)
+        if(!!data) {
+            const { user, jwt } = data.login;  
+            loginUser(user, jwt)
+        }
     }, [data])
 
 
     if (loading) return <p>Submitting...</p>;
     if (error) return <p>Submission error! ${error.message}`</p>;
 
-    return (
+    return user ? <Navigate to="/" /> : (
         <AuthContainer>
             <PageTitle marginBottom={headingMarginBottom} centered>
                 Create an Account

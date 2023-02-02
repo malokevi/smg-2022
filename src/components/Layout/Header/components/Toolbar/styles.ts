@@ -7,6 +7,8 @@ export const Toolbar = styled.div`
     gap: 12px 28px;
     margin: auto 0 auto auto;
     flex-direction: column-reverse;
+    width: 100%;
+    max-width: 450px;
 
     @media (min-width: 1320px) {
         flex-flow: row nowrap;
@@ -16,9 +18,14 @@ export const Toolbar = styled.div`
         display: none;
         flex-flow: row nowrap;
         gap: 28px;
+        align-self: flex-end;
 
         @media(min-width: 768px) {
             display: flex;
+        }
+
+        &.menu-tools__section--search {
+            width: 100%;
         }
     }
 
@@ -32,6 +39,8 @@ export const Toolbar = styled.div`
 `
 
 export const StyledHamburger = styled(Hamburger)`
+    align-self: flex-end;
+
     @media(min-width: 768px) {
         display: none;
     }
