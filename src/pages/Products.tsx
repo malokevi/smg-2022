@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { useQuery } from "@apollo/client"
 
 import { Col, Container, Row } from "../components/Layout/Grid"
 import { ProductsGridLayout } from "../components/store/components/ProductsGridLayout"

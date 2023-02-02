@@ -37,8 +37,10 @@ declare module "styled-components" {
                 secondary: string
                 warning: string
                 danger: string
+                link: string
             }
             gray: string
+            lightGray: string
             red: string
             blue: string
             white: string

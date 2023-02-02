@@ -36,3 +36,13 @@ export const GET_PRODUCTS = ApolloQueryWrapper(`
         }
     }
 `)
+
+export const USER_FETCH = ApolloQueryWrapper(`
+    query UserFetch($email: String!) {
+        user(email: $email) {
+            email
+            username
+            firstName
+        }
+    }
+`)

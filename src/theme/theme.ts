@@ -22,9 +22,11 @@ const theme: DefaultTheme = {
             primary: "#70cddd",
             secondary: "white",
             warning: "#c1282d",
-            danger: "red"
+            danger: "red",
+            link: "transparent"
         },
         gray: "#eee",
+        lightGray: "#eaeaea",
         red: "#c1282d",
         blue: "#70CDDD",
         white: "#fff",

@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-import SearchIcon from "../../../../assets/images/ico-search.svg"
-import { SearchBar } from "../../../SearchBar"
-import { Options } from "../components/Options"
+import SearchIcon from "../../../../../assets/images/ico-search.svg"
+import { SearchBar } from "../../../../SearchBar"
+import { Options } from "../Options"
 
 import * as S from './styles'
 

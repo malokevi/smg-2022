@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom"
 import type { Location } from "react-router-dom"
 
 import { Container, Row, Col } from "../../../Grid"
-import { routes } from "../../../../../App"
+import { routes } from "../../../../../routes"
 import { RouteObject } from "../../../../../shared/types"
 import { useHeaderContext } from "../.."
 

@@ -1,14 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
-import { API, BEARER } from "./constants";
-import { getToken } from "./helpers";
+import { TOKEN_KEY, USER_KEY } from "./constants";
+import { deleteStorage, getStorage, setStorage } from "./helpers";
 
 type UserT = { [key: string]: any }
 
 type AuthContextT = {
     user?: UserT;
-    isLoading: boolean;
-    setUser: (user: { [key: string]: any }) => void;
+    loginUser: (user: { [key: string]: any }, token: string, callback?: () => void) => void;
+    logoutUser: () => void
 }
 
 type AuthenticationProviderPropsT = {
@@ -17,49 +16,45 @@ type AuthenticationProviderPropsT = {
 
 export const AuthContext = createContext({
     user: undefined,
-    isLoading: false,
-    setUser: () => { },
+    loginUser: () => { },
+    logoutUser: () => { },
 } as AuthContextT);
 
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthenticationProvider = ({ children }: AuthenticationProviderPropsT) => {
     const [userData, setUserData] = useState<UserT>();
-    const [isLoading, setIsLoading] = useState(false);
-
-    const authToken = getToken();
-
-    const fetchLoggedInUser = async (token: string) => {
-        setIsLoading(true);
-        try {
-            const response = await fetch(`${API}/users/me`, {
-                headers: { Authorization: `${BEARER} ${token}` },
-            });
-            const data = await response.json();
-
-            setUserData(data);
-        } catch (error) {
-            console.error(error);
-            // TODO - handle error
-            console.log("Error While Getting Logged In User Details")
-            // message.error("Error While Getting Logged In User Details");
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const handleUser = (user: UserT) => {
-        setUserData(user);
-    };
 
     useEffect(() => {
-        if (authToken) {
-            fetchLoggedInUser(authToken);
+        const user = getStorage(USER_KEY);
+        const token = getStorage(TOKEN_KEY);
+        
+        if ((user && token) && typeof userData === 'undefined') {
+            setUserData(JSON.parse(user));
         }
-    }, [authToken]);
+    }, [])
+
+    // TODO - use cookies instead of local storage. add TTL
+    const handleLogin = (
+        user: UserT, 
+        token: string,
+        callback?: () => void
+    ) => {    
+        setStorage(TOKEN_KEY, token)
+        setStorage(USER_KEY, JSON.stringify(user))
+        setUserData(user);
+        callback && callback();
+    };
+
+    const handleLogout = (callback?: () => void) => {
+        deleteStorage(TOKEN_KEY);
+        deleteStorage(USER_KEY);
+        setUserData(undefined);
+        callback && callback();
+    };
 
     return (
-        <AuthContext.Provider value={{ user: userData, setUser: handleUser, isLoading }}>
+        <AuthContext.Provider value={{ user: userData, loginUser: handleLogin, logoutUser: handleLogout }}>
             {children}
         </AuthContext.Provider>
     )

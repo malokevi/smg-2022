@@ -12,7 +12,7 @@ export const Toolbar = () => {
     return (
         <S.Toolbar>
             <S.StyledHamburger onClick={(isOpen: boolean) => setMobileNavIsOpen(isOpen)} value={mobileNavIsOpen} />
-            <div className="menu-tools__section">
+            <div className="menu-tools__section menu-tools__section--search">
                 <SearchBar />
             </div>
             <div className="menu-tools__section">

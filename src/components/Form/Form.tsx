@@ -16,17 +16,15 @@ export interface FormFieldType extends InputType, SelectType {
     type: InputTypes
 }
 
-type FormPropsType = {
-    fields: FormFieldType[]
+type RenderFieldPropsT = {
+    field: FormFieldType
+    onChange?: (e: any) => void
 }
 
 const RenderField = ({
     field,
     onChange
-}: {
-    field: FormFieldType
-    onChange: (e: any) => void
-}) => {
+}: RenderFieldPropsT) => {
     let elem = <></>
 
     switch (field.type) {
@@ -46,30 +44,46 @@ const RenderField = ({
     return elem
 }
 
-const Form = ({ fields }: FormPropsType) => {
-    const [values, setValues] = useState([])
+type FormPropsT = {
+    fields: FormFieldType[]
+    onSubmit: (values: { [key: string]: any }, e: SubmitEvent) => void
+}
+
+const Form = ({ fields, onSubmit }: FormPropsT) => {
+    const [values, setValues] = useState(() => {
+        // initialize form field values to undefined.
+        const initialValues: { [key: string]: any } = {}
+
+        fields.forEach(field => {
+            initialValues[field.name] = undefined
+        })
+
+        return initialValues
+    })
 
     const handleFieldChange = ({
-        event,
+        value,
         name
     }: {
-        event: any
+        value: any // TODO - strict type
         name: string
     }) => {
-        setValues({ ...values, [name]: event.target.value })
+        //reset as undefined when input is falsy
+        setValues({ ...values, [name]: value || undefined })
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
+        onSubmit(values, e)
     }
 
     return (
-        <StyledForm>
+        <StyledForm name="register" onSubmit={handleSubmit}>
             {fields.map((field, i) => (
                 <RenderField
                     key={`${field.name}-${i}`}
-                    onChange={(e) =>
-                        handleFieldChange({ event: e, name: field.name })
+                    onChange={({ value }) =>
+                        handleFieldChange({ value, name: field.name })
                     }
                     field={field}
                 />
@@ -79,7 +93,6 @@ const Form = ({ fields }: FormPropsType) => {
                 label="Submit"
                 version={ButtonVersionType.PRIMARY}
                 type="submit"
-                onClick={handleSubmit}
             />
         </StyledForm>
     )

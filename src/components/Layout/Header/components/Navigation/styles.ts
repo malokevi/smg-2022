@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { buttonReset } from "../../../../../theme/mixins/resets"
 import { Container } from "../../../Grid"
-import { MobileToolbar } from "../../MobileToolbar"
+import { MobileToolbar } from "../MobileToolbar"
 
 export const StyledContainer = styled(Container)`
     @media(max-width: 767px) {
