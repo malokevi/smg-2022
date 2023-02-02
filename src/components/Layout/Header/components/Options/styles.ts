@@ -5,6 +5,10 @@ export const Options = styled.div`
     flex-flow: row nowrap;
     gap: 12px;
 
+    a, button, p {
+        white-space: nowrap;
+    }
+
     & > div {
         display: flex;
         flex-flow: column nowrap;
@@ -18,6 +22,10 @@ export const Options = styled.div`
             display: flex;
             flex-flow: row wrap;
             gap: 8px;
+
+            @media(min-width: 1200px) {
+                flex-flow: row nowrap;
+            }
         }
     }
 

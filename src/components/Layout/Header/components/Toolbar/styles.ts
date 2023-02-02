@@ -12,6 +12,8 @@ export const Toolbar = styled.div`
 
     @media (min-width: 1320px) {
         flex-flow: row nowrap;
+        max-width: none;
+        padding-left: 60px;
     }
 
     .menu-tools__section {
