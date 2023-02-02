@@ -28,23 +28,28 @@ export const LoginModule = () => {
     const { loginUser, user } = useAuthContext()
     const [userLogin, { loading, error, data }] = useMutation(USER_LOGIN)
 
-    const handleLogin = async (values: { [key: string]: any }, e: SubmitEvent) => {
+    const handleLogin = async (
+        values: { [key: string]: any },
+        e: SubmitEvent
+    ) => {
         e.preventDefault()
         userLogin({ variables: values })
     }
 
     useEffect(() => {
-        if(!!data) {
-            const { user, jwt } = data.login;  
+        if (!!data) {
+            const { user, jwt } = data.login
             loginUser(user, jwt)
         }
     }, [data])
 
     // TODO - Add loading and error states
-    if (loading) return <p>Submitting...</p>;
-    if (error) return <p>Submission error! ${error.message}`</p>;
+    if (loading) return <p>Submitting...</p>
+    if (error) return <p>Submission error! ${error.message}`</p>
 
-    return user ? <Navigate to="/" /> : (
+    return user ? (
+        <Navigate to="/" />
+    ) : (
         <AuthContainer>
             <PageTitle marginBottom={headingMarginBottom} centered>
                 Login

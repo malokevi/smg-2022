@@ -4,5 +4,4 @@ const Login = () => {
     return <LoginModule />
 }
 
-
 export default Login

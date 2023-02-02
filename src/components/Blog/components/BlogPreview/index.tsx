@@ -2,7 +2,7 @@ import Button from "../../../Button"
 import { fadeUp } from "../../../../shared/motion-variants"
 import { ButtonVersionType } from "../../../Button/styles"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 type BlogEntryPropsType = {
     copy: string
@@ -11,7 +11,12 @@ type BlogEntryPropsType = {
     date: string
 }
 
-export const BlogPreview = ({ copy, title, image, date }: BlogEntryPropsType) => {
+export const BlogPreview = ({
+    copy,
+    title,
+    image,
+    date
+}: BlogEntryPropsType) => {
     return (
         <S.BlogEntry variants={fadeUp}>
             <img src={image} alt="" />

@@ -3,8 +3,13 @@ import ReactDOM from "react-dom/client"
 import { BrowserRouter } from "react-router-dom"
 import { ThemeProvider } from "styled-components"
 import { Provider as ReduxProvider } from "react-redux"
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client"
-import { setContext } from '@apollo/client/link/context';
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink
+} from "@apollo/client"
+import { setContext } from "@apollo/client/link/context"
 
 import { store } from "./store/store"
 import App from "./App"
@@ -13,24 +18,24 @@ import GlobalStyle from "./theme/globalStyles"
 import { AuthenticationProvider } from "./auth/AuthenticationProvider"
 
 const httpLink = createHttpLink({
-    uri: `${process.env.REACT_APP_STRAPI_ENDPOINT}/graphql`,
-});
+    uri: `${process.env.REACT_APP_STRAPI_ENDPOINT}/graphql`
+})
 
 const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token")
 
     return {
         headers: {
             ...headers,
-            authorization: token ? `Bearer ${token}` : "",
+            authorization: token ? `Bearer ${token}` : ""
         }
     }
-});
+})
 
 const client = new ApolloClient({
     uri: `${process.env.REACT_APP_STRAPI_ENDPOINT}/graphql`,
     cache: new InMemoryCache(),
-    link: authLink.concat(httpLink),
+    link: authLink.concat(httpLink)
 })
 
 const root = ReactDOM.createRoot(document.getElementById("root")!)
@@ -43,7 +48,6 @@ root.render(
                         <GlobalStyle />
                         <ReduxProvider store={store}>
                             <App />
-
                         </ReduxProvider>
                     </ThemeProvider>
                 </BrowserRouter>

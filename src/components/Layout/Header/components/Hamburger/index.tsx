@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import clsx from 'clsx'
+import { useEffect, useState } from "react"
+import clsx from "clsx"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 type HamburgerPropsT = {
     className?: string

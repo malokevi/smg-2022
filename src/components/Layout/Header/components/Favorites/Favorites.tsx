@@ -1,6 +1,6 @@
 import HeartIcon from "../../../../../assets/images/ico-heart.svg"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 type FavoritesProps = {
     className?: string

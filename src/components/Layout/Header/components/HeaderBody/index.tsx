@@ -6,7 +6,7 @@ import LogoMobile from "../../../../../assets/images/logo-mobile.png"
 import { useHeaderContext } from "../.."
 import { Toolbar } from "../Toolbar"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 export const HeaderBody = () => {
     const { mobileNavIsOpen } = useHeaderContext()

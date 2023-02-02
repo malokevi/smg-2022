@@ -7,7 +7,7 @@ import { routes } from "../../../../../routes"
 import { RouteObject } from "../../../../../shared/types"
 import { useHeaderContext } from "../.."
 
-import * as S from './styles'
+import * as S from "./styles"
 
 const OMITTED_ROUTES = ["/"]
 
@@ -89,4 +89,3 @@ export const Breadcrumb = () => {
         </S.Breadcrumb>
     ) : null
 }
-

@@ -4,7 +4,7 @@ import SearchIcon from "../../../../../assets/images/ico-search.svg"
 import { SearchBar } from "../../../../SearchBar"
 import { Options } from "../Options"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 type MobileToolbarPropsT = {
     className?: string
@@ -22,7 +22,10 @@ export const MobileToolbar = ({ className }: MobileToolbarPropsT) => {
         <S.MobileToolbar className={className} showSearch={showSearch}>
             <div className="mt__inner">
                 <Options />
-                <button className="mt__inner__searchBtn" onClick={handleShowSearch}>
+                <button
+                    className="mt__inner__searchBtn"
+                    onClick={handleShowSearch}
+                >
                     <img alt="open search bar" src={SearchIcon} />
                 </button>
             </div>

@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import clsx from "clsx"
 
-import Caret from '../../../../../assets/images/caret-down.svg'
+import Caret from "../../../../../assets/images/caret-down.svg"
 import NavData from "../../../../../static/navigation.json"
 import { Col, Row } from "../../../Grid"
 import { useHeaderContext } from "../.."
 
-import * as S from './styles'
+import * as S from "./styles"
 
 type DropdownLinkType = {
     to: string
@@ -33,7 +33,7 @@ export const Navigation = () => {
         handleSetVisibleSubnav()
         setMobileNavIsOpen(false)
         window.scrollTo(0, 0)
-    }, [location]);
+    }, [location])
 
     // close subnav when clicking outside of navigation
     useEffect(() => {
@@ -41,14 +41,14 @@ export const Navigation = () => {
             if (navRef.current && !navRef.current.contains(target as Node)) {
                 handleSetVisibleSubnav()
             }
-        };
+        }
 
-        document.addEventListener('click', handleClickOutside, true)
+        document.addEventListener("click", handleClickOutside, true)
 
         return () => {
-            document.removeEventListener('click', handleClickOutside, true)
-        };
-    }, []);
+            document.removeEventListener("click", handleClickOutside, true)
+        }
+    }, [])
 
     const handleSetVisibleSubnav = (index?: number) => {
         setVisibleSubnav(index === visibleSubnav ? undefined : index)
@@ -68,12 +68,28 @@ export const Navigation = () => {
                                 )}-${to}-${index}`
 
                                 return (
-                                    <li key={key} className={clsx("navigation__item", { "navigation__item--is-active": index === visibleSubnav })}>
-                                        {
-                                            to
-                                                ? <Link to={to}>{label}</Link>
-                                                : <button type="button" onClick={() => handleSetVisibleSubnav(index)}>{label} <img alt="" src={Caret} /></button>
-                                        }
+                                    <li
+                                        key={key}
+                                        className={clsx("navigation__item", {
+                                            "navigation__item--is-active":
+                                                index === visibleSubnav
+                                        })}
+                                    >
+                                        {to ? (
+                                            <Link to={to}>{label}</Link>
+                                        ) : (
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    handleSetVisibleSubnav(
+                                                        index
+                                                    )
+                                                }
+                                            >
+                                                {label}{" "}
+                                                <img alt="" src={Caret} />
+                                            </button>
+                                        )}
 
                                         {dropdown && (
                                             <div className="dropdown-container">

@@ -15,7 +15,5 @@ export const ProductsGridLayout = () => {
         return <p>{error.message}</p>
     }
 
-    return (
-        <ProductsGrid products={data?.products?.data} />
-    )
+    return <ProductsGrid products={data?.products?.data} />
 }

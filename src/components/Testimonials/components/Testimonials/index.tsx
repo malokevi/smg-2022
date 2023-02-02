@@ -1,6 +1,6 @@
-import { Testimonial, TestimonialType } from '../Testimonial'
+import { Testimonial, TestimonialType } from "../Testimonial"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 type TestimonialsType = {
     data: TestimonialType[]

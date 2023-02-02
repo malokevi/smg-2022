@@ -40,23 +40,27 @@ export const RegisterModule = () => {
     const { loginUser, user } = useAuthContext()
     const [userRegister, { loading, error, data }] = useMutation(USER_REGISTER)
 
-    const handleRegister = async (values: { [key: string]: any }, e: SubmitEvent) => {
+    const handleRegister = async (
+        values: { [key: string]: any },
+        e: SubmitEvent
+    ) => {
         e.preventDefault()
         userRegister({ variables: values })
     }
 
     useEffect(() => {
-        if(!!data) {
-            const { user, jwt } = data.login;  
+        if (!!data) {
+            const { user, jwt } = data.login
             loginUser(user, jwt)
         }
     }, [data])
 
+    if (loading) return <p>Submitting...</p>
+    if (error) return <p>Submission error! ${error.message}`</p>
 
-    if (loading) return <p>Submitting...</p>;
-    if (error) return <p>Submission error! ${error.message}`</p>;
-
-    return user ? <Navigate to="/" /> : (
+    return user ? (
+        <Navigate to="/" />
+    ) : (
         <AuthContainer>
             <PageTitle marginBottom={headingMarginBottom} centered>
                 Create an Account

@@ -1,6 +1,6 @@
-import TrailBG from "../../assets/images/wavy-lines-bg.svg"
-
 import styled from "styled-components"
+
+import TrailBG from "../../assets/images/wavy-lines-bg.svg"
 
 export const Testimonials = styled.div`
     display: flex;

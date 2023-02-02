@@ -15,7 +15,13 @@ const Products = lazy(() => import("./pages/Products"))
 const Login = lazy(() => import("./pages/auth/Login"))
 const Register = lazy(() => import("./pages/auth/Register"))
 
-const SuspendRoute = ({ children, fallback = <></> }: { children: React.ReactNode, fallback?: React.ReactNode }) => {
+const SuspendRoute = ({
+    children,
+    fallback = <></>
+}: {
+    children: React.ReactNode
+    fallback?: React.ReactNode
+}) => {
     // todo - add suspended route fallback component
     return <Suspense fallback={fallback}>{children}</Suspense>
 }
