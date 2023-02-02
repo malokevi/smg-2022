@@ -5,7 +5,7 @@ import { useAuthContext } from "../../../../../auth/AuthenticationProvider"
 import Button from "../../../../Button"
 import { ButtonVersionType } from "../../../../Button/styles"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 export const Options = () => {
     const { user, logoutUser } = useAuthContext()
@@ -21,13 +21,17 @@ export const Options = () => {
                             <Link to="login">Sign In</Link>
                             {"/"}
                             <Link to="register">Create an Account</Link>
-                        </>)
-                        : (
-                            <>
-                                <Button version={ButtonVersionType.LINK} label="Logout" onClick={logoutUser} /> / <Link to="profile">My Profile</Link>
-                            </>
-                        )
-                    }
+                        </>
+                    ) : (
+                        <>
+                            <Button
+                                version={ButtonVersionType.LINK}
+                                label="Logout"
+                                onClick={logoutUser}
+                            />{" "}
+                            / <Link to="profile">My Profile</Link>
+                        </>
+                    )}
                 </div>
             </div>
         </S.Options>

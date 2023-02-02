@@ -2,7 +2,13 @@ import { Col, Container, Row } from "../../../Layout/Grid"
 
 import * as S from "./styles"
 
-export const AuthContainer = ({ children, className }: { children?: React.ReactNode, className?: string }) => {
+export const AuthContainer = ({
+    children,
+    className
+}: {
+    children?: React.ReactNode
+    className?: string
+}) => {
     return (
         <S.AuthContainer className={className}>
             <Container>
@@ -15,4 +21,3 @@ export const AuthContainer = ({ children, className }: { children?: React.ReactN
         </S.AuthContainer>
     )
 }
-

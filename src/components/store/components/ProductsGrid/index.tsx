@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
 import { fadeUp, staggerChildren } from "../../../../shared/motion-variants"
-import { Col } from "../../../Layout/Grid"
 import { PageTitle } from "../../../PageTitle"
 import { ProductsFilterDataType } from "../../common/types.common"
 import { ProductsToolbar, ProductsToolbarChangeEvent } from "../ProductsToolbar"
@@ -73,7 +72,11 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
                                     name={name}
                                     price={price}
                                     salePrice={salePrice}
-                                    image={image.data ? `${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}` : undefined}
+                                    image={
+                                        image.data
+                                            ? `${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}`
+                                            : undefined
+                                    }
                                     key={`product-${i}`}
                                 />
                             ) : (

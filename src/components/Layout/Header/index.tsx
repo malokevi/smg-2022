@@ -5,7 +5,7 @@ import { QuickLinks } from "./components/QuickLinks"
 import { Breadcrumb } from "./components/Breadcrumb"
 import { HeaderBody } from "./components/HeaderBody"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 type HeaderContextValueT = {
     mobileNavIsOpen: boolean
@@ -14,7 +14,7 @@ type HeaderContextValueT = {
 
 const HeaderContext = createContext({
     mobileNavIsOpen: false,
-    setMobileNavIsOpen: (isOpen: boolean) => { }
+    setMobileNavIsOpen: (isOpen: boolean) => {}
 } as HeaderContextValueT)
 
 // custom hook for quick access to context
@@ -28,10 +28,12 @@ export const Header = () => {
     }
 
     return (
-        <HeaderContext.Provider value={{
-            setMobileNavIsOpen: handleMobileNavChange,
-            mobileNavIsOpen
-        }}>
+        <HeaderContext.Provider
+            value={{
+                setMobileNavIsOpen: handleMobileNavChange,
+                mobileNavIsOpen
+            }}
+        >
             <S.Header>
                 <QuickLinks />
                 <HeaderBody />

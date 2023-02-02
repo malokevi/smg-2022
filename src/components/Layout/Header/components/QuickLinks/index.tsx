@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "../../../Grid"
 
-import * as S from './styles'
+import * as S from "./styles"
 
 export const QuickLinks = () => {
     return (

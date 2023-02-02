@@ -13,8 +13,6 @@ type ProductsToolbarType = {
     paginationTotals: PaginationTotalsType
 }
 
-const PAGE_SORT_SELECT_NAME = "pagesort"
-
 export const ProductsToolbar = ({
     onChange,
     paginationTotals: { currentPage, total }
@@ -39,7 +37,7 @@ export const ProductsToolbar = ({
 
             <p>Sort By</p>
             <Select
-                name={PAGE_SORT_SELECT_NAME}
+                name="pagesort"
                 options={[
                     {
                         value: "price",
