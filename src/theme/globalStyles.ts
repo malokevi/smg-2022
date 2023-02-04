@@ -29,10 +29,10 @@ const GlobalStyle = createGlobalStyle`
       }
   
       h1 {
-        font-size: ${({ theme }) => theme.fontSize.xl};
+        font-size: ${({ theme }) => theme.fontSize.xxl};
       }
       h2 {
-        font-size: ${({ theme }) => theme.fontSize.lg};
+        font-size: ${({ theme }) => theme.fontSize.xl};
       }
       h3 {
         font-size: ${({ theme }) => theme.fontSize.lg};

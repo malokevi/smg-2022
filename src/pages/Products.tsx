@@ -24,12 +24,6 @@ const StyledStoreLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
 
-    span.spacer {
-        flex-grow: 2;
-        flex-shrink: 0;
-        width: 25%;
-    }
-
     .grid-container {
         display: flex;
         flex-flow: column nowrap;
