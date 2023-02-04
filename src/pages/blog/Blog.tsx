@@ -16,8 +16,8 @@ const Blog = () => {
                         <PageTitle>Blog</PageTitle>
                     </Col>
                 </Row>
-                <Row>
-                    <Col sm={12} md={9} lg={10}>
+                <Row className="blog-body">
+                    <Col sm={12} md={12} lg={10}>
                         <motion.div
                             className="grid-container"
                             variants={staggerChildren}
@@ -29,7 +29,7 @@ const Blog = () => {
                             ))}
                         </motion.div>
                     </Col>
-                    <Col sm={12} md={3} lg={2}>
+                    <Col sm={12} md={12} lg={2}>
                         <p>nav</p>
                     </Col>
                 </Row>
@@ -43,6 +43,24 @@ const StyledBlog = styled.div`
         display: flex;
         flex-flow: column;
         gap: ${({ theme }) => theme.padding.gap};
+    }
+
+    .blog-body {
+        gap: 48px 0;
+
+        & > div {
+            &:first-of-type {
+                @media (max-width: 991px) {
+                    order: 2;
+                }
+            }
+
+            &:last-of-type {
+                @media (max-width: 991px) {
+                    order: 1;
+                }
+            }
+        }
     }
 `
 

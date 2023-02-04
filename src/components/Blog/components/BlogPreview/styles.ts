@@ -3,14 +3,23 @@ import { motion } from 'framer-motion'
 
 export const BlogEntry = styled(motion.div)`
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     gap: 32px;
 
+    @media(min-width: 768px) {
+        flex-flow: row nowrap;
+    }
+
     img {
-        width: 350px;
-        height: 220px;
         align-self: flex-start;
+        height: auto;
         flex-shrink: 0;
+        max-width: 100%;
+        width: 350px;
+
+        @media(min-width: 768px) and (max-width: 992px) {
+            width: 200px;
+        }
     }
 
     .preview-body {

@@ -7,7 +7,7 @@ type ContainerT = {
     className?: string
 }
 
-type RowT = { children: React.ReactNode }
+type RowT = { children: React.ReactNode; className?: string }
 
 type ColT = {
     className?: string
@@ -25,8 +25,8 @@ export const Container = ({ children, className }: ContainerT) => {
     )
 }
 
-export const Row = ({ children }: RowT) => {
-    return <S.Row className="row">{children}</S.Row>
+export const Row = ({ children, className }: RowT) => {
+    return <S.Row className={clsx("row", className)}>{children}</S.Row>
 }
 
 export const Col = ({

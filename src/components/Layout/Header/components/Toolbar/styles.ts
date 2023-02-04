@@ -1,4 +1,6 @@
 import styled from "styled-components"
+
+import { Cart } from "../../../../Cart"
 import { Hamburger } from "../Hamburger"
 
 export const Toolbar = styled.div`
@@ -38,11 +40,19 @@ export const Toolbar = styled.div`
             display: flex;
         }
     }
+
+    .menu-tools__mobile {
+        align-self: flex-end;
+        display: flex;
+        gap: 24px;
+    }
+`
+
+export const StyledCart = styled(Cart)`
+    position: relative;
 `
 
 export const StyledHamburger = styled(Hamburger)`
-    align-self: flex-end;
-
     @media(min-width: 768px) {
         display: none;
     }
