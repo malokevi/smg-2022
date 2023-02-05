@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 
+import { ButtonVersionType } from "../Button/styles"
+
 import * as S from "./styles"
 
 type ListItemT = {
@@ -24,12 +26,16 @@ type TreeListPropsT = {
 type RenderTreeListItemPropsT = { listItemData: ListDataItemType }
 
 const RenderTreeListItem = ({ listItemData }: RenderTreeListItemPropsT) => {
-    console.log("listItemData", listItemData)
-
     if ("children" in listItemData) {
+        const handleOpenDropdown = () => {}
+
         return (
             <li>
-                <p>{listItemData.label}</p>
+                <S.StyledButton
+                    version={ButtonVersionType.LINK}
+                    label={listItemData.label}
+                    onClick={handleOpenDropdown}
+                />
                 <ul>
                     {listItemData.children.map((item) => (
                         <RenderTreeListItem listItemData={item} />

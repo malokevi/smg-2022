@@ -7,16 +7,23 @@ type ButtonPropsType = {
     onClick?: (e: any) => void
     version: ButtonVersionType
     type?: "button" | "submit" | "reset" | undefined
+    className?: string
 }
 
 const Button = ({
     label,
     onClick,
     version,
+    className,
     type = "button"
 }: ButtonPropsType) => {
     return (
-        <S.Button version={version} onClick={onClick} type={type}>
+        <S.Button
+            className={className}
+            version={version}
+            onClick={onClick}
+            type={type}
+        >
             {label}
         </S.Button>
     )
