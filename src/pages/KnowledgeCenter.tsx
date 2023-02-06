@@ -8,10 +8,8 @@ import { TreeList } from "../components/TreeList"
 import { INFO_CATEGORIES_GET } from "../gql/queries"
 import { ApolloResponseT } from "../shared/types"
 
-const formatListData = (data: any, index?: number) => {
-    console.log("cd", data)
-
-    return data.map((d: any, i: number) => {
+const formatListData = (data: any, index?: number) =>
+    data.map((d: any, i: number) => {
         const { attributes } = d || {}
         const { infos, label } = attributes || {}
 
@@ -27,7 +25,6 @@ const formatListData = (data: any, index?: number) => {
               }
             : value
     })
-}
 
 const KnowledgeCenter = () => {
     const { loading, error, data }: ApolloResponseT =

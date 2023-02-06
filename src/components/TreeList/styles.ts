@@ -1,7 +1,5 @@
 import styled from "styled-components"
 
-import Button from "../Button"
-
 export const TreeList = styled.div`
     display: flex;
     flex-flow: column;
@@ -12,9 +10,6 @@ export const TreeList = styled.div`
         font-weight: 600;
     }
 
-    & > ul {
-        gap: 24px;
-    }
 
     ul {
         list-style: none;
@@ -31,14 +26,26 @@ export const TreeList = styled.div`
             padding-left: 16px;
             position: relative;
 
+            &:has(div) {
+                gap: 0;
+
+                & > div > ul {
+                    margin-top: 8px;
+                }
+            }
+
             & > ul > li {
                 font-size: ${({ theme }) => theme.fontSize.sm};
             }
         }
     }
-`
 
-export const StyledButton = styled(Button)`
-    align-self: flex-start;
-    font-size: ${({theme}) => theme.fontSize.md};
+    & > ul {
+        gap: 24px;
+
+        & > li {
+            padding-left: 0;
+        }
+    }
+
 `
