@@ -3,7 +3,7 @@ import { ButtonVersionType } from "./styles"
 import * as S from "./styles"
 
 type ButtonPropsType = {
-    label: string
+    children: string | React.ReactNode
     onClick?: (e: any) => void
     version: ButtonVersionType
     type?: "button" | "submit" | "reset" | undefined
@@ -11,7 +11,7 @@ type ButtonPropsType = {
 }
 
 const Button = ({
-    label,
+    children,
     onClick,
     version,
     className,
@@ -24,7 +24,7 @@ const Button = ({
             onClick={onClick}
             type={type}
         >
-            {label}
+            {children}
         </S.Button>
     )
 }

@@ -1,3 +1,9 @@
+export type TreeListItemDropdownPropsT = {
+    index?: number
+    openedDropdownIndex: number | null
+    setOpenedDropdownIndex: (index: number | null) => void
+}
+
 export type ListItemT = {
     label: string
 }

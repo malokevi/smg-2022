@@ -1,5 +1,5 @@
 import { ListDataItemType } from "./types"
-import { RenderTreeListItem } from "./components/RenderTreeListItem"
+import { RenderTreeList } from "./components/RenderTreeList"
 
 import * as S from "./styles"
 
@@ -12,14 +12,7 @@ export const TreeList = ({ title, listData }: TreeListPropsT) => {
     return (
         <S.TreeList>
             {title && <p className="tree-list__title">{title}</p>}
-            <ul>
-                {listData.map((item, i) => (
-                    <RenderTreeListItem
-                        key={`${item.label.replaceAll(" ", "")}-${i}`}
-                        listItemData={item}
-                    />
-                ))}
-            </ul>
+            <RenderTreeList children={listData} />
         </S.TreeList>
     )
 }

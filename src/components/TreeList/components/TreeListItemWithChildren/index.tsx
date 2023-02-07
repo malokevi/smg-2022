@@ -1,66 +1,63 @@
-import { useRef, useState } from "react"
-import styled from "styled-components"
+import { useEffect, useRef, useState } from "react"
 
-import Button from "../../../Button"
+import Caret from "../../../../assets/images/caret-down.svg"
 import { ButtonVersionType } from "../../../Button/styles"
-import { ListItemWithChildrenT } from "../../types"
-import { RenderTreeListItem } from "../RenderTreeListItem"
+import { ListItemWithChildrenT, TreeListItemDropdownPropsT } from "../../types"
+import { RenderTreeList } from "../RenderTreeList"
+
+import * as S from "./styles"
+
+interface TreeListItemWithChildrenPropsT
+    extends TreeListItemDropdownPropsT,
+        ListItemWithChildrenT {}
 
 export const TreeListItemWithChildren = ({
     label,
-    children
-}: ListItemWithChildrenT) => {
+    children,
+    index,
+    openedDropdownIndex,
+    setOpenedDropdownIndex
+}: TreeListItemWithChildrenPropsT) => {
+    const dropdownIsOpen = openedDropdownIndex === index
     const listRef = useRef<HTMLUListElement>(null)
     const [dropdownState, setDropdownState] = useState({
         isOpen: false,
         dropdownHeight: 0
     })
 
-    const handleOpenDropdown = () => {
-        setDropdownState((prev) => {
-            if (listRef.current) {
-                const { isOpen } = prev
+    useEffect(() => {
+        if (listRef.current) {
+            const isOpen = index === openedDropdownIndex
 
-                return {
-                    dropdownHeight: isOpen ? 0 : listRef.current.clientHeight,
-                    isOpen: !isOpen
-                }
-            }
+            console.log(isOpen, index, openedDropdownIndex)
 
-            return prev
-        })
+            setDropdownState({
+                dropdownHeight: isOpen ? listRef.current.clientHeight : 0,
+                isOpen
+            })
+        }
+    }, [index, openedDropdownIndex, listRef])
+
+    const handleToggleDropdown = () => {
+        setOpenedDropdownIndex(
+            typeof index === "number" && openedDropdownIndex !== index
+                ? index
+                : null
+        )
     }
 
     return (
         <li>
-            <StyledButton
+            <S.StyledButton
+                dropdownIsOpen={dropdownIsOpen}
                 version={ButtonVersionType.LINK}
-                label={label}
-                onClick={handleOpenDropdown}
-            />
-            <TreeItemDropdown height={dropdownState.dropdownHeight}>
-                <ul ref={listRef}>
-                    {children.map((item, i) => (
-                        <RenderTreeListItem
-                            key={`${item.label.replaceAll(" ", "")}-${i}`}
-                            listItemData={item}
-                        />
-                    ))}
-                </ul>
-            </TreeItemDropdown>
+                onClick={handleToggleDropdown}
+            >
+                <img alt="" src={Caret} /> {label}
+            </S.StyledButton>
+            <S.TreeItemDropdown height={dropdownState.dropdownHeight}>
+                <RenderTreeList ref={listRef} children={children} />
+            </S.TreeItemDropdown>
         </li>
     )
 }
-
-const TreeItemDropdown = styled.div<{
-    height: number
-}>`
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-    height: ${({ height }) => height}px;
-`
-
-const StyledButton = styled(Button)`
-    align-self: flex-start;
-    font-size: ${({ theme }) => theme.fontSize.md};
-`
