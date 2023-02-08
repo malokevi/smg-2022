@@ -67,7 +67,17 @@ export const routes: RouteObject[] = [
                     <SuspendRoute>
                         <KnowledgeCenter />
                     </SuspendRoute>
-                )
+                ),
+                children: [
+                    {
+                        path: ":section/:topic",
+                        element: (
+                            <SuspendRoute>
+                                <KnowledgeCenter />
+                            </SuspendRoute>
+                        )
+                    }
+                ]
             },
             {
                 path: "blog",

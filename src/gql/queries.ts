@@ -71,11 +71,13 @@ export const INFO_CATEGORIES_GET = ApolloQueryWrapper(`
             data {
                 attributes {
                     label
+                    uid
                     infos {
                         data {
                             attributes {
                                 label 
                                 description
+                                uid
                             }
                         }
                     }

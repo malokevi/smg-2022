@@ -24,7 +24,7 @@ export const Toolbar = styled.div`
         gap: 28px;
         align-self: flex-end;
 
-        @media(min-width: 768px) {
+        @media (min-width: 768px) {
             display: flex;
         }
 
@@ -45,6 +45,10 @@ export const Toolbar = styled.div`
         align-self: flex-end;
         display: flex;
         gap: 24px;
+
+        @media (min-width: 767px) {
+            display: none;
+        }
     }
 `
 
@@ -53,7 +57,7 @@ export const StyledCart = styled(Cart)`
 `
 
 export const StyledHamburger = styled(Hamburger)`
-    @media(min-width: 768px) {
+    @media (min-width: 768px) {
         display: none;
     }
 `
