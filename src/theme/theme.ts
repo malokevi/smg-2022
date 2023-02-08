@@ -41,7 +41,7 @@ const theme: DefaultTheme = {
         pageBc: "40px"
     },
     borderRadius: "6px",
-    boxShadow: "0 8px 12px rgb(0 0 0 / 8%)"
+    boxShadow: "0 6px 15px rgb(0 0 0 / 8%)"
 }
 
 export default theme

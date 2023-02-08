@@ -26,9 +26,10 @@ export const Options = () => {
                         <>
                             <Button
                                 version={ButtonVersionType.LINK}
-                                label="Logout"
                                 onClick={() => logoutUser()}
-                            />{" "}
+                            >
+                                Logout
+                            </Button>{" "}
                             / <Link to="profile">My Profile</Link>
                         </>
                     )}

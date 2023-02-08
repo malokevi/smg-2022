@@ -25,12 +25,13 @@ export const BlogPreview = ({
                 <h2>{title}</h2>
                 <p className="preview-copy">{copy}</p>
                 <Button
-                    label="Read More"
                     onClick={(e: any) => {
                         console.log("read more click")
                     }}
                     version={ButtonVersionType.SECONDARY}
-                />
+                >
+                    Read More
+                </Button>
             </div>
         </S.BlogEntry>
     )

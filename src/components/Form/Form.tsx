@@ -21,10 +21,7 @@ type RenderFieldPropsT = {
     onChange?: (e: any) => void
 }
 
-const RenderField = ({
-    field,
-    onChange
-}: RenderFieldPropsT) => {
+const RenderField = ({ field, onChange }: RenderFieldPropsT) => {
     let elem = <></>
 
     switch (field.type) {
@@ -54,7 +51,7 @@ const Form = ({ fields, onSubmit }: FormPropsT) => {
         // initialize form field values to undefined.
         const initialValues: { [key: string]: any } = {}
 
-        fields.forEach(field => {
+        fields.forEach((field) => {
             initialValues[field.name] = undefined
         })
 
@@ -89,11 +86,9 @@ const Form = ({ fields, onSubmit }: FormPropsT) => {
                 />
             ))}
 
-            <Button
-                label="Submit"
-                version={ButtonVersionType.PRIMARY}
-                type="submit"
-            />
+            <Button version={ButtonVersionType.PRIMARY} type="submit">
+                Submit
+            </Button>
         </StyledForm>
     )
 }

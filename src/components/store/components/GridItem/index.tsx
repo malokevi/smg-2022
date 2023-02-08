@@ -45,8 +45,9 @@ export const GridItem = ({
                     <Button
                         onClick={handleAddToCart}
                         version={ButtonVersionType.PRIMARY}
-                        label="Add to Cart"
-                    />
+                    >
+                        Add to Cart
+                    </Button>
                 </div>
             </div>
         </S.GridItem>

@@ -3,21 +3,28 @@ import { ButtonVersionType } from "./styles"
 import * as S from "./styles"
 
 type ButtonPropsType = {
-    label: string
+    children: string | React.ReactNode
     onClick?: (e: any) => void
     version: ButtonVersionType
     type?: "button" | "submit" | "reset" | undefined
+    className?: string
 }
 
 const Button = ({
-    label,
+    children,
     onClick,
     version,
+    className,
     type = "button"
 }: ButtonPropsType) => {
     return (
-        <S.Button version={version} onClick={onClick} type={type}>
-            {label}
+        <S.Button
+            className={className}
+            version={version}
+            onClick={onClick}
+            type={type}
+        >
+            {children}
         </S.Button>
     )
 }

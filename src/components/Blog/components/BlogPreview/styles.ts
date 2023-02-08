@@ -2,9 +2,11 @@ import styled from "styled-components"
 import { motion } from 'framer-motion'
 
 export const BlogEntry = styled(motion.div)`
+    box-shadow: ${({theme}) => theme.boxShadow};
     display: flex;
     flex-flow: column nowrap;
     gap: 32px;
+    padding: 24px;
 
     @media(min-width: 768px) {
         flex-flow: row nowrap;

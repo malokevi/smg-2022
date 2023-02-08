@@ -2,13 +2,13 @@ import { useParams } from "react-router"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
-import { fadeUp, staggerChildren } from "../../../../shared/motion-variants"
-import { PageTitle } from "../../../PageTitle"
 import { ProductsFilterDataType } from "../../common/types.common"
 import { ProductsToolbar, ProductsToolbarChangeEvent } from "../ProductsToolbar"
+import { staggerChildren } from "../../../../shared/motion-variants"
+import { PaginationTotalsType, PaginationType } from "../../../../shared/types"
+import { PageTitle } from "../../../PageTitle"
 import { GridItem } from "../GridItem"
 import { Pagination } from "../../../Pagination"
-import { PaginationTotalsType, PaginationType } from "../../../../shared/types"
 
 export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
     let { category } = useParams<"category">()
@@ -65,26 +65,20 @@ export const ProductsGrid = ({ products = [] }: { products?: any[] }) => {
                                 attributes: { name, price, salePrice, image }
                             },
                             i
-                        ) =>
-                            name ? (
-                                <GridItem
-                                    id={id}
-                                    name={name}
-                                    price={price}
-                                    salePrice={salePrice}
-                                    image={
-                                        image.data
-                                            ? `${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}`
-                                            : undefined
-                                    }
-                                    key={`product-${i}`}
-                                />
-                            ) : (
-                                <motion.span
-                                    variants={fadeUp}
-                                    className="spacer"
-                                ></motion.span>
-                            )
+                        ) => (
+                            <GridItem
+                                id={id}
+                                name={name}
+                                price={price}
+                                salePrice={salePrice}
+                                image={
+                                    image.data
+                                        ? `${process.env.REACT_APP_STRAPI_ENDPOINT}${image.data.attributes.url}`
+                                        : undefined
+                                }
+                                key={`product-${i}`}
+                            />
+                        )
                     )}
                 </motion.div>
             ) : (

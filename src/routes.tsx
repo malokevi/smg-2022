@@ -14,6 +14,7 @@ const BlogArticle = lazy(() => import("./pages/blog/BlogArticle"))
 const Products = lazy(() => import("./pages/Products"))
 const Login = lazy(() => import("./pages/auth/Login"))
 const Register = lazy(() => import("./pages/auth/Register"))
+const Contact = lazy(() => import("./pages/contact"))
 
 const SuspendRoute = ({
     children,
@@ -51,13 +52,32 @@ export const routes: RouteObject[] = [
                 )
             },
             {
-                path: "knowledge-center",
+                path: "contact",
+                label: "Contact",
+                element: (
+                    <SuspendRoute>
+                        <Contact />
+                    </SuspendRoute>
+                )
+            },
+            {
+                path: "learn-more",
                 label: "Knowlege Center",
                 element: (
                     <SuspendRoute>
                         <KnowledgeCenter />
                     </SuspendRoute>
-                )
+                ),
+                children: [
+                    {
+                        path: ":section/:topic",
+                        element: (
+                            <SuspendRoute>
+                                <KnowledgeCenter />
+                            </SuspendRoute>
+                        )
+                    }
+                ]
             },
             {
                 path: "blog",

@@ -42,11 +42,11 @@ const StyledBlog = styled.div`
     .grid-container {
         display: flex;
         flex-flow: column;
-        gap: ${({ theme }) => theme.padding.gap};
+        gap: 42px;
     }
 
     .blog-body {
-        gap: 48px 0;
+        gap: 32px 0;
 
         & > div {
             &:first-of-type {
