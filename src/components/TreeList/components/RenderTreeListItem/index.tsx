@@ -1,4 +1,6 @@
+import clsx from "clsx"
 import { Link } from "react-router-dom"
+import { useTreeListContext } from "../.."
 
 import { ListDataItemType, TreeListItemDropdownPropsT } from "../../types"
 import { TreeListItemWithChildren } from "../TreeListItemWithChildren"
@@ -13,6 +15,8 @@ export const RenderTreeListItem = ({
     openedDropdownIndex,
     setOpenedDropdownIndex
 }: RenderTreeListItemPropsT) => {
+    const { activeId } = useTreeListContext()
+
     if ("children" in listItemData) {
         return (
             <TreeListItemWithChildren
@@ -26,7 +30,11 @@ export const RenderTreeListItem = ({
 
     if ("uid" in listItemData) {
         return (
-            <li>
+            <li
+                className={clsx("treelist-item", {
+                    "treelist-item--active": activeId === listItemData.uid
+                })}
+            >
                 <Link to={listItemData.uid}>{listItemData.label}</Link>
             </li>
         )

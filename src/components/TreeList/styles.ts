@@ -27,6 +27,10 @@ export const TreeList = styled.div`
             font-size: 18px;
             line-height: 1.4;
 
+            &.treelist-item--active {
+                font-weight: 600;
+            }
+
             &:has(div) {
                 gap: 0;
 

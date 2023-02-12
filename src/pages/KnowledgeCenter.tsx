@@ -2,10 +2,7 @@ import { useQuery } from "@apollo/client"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 
-import {
-    KC_ITEM_PREFIX,
-    KnowledgeCenterSection
-} from "../components/KnowledgeCenter"
+import { KnowledgeCenterSection } from "../components/KnowledgeCenter"
 import { Col, Container, Row } from "../components/Layout/Grid"
 import { PageTitle } from "../components/PageTitle"
 import { TreeList } from "../components/TreeList"
@@ -18,7 +15,7 @@ const formatListData = (data: any, index?: number) =>
         const { infos, label, uid } = attributes || {}
 
         const value = {
-            uid: `${!!index ? index : 0}/${KC_ITEM_PREFIX}${uid}`,
+            uid: `${!!index ? index : 0}/${uid}`,
             label
         }
 
@@ -43,6 +40,8 @@ const KnowledgeCenter = () => {
     const formatted = formatListData(infoData)
     const activeSection = Number(section) || 0
 
+    console.log("see topic: ", topic)
+
     return (
         <StyledKnowledgeCenter className="page-container">
             <Container>
@@ -53,16 +52,15 @@ const KnowledgeCenter = () => {
                 </Row>
                 <Row>
                     <Col sm={12} md={4} lg={3}>
-                        <TreeList listData={formatted} />
+                        <TreeList
+                            activeId={`${section}/${topic}`}
+                            listData={formatted}
+                        />
                     </Col>
                     <Col sm={12} md={8} lg={9}>
                         {infoData.map((data, i) =>
                             data?.attributes && activeSection === i ? (
                                 <KnowledgeCenterSection
-                                    currentTopic={topic?.replace(
-                                        KC_ITEM_PREFIX,
-                                        ""
-                                    )}
                                     key={data.attributes.label}
                                     data={data.attributes}
                                 />

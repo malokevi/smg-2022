@@ -1,2 +1,1 @@
-export * from './components/KnowledgeCenterItem'
-export * from './components/KnowledgeCenterSection'
+export * from "./components/KnowledgeCenterSection"

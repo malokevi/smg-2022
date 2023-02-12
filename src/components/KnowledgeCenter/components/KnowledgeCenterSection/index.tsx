@@ -1,43 +1,48 @@
+import { useParams } from "react-router"
+
 import { InfoCategory } from "../../../../gql/graphql"
 
 import * as S from "./styles"
 
-export const KC_ITEM_PREFIX = "kc-"
-
 type KnowledgeCenterSectionPropsT = {
     data: InfoCategory
-    currentTopic?: string
 }
 
 export const KnowledgeCenterSection = ({
-    data: { infos, label, description, uid },
-    currentTopic
+    data: { infos, label, description, uid }
 }: KnowledgeCenterSectionPropsT) => {
+    const { topic } = useParams()
+
     return (
         <S.KnowledgeCenterSection id={uid || undefined}>
             <h2>{label}</h2>
             {!!description && <p>{description}</p>}
             {infos?.data
                 .filter(({ attributes }) => {
-                    if (typeof currentTopic !== "undefined") {
-                        return attributes?.uid === currentTopic
+                    if (typeof topic !== "undefined") {
+                        return attributes?.uid === topic
                     }
 
                     return true
                 })
                 .map(({ attributes }) => {
-                    const { label, description, uid: uuid } = attributes || {}
+                    if (!!attributes) {
+                        const { label, description, uid: uuid } = attributes
 
-                    return (
-                        <div
-                            className="info-block"
-                            id={`${KC_ITEM_PREFIX}${uuid}` || undefined}
-                            key={label}
-                        >
-                            <h3>{label}</h3>
-                            <p>{description}</p>
-                        </div>
-                    )
+                        // todo - make this a reusable card? break out component into separate file?
+                        return (
+                            <div
+                                className="info-block"
+                                id={`${uuid}` || undefined}
+                                key={label}
+                            >
+                                <h3>{label}</h3>
+                                <p>{description}</p>
+                            </div>
+                        )
+                    }
+
+                    return null
                 })}
         </S.KnowledgeCenterSection>
     )
