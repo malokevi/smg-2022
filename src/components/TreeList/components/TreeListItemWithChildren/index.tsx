@@ -29,8 +29,6 @@ export const TreeListItemWithChildren = ({
         if (listRef.current) {
             const isOpen = index === openedDropdownIndex
 
-            console.log(isOpen, index, openedDropdownIndex)
-
             setDropdownState({
                 dropdownHeight: isOpen ? listRef.current.clientHeight : 0,
                 isOpen

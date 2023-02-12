@@ -40,8 +40,6 @@ const KnowledgeCenter = () => {
     const formatted = formatListData(infoData)
     const activeSection = Number(section) || 0
 
-    console.log("see topic: ", topic)
-
     return (
         <StyledKnowledgeCenter className="page-container">
             <Container>
