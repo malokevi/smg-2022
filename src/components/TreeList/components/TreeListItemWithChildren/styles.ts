@@ -15,6 +15,7 @@ export const StyledButton = styled(Button)<{ dropdownIsOpen?: boolean }>`
     gap: 12px;
     align-self: flex-start;
     font-size: ${({ theme }) => theme.fontSize.md};
+    text-align: left;
 
     img {
         transition: all 0.25s ease-in-out;

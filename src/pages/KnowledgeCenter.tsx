@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useQuery } from "@apollo/client"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
@@ -16,7 +15,7 @@ const formatListData = (data: any, index?: number) =>
         const { infos, label, uid } = attributes || {}
 
         const value = {
-            uid: `${!!index ? index : 0}/kc-${uid}`,
+            uid: `${!!index ? index : 0}/${uid}`,
             label
         }
 
@@ -34,19 +33,14 @@ const KnowledgeCenter = () => {
     const infoData = data?.infoCategories?.data || []
     const { section, topic } = useParams()
 
-    useEffect(() => {
-        if (topic) {
-            const anchor = document.getElementById(`${topic}`)
-            anchor?.scrollIntoView()
-        }
-    }, [topic, infoData.length])
-
     // TODO - Add loading and error states
     if (loading) return <p>Submitting...</p>
     if (error) return <p>Submission error! ${error.message}`</p>
 
     const formatted = formatListData(infoData)
     const activeSection = Number(section) || 0
+
+    console.log("see topic: ", topic)
 
     return (
         <StyledKnowledgeCenter className="page-container">
@@ -58,7 +52,10 @@ const KnowledgeCenter = () => {
                 </Row>
                 <Row>
                     <Col sm={12} md={4} lg={3}>
-                        <TreeList listData={formatted} />
+                        <TreeList
+                            activeId={`${section}/${topic}`}
+                            listData={formatted}
+                        />
                     </Col>
                     <Col sm={12} md={8} lg={9}>
                         {infoData.map((data, i) =>

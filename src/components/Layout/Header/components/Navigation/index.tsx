@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import clsx from "clsx"
 
+import { useBasePath } from "../../../../../hooks/useBasePath"
 import Caret from "../../../../../assets/images/caret-down.svg"
 import NavData from "../../../../../static/navigation.json"
 import { Col, Row } from "../../../Grid"
@@ -26,14 +27,14 @@ export const Navigation = () => {
     const [visibleSubnav, setVisibleSubnav] = useState<number | undefined>()
     const navData: NavType = NavData
     const navRef = useRef<HTMLUListElement | null>(null)
-    let location = useLocation()
+    let basePath = useBasePath()
 
     // on route change, scroll to top and close navigation
     useEffect(() => {
         handleSetVisibleSubnav()
         setMobileNavIsOpen(false)
         window.scrollTo(0, 0)
-    }, [location])
+    }, [basePath])
 
     // close subnav when clicking outside of navigation
     useEffect(() => {
