@@ -1,9 +1,11 @@
-import { useEffect } from "react"
 import { useQuery } from "@apollo/client"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 
-import { KnowledgeCenterSection } from "../components/KnowledgeCenter"
+import {
+    KC_ITEM_PREFIX,
+    KnowledgeCenterSection
+} from "../components/KnowledgeCenter"
 import { Col, Container, Row } from "../components/Layout/Grid"
 import { PageTitle } from "../components/PageTitle"
 import { TreeList } from "../components/TreeList"
@@ -16,7 +18,7 @@ const formatListData = (data: any, index?: number) =>
         const { infos, label, uid } = attributes || {}
 
         const value = {
-            uid: `${!!index ? index : 0}/kc-${uid}`,
+            uid: `${!!index ? index : 0}/${KC_ITEM_PREFIX}${uid}`,
             label
         }
 
@@ -33,13 +35,6 @@ const KnowledgeCenter = () => {
         useQuery(INFO_CATEGORIES_GET)
     const infoData = data?.infoCategories?.data || []
     const { section, topic } = useParams()
-
-    useEffect(() => {
-        if (topic) {
-            const anchor = document.getElementById(`${topic}`)
-            anchor?.scrollIntoView()
-        }
-    }, [topic, infoData.length])
 
     // TODO - Add loading and error states
     if (loading) return <p>Submitting...</p>
@@ -64,6 +59,10 @@ const KnowledgeCenter = () => {
                         {infoData.map((data, i) =>
                             data?.attributes && activeSection === i ? (
                                 <KnowledgeCenterSection
+                                    currentTopic={topic?.replace(
+                                        KC_ITEM_PREFIX,
+                                        ""
+                                    )}
                                     key={data.attributes.label}
                                     data={data.attributes}
                                 />

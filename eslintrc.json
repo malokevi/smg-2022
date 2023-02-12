@@ -24,7 +24,7 @@
         "react/jsx-no-useless-fragment": "off",
         "react/no-array-index-key": "off",
         "react/jsx-props-no-spreading": "off",
-        "react-hooks/exhaustive-deps": 0,
+        "react-hooks/exhaustive-deps": "off",
         "no-param-reassign": "off",
         "@typescript-eslint/no-empty-function": "off",
         "no-unused-expressions": "off",
